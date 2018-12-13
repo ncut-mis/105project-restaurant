@@ -11,8 +11,15 @@
 |
 */
 
+Route::get('1', function () {
+   return view('welcome');
+});
+
+Route::get('222',['as' => 'admin.users.index' , 'uses' => 'UsersController@index']);
+Route::get('login/{id}' ,['as' => 'admin.users.login' , 'uses' => 'UsersController@login']);
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('/auth/login11');
 });
 
 Auth::routes();
