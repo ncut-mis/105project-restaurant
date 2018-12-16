@@ -14,8 +14,19 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        $users=Staff::orderBy('created_at','asc')->get();
+        $data=['users'=>$users];
+        return view('/auth/login22',$data);
     }
+    public function login($id)
+    {
+        $user=Staff::find($id);
+
+        $data=['user'=>$user];
+
+        return view('/auth/login33',$data);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -82,4 +93,5 @@ class StaffController extends Controller
     {
         //
     }
+
 }
