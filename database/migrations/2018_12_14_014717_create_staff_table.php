@@ -15,15 +15,15 @@ class CreateStaffTable extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('res_id');
+            $table->unsignedInteger('res_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->date('birthday');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('position');
+            $table->date('birthday')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('position')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
