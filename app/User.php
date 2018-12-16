@@ -1,10 +1,11 @@
 <?php
 
 namespace App;
-
+use \App\Customer as CustomerEloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 class User extends Authenticatable
 {
@@ -27,4 +28,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function customer(){
+        return $this->belongsTo(CustomerEloquent::class);
+    }
 }
