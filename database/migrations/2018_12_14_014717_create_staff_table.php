@@ -17,13 +17,16 @@ class CreateStaffTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('res_id');
             $table->string('name');
-            $table->string('position');
-            $table->string('account');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('address');
+            $table->date('birthday');
             $table->string('phone');
-            $table->string('email');
+            $table->string('address');
+            $table->string('position');
+            $table->rememberToken();
             $table->timestamps();
+
         });
     }
 
