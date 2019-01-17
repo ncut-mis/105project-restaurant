@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHistoriesTable extends Migration
+class CreateMealKeywordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('histories', function (Blueprint $table) {
+        Schema::create('MealKeywords', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('res_id');
-            $table->unsignedInteger('cus_id');
-            $table->string('table');
-            $table->dateTime('time');
-            $table->string('PayType');
-
+            $table->unsignedInteger('meals_id');
+            $table->unsignedInteger('kw_id');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('histories');
+        Schema::dropIfExists('meal_keywords');
     }
 }

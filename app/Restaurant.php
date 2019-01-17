@@ -5,7 +5,7 @@ use \App\Staff as StaffEloquent;
 use \App\Post as PostEloquent;
 use \App\Coupon as CouponEloquent;
 use \App\Meal as MealEloquent;
-use \App\History as HistoryEloquent;
+use \App\Record as RecordEloquent;
 use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
@@ -22,7 +22,7 @@ class Restaurant extends Model
     public function meal(){
         return $this->hasMany(MealEloquent::class);
     }
-    public function history(){
-        return $this->hasMany(HistoryEloquent::class);
+    public function record(){
+        return $this->hasMany(RecordEloquent::class);
     }
 }

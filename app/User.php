@@ -2,6 +2,7 @@
 
 namespace App;
 use \App\Customer as CustomerEloquent;
+use \App\CouponsStatus as CouponsStatusEloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    protected $table = 'members';
     /**
      * The attributes that are mass assignable.
      *
@@ -31,5 +32,8 @@ class User extends Authenticatable
 
     public function customer(){
         return $this->belongsTo(CustomerEloquent::class);
+    }
+    public function CouponsStatus(){
+        return $this->hasMany(CouponsStatusEloquent::class);
     }
 }

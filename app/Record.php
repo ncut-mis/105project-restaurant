@@ -4,9 +4,10 @@ namespace App;
 use \App\Customer as CustomerEloquent;
 use \App\Restaurant as RestaurantEloquent;
 use \App\Detail as DetailEloquent;
+use \App\CouponsStatus as CouponsStatusEloquent;
 use Illuminate\Database\Eloquent\Model;
 
-class History extends Model
+class Record extends Model
 {
     public function customer(){
         return $this->belongsTo(CustomerEloquent::class);
@@ -16,5 +17,8 @@ class History extends Model
     }
     public function detail(){
         return $this->hasMany(DetailEloquent::class);
+    }
+    public function CouponsStatus(){
+        return $this->hasone(CouponsStatusEloquent::class);
     }
 }

@@ -19,7 +19,6 @@ class CreateMealsTable extends Migration
             $table->string('name');
             $table->text('photo');
             $table->text('ingredients');
-            $table->string('keyword');
             $table->integer('price');
             $table->timestamps();
         });

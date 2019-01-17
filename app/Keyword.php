@@ -1,13 +1,15 @@
 <?php
 
 namespace App;
-use \App\Meal as MealEloquent;
+
+use \App\MealKeyword as MealKeywordEloquent;
 use Illuminate\Database\Eloquent\Model;
 
 class Keyword extends Model
 {
-    public function meal(){
-        return $this->belongsTo(MealEloquent::class);
+
+    public function MealKeyword(){
+        return $this->belongsTo(MealKeywordEloquent::class);
     }
 
 }

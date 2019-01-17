@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\History::class, function (Faker $faker) {
+$factory->define(App\Record::class, function (Faker $faker) {
     return [
         //
     ];

@@ -23,7 +23,7 @@ class CreateStaffTable extends Migration
             $table->date('birthday')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->string('position')->nullable();
+            $table->string('position');
             $table->rememberToken();
             $table->timestamps();
 
