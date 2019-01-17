@@ -38,13 +38,28 @@
                 <a href=""><i class="fa fa-fw fa-dashboard"></i> 主控台</a>
             </li>
             <li>
-                <a href=""><i class="fa fa-fw fa-edit"></i> 文章管理</a>
+                <a href=""><i class="fa fa-fw fa-edit"></i> 使用者管理</a>
             </li>
-            @for ($nun = 6; $nun >0; $nun--)
+            <li>
+                <a href=""><i class="fa fa-fw fa-edit"></i> 熱銷排行管理</a>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-fw fa-edit"></i> 優惠訊息管理</a>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-fw fa-edit"></i> 入座位置管理</a>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-fw fa-edit"></i> 餐點管理</a>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-fw fa-edit"></i> 關鍵字管理</a>
+            </li>
+            {{--@for ($nun = 6; $nun >0; $nun--)
                 <li>
                     <a href=""><i class="fa fa-fw fa-edit"></i> 財產管理 </a>
                 </li>
-            @endfor
+            @endfor--}}
 
         </ul>
     </div>
