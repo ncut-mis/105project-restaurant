@@ -23,6 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+//        if ($request->input('age') < 200)
+//        {
+//            return redirect('home');
+//        }
+
+        return view('index');
     }
 }

@@ -12,9 +12,10 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users=Staff::orderBy('created_at','asc')->get();
+        $users=Staff::where('position',$request->position)->get();
+//        $users=Staff::orderBy('created_at','asc')->get();
         $data=['users'=>$users];
         return view('/auth/login22',$data);
     }

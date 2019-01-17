@@ -45,6 +45,7 @@
                                         {{ __('餐廳經理') }}
                                     </label>
                                 </div>
+                                <input class="form-control col-md-6 " type="hidden" name="position"  value="{{ "1" }}"readonly >
                                 <div class="row justify-content-center">
                                     <button type="submit" class="btn btn-primary col-md-11" >
                                         {{ __('Login') }}
@@ -70,6 +71,7 @@
                                         {{ __('櫃台人員') }}
                                     </label>
                                 </div>
+                                <input class="form-control col-md-6 " type="hidden" name="position"  value="{{ "2" }}"readonly >
                                 <div class="row justify-content-center">
                                     <button type="submit" class="btn btn-primary col-md-11">
                                         {{ __('Login') }}
@@ -95,6 +97,7 @@
                                         {{ __('主廚') }}
                                     </label>
                                 </div>
+                                <input class="form-control col-md-6 " type="hidden" name="position"  value="{{ "3" }}"readonly >
                                 <div class="row justify-content-center">
                                     <button type="submit" class="btn btn-primary col-md-11">
                                         {{ __('Login') }}
