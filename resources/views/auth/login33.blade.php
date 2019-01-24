@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">
-                                    <label class=" col-md-12" style="text-align: center; font-size: 38px;color:#FFFFFF;padding: 1px 1px 1px 1px;margin-top: 5px;background-color: transparent;border-style: none;">
+                                    <label class=" col-md-12" style="text-align: center;font-family: 微軟正黑體;font-size: 38px;color:#FFFFFF;padding: 1px 1px 1px 1px;margin-top: 5px;background-color: transparent;border-style: none;">
                                         {{ __($user->name) }}
                                     </label>
                                 </div>
