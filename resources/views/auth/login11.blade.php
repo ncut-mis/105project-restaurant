@@ -32,7 +32,7 @@
                 <div class="col-md-4">
                     <div class="card" style="border-style: none;background-color:transparent;">
                         <div class="card-body" style="padding-top:1px;">
-                            <form method="POST" action="/222">
+                            <form method="POST" action="">
                                 {{ csrf_field() }}
                                 {{ method_field('get') }}
                                 <div class="row justify-content-center">

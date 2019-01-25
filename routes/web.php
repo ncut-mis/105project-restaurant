@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('/auth/login11');
-});
-
-Route::get('222',['as' => 'admin.users.index' , 'uses' => 'StaffController@index']);
-Route::get('login/{id}' ,['as' => 'admin.users.login' , 'uses' => 'StaffController@login']);
+Route::get('/',['as' => 'restaurant.index' , 'uses' => 'HomeController@index']);
+Route::get('restaurant/{id}',['as' => 'restaurant/{id}.staffs.index' , 'uses' => 'HomeController@staff']);
+Route::get('login/{id}' ,['as' => 'restaurant{id}.staffs.login' , 'uses' => 'StaffController@login']);
 
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');

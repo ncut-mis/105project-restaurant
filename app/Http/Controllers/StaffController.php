@@ -15,9 +15,8 @@ class StaffController extends Controller
     public function index(Request $request)
     {
         $users=Staff::where('position',$request->position)->get();
-//        $users=Staff::orderBy('created_at','asc')->get();
         $data=['users'=>$users];
-        return view('/auth/login22',$data);
+        return view('/auth/login11',$data);
     }
     public function login($id)
     {

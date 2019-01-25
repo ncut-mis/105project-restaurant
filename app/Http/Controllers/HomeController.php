@@ -3,32 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Restaurant;
+use App\Staff;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-
-//        if ($request->input('age') < 200)
-//        {
-//            return redirect('home');
-//        }
-
-        return view('index');
+        $rs=Restaurant::orderBy('id','ASC')->get();
+        $data=['restaurants'=>$rs];
+        return view('index',$data);
     }
+    public function staff($id)
+    {
+        $rs=Restaurant::orderBy('id','ASC')->get();
+        $data=['restaurants'=>$rs];
+        $sts=Staff::where('res_id',$id)->get();
+        $data2=['staffs'=>$sts];
+        return view('auth.restaurantstaff',$data,$data2);
+
+        /*$sts=Staff::where('res_id',$id)->get();
+        $data=['staffs'=>$sts];
+        return view('auth.restaurantstaff',$data);*/
+    }
+
 }
