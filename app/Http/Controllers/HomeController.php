@@ -21,10 +21,5 @@ class HomeController extends Controller
         $sts=Staff::where('res_id',$id)->get();
         $data2=['staffs'=>$sts];
         return view('auth.restaurantstaff',$data,$data2);
-
-        /*$sts=Staff::where('res_id',$id)->get();
-        $data=['staffs'=>$sts];
-        return view('auth.restaurantstaff',$data);*/
     }
-
 }

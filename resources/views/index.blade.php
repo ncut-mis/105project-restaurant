@@ -43,7 +43,7 @@
                                         </label>
                                     </div>
                                     <div class="row justify-content-center">
-                                        <a href="{{route('restaurant/{id}.staffs.index',$rs->id)}}"><h1><font color="#ffffff" size="5" face="微軟正黑體"><b>選擇</b></font></h1></a>
+                                        <a href="{{route('restaurant{id}.staffs',$rs->id)}}"><h1><font color="#ffffff" size="5" face="微軟正黑體"><b>選擇</b></font></h1></a>
                                     </div>
                             </div>
                         </div>
