@@ -16,10 +16,18 @@ class HomeController extends Controller
     }
     public function staff($id)
     {
-        $rs=Restaurant::orderBy('id','ASC')->get();
+        $rs=Restaurant::find($id)->get();
         $data=['restaurants'=>$rs];
-        $sts=Staff::where('res_id',$id)->get();
-        $data2=['staffs'=>$sts];
-        return view('auth.restaurantstaff',$data,$data2);
+//        $sts=Staff::where('res_id',$id)->get();
+//        $data2=['staffs'=>$sts];
+//        return view('auth.restaurantstaff',$data,$data2);
+        return view('auth.login11',$data);
+    }
+
+    public function chose(Request $request)
+    {
+        $users=Staff::where(['res_id'=>$request->res_id,'position'=>$request->position])->get();
+        $data=['users'=>$users];
+        return view('/auth/login22',$data);
     }
 }

@@ -32,33 +32,37 @@
                 <div class="col-md-4">
                     <div class="card" style="border-style: none;background-color:transparent;">
                         <div class="card-body" style="padding-top:1px;">
-                            <form method="POST" action="">
-                                {{ csrf_field() }}
-                                {{ method_field('get') }}
-                                <div class="row justify-content-center">
-                                    <div class="pic">
-                                        <img src="img/001.jpg"  class="center-block " alt="boy">
+                            @foreach($restaurants as $restaurant)
+                                <form method="POST" action=" {{ route('restaurant.staffs.chose',$restaurant->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('get') }}
+                                    <div class="row justify-content-center">
+                                        <div class="pic">
+                                            <img src="img/001.jpg"  class="center-block " alt="boy">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <label class=" col-md-8" style="text-align: center;font-family: 微軟正黑體 ;font-size: 38px;color:#FFFFFF;padding: 1px 1px 1px 1px;margin-top: 5px;background-color: transparent;border-style: none;">
-                                        {{ __('餐廳經理') }}
-                                    </label>
-                                </div>
-                                <input class="form-control col-md-6 " type="hidden" name="position" value="{{ "經理" }}" readonly >
-                                <div class="row justify-content-center">
-                                    <button type="submit" class="btn btn-primary col-md-11" >
-                                        {{ __('Login') }}
-                                    </button>
-                                </div>
-                            </form>
+                                    <div class="row justify-content-center">
+                                        <label class=" col-md-8" style="text-align: center;font-family: 微軟正黑體 ;font-size: 38px;color:#FFFFFF;padding: 1px 1px 1px 1px;margin-top: 5px;background-color: transparent;border-style: none;">
+                                            {{ __('餐廳經理') }}
+                                        </label>
+                                    </div>
+                                    <input class="form-control col-md-6 " type="hidden" name="res_id" value="{{ $restaurant->id }}" readonly >
+                                    <input class="form-control col-md-6 " type="hidden" name="position" value="{{ "經理" }}" readonly >
+                                    <div class="row justify-content-center">
+                                        <button type="submit" class="btn btn-primary col-md-11" >
+                                            {{ __('Login') }}
+                                        </button>
+                                    </div>
+                                </form>
+                            @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card" style="border-style: none;background-color:transparent;">
                         <div class="card-body" style="padding-top:1px;">
-                            <form method="POST" action="/222">
+                            @foreach($restaurants as $restaurant)
+                            <form method="POST" action="{{ route('restaurant.staffs.chose',$restaurant->id) }}">
                                 {{ csrf_field() }}
                                 {{ method_field('get') }}
                                 <div class="row justify-content-center">
@@ -71,6 +75,7 @@
                                         {{ __('櫃台人員') }}
                                     </label>
                                 </div>
+                                <input class="form-control col-md-6 " type="hidden" name="res_id" value="{{ $restaurant->id }}" readonly >
                                 <input class="form-control col-md-6 " type="hidden" name="position" value="{{ "櫃台" }}" readonly >
                                 <div class="row justify-content-center">
                                     <button type="submit" class="btn btn-primary col-md-11">
@@ -78,13 +83,15 @@
                                     </button>
                                 </div>
                             </form>
+                                @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card" style="border-style: none;background-color:transparent;">
                         <div class="card-body" style="padding-top:1px;">
-                            <form method="POST" action="/222">
+                            @foreach($restaurants as $restaurant)
+                            <form method="POST" action="{{ route('restaurant.staffs.chose',$restaurant->id) }}">
                                 {{ csrf_field() }}
                                 {{ method_field('get') }}
                                 <div class="row justify-content-center">
@@ -97,6 +104,7 @@
                                         {{ __('主廚') }}
                                     </label>
                                 </div>
+                                <input class="form-control col-md-6 " type="hidden" name="res_id" value="{{ $restaurant->id }}" readonly >
                                 <input class="form-control col-md-6 " type="hidden" name="position" value="{{ "主廚" }}" readonly >
                                 <div class="row justify-content-center">
                                     <button type="submit" class="btn btn-primary col-md-11">
@@ -104,6 +112,7 @@
                                     </button>
                                 </div>
                             </form>
+                                @endforeach
                         </div>
                     </div>
                 </div>

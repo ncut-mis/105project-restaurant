@@ -13,6 +13,9 @@
 
 Route::get('/',['as' => 'restaurant.index' , 'uses' => 'HomeController@index']);
 Route::get('restaurant/{id}' ,['as' => 'restaurant{id}.staffs' , 'uses' => 'HomeController@staff']);
+
+Route::get('restaurant/{id}/staff' ,['as' => 'restaurant.staffs.chose' , 'uses' => 'HomeController@chose']);
+
 Route::get('login/{id}' ,['as' => 'restaurant{id}.staffs.login' , 'uses' => 'StaffController@login']);
 
 
@@ -35,4 +38,10 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::patch('manager/staff/{id}'   , ['as' => 'backstage.manager.staff.update' , 'uses' => 'StaffController@update']);
     Route::post('manager/staff'         , ['as' => 'backstage.manager.staff.store'  , 'uses' => 'StaffController@store']);
     Route::delete('manager/staff/{id}'  , ['as' => 'backstage.manager.staff.destroy', 'uses' => 'StaffController@destroy']);
+});
+
+
+//測試
+Route::get('555', function () {
+    return view('/test');
 });
