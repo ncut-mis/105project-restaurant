@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('restaurant_id');
             $table->unsignedInteger('customer_id');
-            $table->string('table_id');
+            $table->unsignedInteger('table_id');
             $table->dateTime('time');
             $table->integer('total');
             $table->string('PayType');

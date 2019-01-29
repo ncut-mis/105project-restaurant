@@ -46,7 +46,7 @@
                                             {{ __('餐廳經理') }}
                                         </label>
                                     </div>
-                                    <input class="form-control col-md-6 " type="hidden" name="res_id" value="{{ $restaurant->id }}" readonly >
+                                    <input class="form-control col-md-6 " type="hidden" name="restaurant_id" value="{{ $restaurant->id }}" readonly >
                                     <input class="form-control col-md-6 " type="hidden" name="position" value="{{ "經理" }}" readonly >
                                     <div class="row justify-content-center">
                                         <button type="submit" class="btn btn-primary col-md-11" >
@@ -75,7 +75,7 @@
                                         {{ __('櫃台人員') }}
                                     </label>
                                 </div>
-                                <input class="form-control col-md-6 " type="hidden" name="res_id" value="{{ $restaurant->id }}" readonly >
+                                <input class="form-control col-md-6 " type="hidden" name="restaurant_id" value="{{ $restaurant->id }}" readonly >
                                 <input class="form-control col-md-6 " type="hidden" name="position" value="{{ "櫃台" }}" readonly >
                                 <div class="row justify-content-center">
                                     <button type="submit" class="btn btn-primary col-md-11">
@@ -104,7 +104,7 @@
                                         {{ __('主廚') }}
                                     </label>
                                 </div>
-                                <input class="form-control col-md-6 " type="hidden" name="res_id" value="{{ $restaurant->id }}" readonly >
+                                <input class="form-control col-md-6 " type="hidden" name="restaurant_id" value="{{ $restaurant->id }}" readonly >
                                 <input class="form-control col-md-6 " type="hidden" name="position" value="{{ "主廚" }}" readonly >
                                 <div class="row justify-content-center">
                                     <button type="submit" class="btn btn-primary col-md-11">

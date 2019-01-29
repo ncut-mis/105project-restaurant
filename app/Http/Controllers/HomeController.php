@@ -16,8 +16,9 @@ class HomeController extends Controller
     }
     public function staff($id)
     {
-        $rs=Restaurant::find($id)->get();
+        $rs=Restaurant::where('id',$id)->get();
         $data=['restaurants'=>$rs];
+
 //        $sts=Staff::where('res_id',$id)->get();
 //        $data2=['staffs'=>$sts];
 //        return view('auth.restaurantstaff',$data,$data2);
@@ -26,7 +27,7 @@ class HomeController extends Controller
 
     public function chose(Request $request)
     {
-        $users=Staff::where(['res_id'=>$request->res_id,'position'=>$request->position])->get();
+        $users=Staff::where(['restaurant_id'=>$request->restaurant_id,'position'=>$request->position])->get();
         $data=['users'=>$users];
         return view('/auth/login22',$data);
     }
