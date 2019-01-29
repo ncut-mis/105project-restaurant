@@ -5,9 +5,9 @@ use \App\Customer as CustomerEloquent;
 use \App\Restaurant as RestaurantEloquent;
 use \App\Detail as DetailEloquent;
 use \App\CouponsStatus as CouponsStatusEloquent;
+use \App\Table as TableEloquent;
 use Illuminate\Database\Eloquent\Model;
-
-class Record extends Model
+class Order extends Model
 {
     public function customer(){
         return $this->belongsTo(CustomerEloquent::class);
@@ -20,5 +20,8 @@ class Record extends Model
     }
     public function CouponsStatus(){
         return $this->hasone(CouponsStatusEloquent::class);
+    }
+    public function table(){
+        return $this->hasone(TableEloquent::class);
     }
 }

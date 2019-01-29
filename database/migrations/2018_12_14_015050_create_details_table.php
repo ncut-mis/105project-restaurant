@@ -15,10 +15,9 @@ class CreateDetailsTable extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('rec_id');
-            $table->unsignedInteger('meals_id');
-            $table->integer('amount');
-            $table->integer('total');
+            $table->unsignedInteger('order_id');
+            $table->unsignedInteger('meal_id');
+            $table->integer('quantity');
             $table->boolean('status');
             $table->dateTime('EndTime');
             $table->timestamps();

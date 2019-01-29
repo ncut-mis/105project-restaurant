@@ -15,8 +15,8 @@ class CreateMealKeywordsTable extends Migration
     {
         Schema::create('MealKeywords', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('meals_id');
-            $table->unsignedInteger('kw_id');
+            $table->unsignedInteger('meal_id');
+            $table->unsignedInteger('keyword_id');
             $table->timestamps();
         });
     }

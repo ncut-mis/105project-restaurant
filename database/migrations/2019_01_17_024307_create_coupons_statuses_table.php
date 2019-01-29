@@ -15,9 +15,9 @@ class CreateCouponsStatusesTable extends Migration
     {
         Schema::create('CouponsStatuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('cou_id');
-            $table->unsignedInteger('mem_id');
-            $table->unsignedInteger('rec_id');
+            $table->unsignedInteger('coupon_id');
+            $table->unsignedInteger('member_id');
+            $table->unsignedInteger('order_id');
             $table->boolean('status');
             $table->dateTime('StartTime');
             $table->timestamps();
