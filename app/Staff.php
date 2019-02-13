@@ -11,7 +11,7 @@ class Staff extends Authenticatable
     protected $table = 'staff';
     protected $fillable = [
         'id',
-        'res_id',
+        'restaurant_id',
         'name',
         'position',
         'phone',
