@@ -55,3 +55,8 @@ Route::group(['prefix' => 'backstage'], function() {
 Route::get('555', function () {
     return view('/test');
 });
+
+//掃描QR頁面
+Route::get('scanning', function () {
+    return view('/scanning');
+});
