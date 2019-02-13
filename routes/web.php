@@ -31,6 +31,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 /*餐廳後台*/
 Route::group(['prefix' => 'backstage'], function() {
+    /*經理*/
     Route::get('/home'                  , ['as' => 'backstage.dashboard.index'      , 'uses' => 'StaffController@login2']);
     Route::get('manager/staff'          , ['as' => 'backstage.manager.staff.index'  , 'uses' => 'StaffController@index']);
     Route::get('manager/staff/create'   , ['as' => 'backstage.manager.staff.create' , 'uses' => 'StaffController@create']);
@@ -38,6 +39,15 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::patch('manager/staff/{id}'   , ['as' => 'backstage.manager.staff.update' , 'uses' => 'StaffController@update']);
     Route::post('manager/staff'         , ['as' => 'backstage.manager.staff.store'  , 'uses' => 'StaffController@store']);
     Route::delete('manager/staff/{id}'  , ['as' => 'backstage.manager.staff.destroy', 'uses' => 'StaffController@destroy']);
+
+    /*主廚*/
+    Route::get('chef/meal'          , ['as' => 'backstage.chef.meal.index'  , 'uses' => 'MealController@index']);
+    Route::get('chef/meal/create'   , ['as' => 'backstage.chef.meal.create' , 'uses' => 'MealController@create']);
+    Route::get('chef/meal/{id}/edit', ['as' => 'backstage.chef.meal.edit'   , 'uses' => 'MealController@edit']);
+    Route::patch('chef/meal/{id}'   , ['as' => 'backstage.chef.meal.update' , 'uses' => 'MealController@update']);
+    Route::post('chef/meal'         , ['as' => 'backstage.chef.meal.store'  , 'uses' => 'MealController@store']);
+    Route::delete('chef/meal/{id}'  , ['as' => 'backstage.chef.meal.destroy', 'uses' => 'MealController@destroy']);
+
 });
 
 
