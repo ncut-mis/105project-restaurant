@@ -41,7 +41,20 @@ Route::group(['prefix' => 'backstage'], function() {
 });
 
 
+
+//櫃台
+Route::get('/counter/index', ['as' => 'counter.login.index' , 'uses' => 'CounterController@index']);
+
+
+
+
+
+
+
 //測試
 Route::get('555', function () {
     return view('/test');
+});
+Route::get('333', function () {
+    return view('/backstage/counter/index');
 });
