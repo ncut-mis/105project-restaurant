@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Order;
 use Illuminate\Http\Request;
 
@@ -15,6 +15,8 @@ class OrderController extends Controller
     public function index()
     {
         //
+        $order = Order::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        return view('backstage.chef.od.index', ['order' => $order]);
     }
 
     /**

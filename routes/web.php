@@ -48,6 +48,9 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::post('chef/meal'         , ['as' => 'backstage.chef.meal.store'  , 'uses' => 'MealController@store']);
     Route::delete('chef/meal/{id}'  , ['as' => 'backstage.chef.meal.destroy', 'uses' => 'MealController@destroy']);
 
+    Route::get('chef/rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
+    Route::get('chef/rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'DetailController@index']);
+
     /*櫃台*/
     Route::get('/counter/index', ['as' => 'counter.login.index' , 'uses' => 'CounterController@index']);
 });
