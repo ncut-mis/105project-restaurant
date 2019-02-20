@@ -40,7 +40,7 @@
                                 {{ method_field('get') }}
                                 <div class="row justify-content-center">
                                     <div class="pic">
-                                        <img  src="img/005.jpg"  class="center-block " alt="boy">
+                                        <img  src="https://i.imgur.com/s3JzqO0.jpg"  class="center-block " alt="boy">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">

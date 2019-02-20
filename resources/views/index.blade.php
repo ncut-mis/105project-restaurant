@@ -35,16 +35,18 @@
 </head>
 
 @section('content')
-    @foreach($restaurants as $rs)
+
             <div class="col-md-12">
                 <div class="card" style="border-style:none;background-color:transparent;padding-top: 200px">
                 </div>
             </div>
             <div class="container">
                 <div class="row justify-content-center">
+                    @foreach($restaurants as $rs)
                     <div class="col-md-4">
                         <div class="card" style="border-style: none;background-color:transparent;">
                             <div class="card-body" style="padding-top:1px;">
+
                                 <form method="POST" action="{{route('restaurant{id}.staffs',$rs->id)}}">
                                     {{ csrf_field() }}
                                     {{ method_field('get') }}
@@ -78,7 +80,8 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
-    @endforeach
+
 @endsection
