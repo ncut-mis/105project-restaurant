@@ -50,6 +50,9 @@
             <li>
                 <a href="{{ route('backstage.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　人員管理</font></a>
             </li>
+            <li>
+                <a href="{{ route('backstage.chef.meal.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　餐點管理</font></a>
+            </li>
             {{--<li>--}}
             {{--<a href="{{ route('back.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-edit"></i> 餐點管理</font></a>--}}
             {{--</li>--}}

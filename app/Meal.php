@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meal extends Model
 {
+    protected $fillable = [
+        'restaurant_id','name', 'photo', 'ingredients','price',
+    ];
     public function detail(){
         return $this->belongsTo(DetailEloquent::class);
     }

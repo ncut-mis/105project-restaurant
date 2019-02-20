@@ -23,7 +23,7 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="50" style="text-align: center">編號</th>
+                        {{--<th width="50" style="text-align: center">編號</th>--}}
                         <th width="80" style="text-align: center">姓名</th>
                         <th width="80" style="text-align: center">職稱</th>
                         <th width="120" style="text-align: center">信箱</th>
@@ -36,7 +36,7 @@
                 <tbody>
                 @foreach($staff as $sf)
                     <tr>
-                        <td>{{$sf->id}}</td>
+                        {{--<td>{{$sf->id}}</td>--}}
                         <td>{{$sf->name}}</td>
                         <td>{{$sf->position}}</td>
                         <td>{{$sf->email}}</td>

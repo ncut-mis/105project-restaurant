@@ -12,12 +12,12 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        $users=Staff::where('position',$request->position)->get();
-        $data=['users'=>$users];
-        return view('/auth/login11',$data);
-    }
+//    public function index(Request $request)
+//    {
+//        $users=Staff::where('position',$request->position)->get();
+//        $data=['users'=>$users];
+//        return view('/auth/login11',$data);
+//    }
     public function login($id)
     {
         $user=Staff::find($id);
@@ -116,31 +116,29 @@ class StaffController extends Controller
         return view('auth.login11');
     }
 
-    public function index1()
+    public function index()
     {
-        $staffs=Staff::orderBy('id','ASC')->get();
-        $data=['staff'=>$staffs];
-        return view('backstage.manager.staff.index',$data);
+        $staff = Staff::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        return view('backstage.manager.staff.index', ['staff' => $staff]);
     }
 
-    public function create1()
+    public function create()
     {
         return view('backstage.manager.staff.create');
     }
 
     public function store(Request $request)
     {
-        $staff = new Staff();
-
-        $staff->name = $request->name;
-        $staff->position = $request->position;
-        $staff->phone = $request->phone;
-        $staff->address = $request->address;
-        $staff->email = $request->email;
-        $staff->password = bcrypt($request->password);
-
-        $staff->save();
-        return redirect('/backstage/manager/staff');
+        Staff::create([
+            'restaurant_id' => Auth::user()->restaurant_id,
+            'name' => $request['name'],
+            'position' => $request['position'],
+            'phone' => $request['phone'],
+            'address' => $request['address'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+        return redirect()->route('backstage.manager.staff.index');
     }
 
     public function edit($id)

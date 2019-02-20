@@ -16,9 +16,9 @@
     <form action="/backstage/manager/staff/{{$staff->id}}" method="POST" role="form">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
-        <div class="col-md-12" style="background-color: lightblue">
-            <div class="col-md-3" style="background-color: lightpink"></div>
-            <div class="col-md-6" style="background-color: lightcyan">
+        <div class="col-md-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         {{--姓名--}}
@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3" style="background-color: lightpink"></div>
+            <div class="col-md-3"></div>
         </div>
     </form>
 </div>
