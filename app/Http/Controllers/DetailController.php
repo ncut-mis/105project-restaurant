@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Detail;
+use App\Meal;
+use App\Order;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
@@ -12,9 +14,12 @@ class DetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $detail = Detail::join('meals','details.meal_id','=','meals.id')
+        ->where('order_id',$id)->get();
+        $data = ['detail' => $detail];
+        return view('backstage.chef.od.de.index',$data);
     }
 
     /**

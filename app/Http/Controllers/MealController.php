@@ -16,7 +16,7 @@ class MealController extends Controller
     public function index()
     {
         $meal = Meal::where('restaurant_id', Auth::user()->restaurant_id)->get();
-        return view('backstage.chef.meals', ['meal' => $meal]);
+        return view('backstage.chef.meal.index', ['meal' => $meal]);
     }
 
     /**
@@ -26,7 +26,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        return view('backstage.chef.create');
+        return view('backstage.chef.meal.create');
     }
 
     /**
@@ -68,7 +68,7 @@ class MealController extends Controller
     {
         $abc = Meal::find($id);
         $data = ['meal' => $abc];
-        return view('backstage.chef.edit', $data);
+        return view('backstage.chef.meal.edit', $data);
     }
 
     /**
