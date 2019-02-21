@@ -31,7 +31,7 @@ class User extends Authenticatable
     ];
 
     public function customer(){
-        return $this->belongsTo(CustomerEloquent::class);
+        return $this->hasMany(CustomerEloquent::class);
     }
     public function CouponsStatus(){
         return $this->hasMany(CouponsStatusEloquent::class);

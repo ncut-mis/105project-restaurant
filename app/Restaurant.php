@@ -7,6 +7,7 @@ use \App\Coupon as CouponEloquent;
 use \App\Meal as MealEloquent;
 use \App\Order as OrderEloquent;
 use \App\Table as TableEloquent;
+use \App\Customer as CustomerEloquent;
 use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
@@ -28,5 +29,8 @@ class Restaurant extends Model
     }
     public function table(){
         return $this->hasMany(TableEloquent::class);
+    }
+    public function customer(){
+        return $this->hasMany(CustomerEloquent::class);
     }
 }

@@ -15,6 +15,8 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('restaurant_id');
+            $table->unsignedInteger('member_id');
             $table->boolean('status');
             $table->timestamps();
         });
