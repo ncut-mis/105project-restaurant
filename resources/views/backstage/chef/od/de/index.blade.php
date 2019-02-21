@@ -19,6 +19,7 @@
                             {{--<th width="50" style="text-align: center">編號</th>--}}
                             <th width="50" style="text-align: center">明細編號</th>
                             <th width="50" style="text-align: center">餐點編號</th>
+                            <th width="50" style="text-align: center">餐點名稱</th>
                             <th width="50" style="text-align: center">數量</th>
                             <th width="100" style="text-align: center">餐點是否完成</th>
                             <th width="100" style="text-align: center">餐點完成時間</th>
@@ -30,6 +31,7 @@
                                 {{--<td>{{$sf->id}}</td>--}}
                                 <td>{{$de->id}}</td>
                                 <td>{{$de->meal_id}}</td>
+                                <td>{{$de->name}}</td>
                                 <td>{{$de->quantity}}</td>
                                 <td>{{$de->status}}</td>
                                 <td>{{$de->EndTime}}</td>

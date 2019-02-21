@@ -16,7 +16,8 @@ class DetailController extends Controller
      */
     public function index($id)
     {
-        $detail = Detail::where('order_id',$id)->get();
+        $detail = Detail::join('meals','details.meal_id','=','meals.id')
+        ->where('order_id',$id)->get();
         $data = ['detail' => $detail];
         return view('backstage.chef.od.de.index',$data);
     }
