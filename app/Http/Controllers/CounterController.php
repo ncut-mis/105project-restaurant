@@ -1,7 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
+use App\Customer as CustomerEloquent;
+use App\User as UserEloquent;
+use App\Order as OrderEloquent;
+use App\Detail as DetailEloquent;
+use App\Meal as MealEloquent;
+use App\MealType as MealTypeEloquent;
 use Illuminate\Http\Request;
 
 class CounterController extends Controller
@@ -11,11 +17,26 @@ class CounterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return view('backstage.counter.index');
     }
 
+    public function HistoryIndex()
+    {
+        $customers=CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        $data=['customers'=>$customers];
+        return view('backstage.counter.history.index',$data);
+    }
+    public function DiningIndex()
+    {
+        return view('backstage.counter.dining.index');
+    }
+    public function BookingIndex()
+    {
+        return view('backstage.counter.booking.index');
+    }
     /**
      * Show the form for creating a new resource.
      *

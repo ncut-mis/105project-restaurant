@@ -45,17 +45,20 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li>
-                <a href="{{ route('backstage.dashboard.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-home"></i>　Home</font></a>
+                <a href="{{ route('counter.login.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-home"></i>  櫃台_Home</font></a>
             </li>
             <li>
-                <a href="{{ route('backstage.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　人員管理</font></a>
+                <a href="{{ route('counter.history.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-history"></i>  歷史用餐紀錄_History</font></a>
             </li>
-            {{--<li>--}}
-            {{--<a href="{{ route('back.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-edit"></i> 餐點管理</font></a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-            {{--<a href="{{ route('back.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-edit"></i> 優惠券管理</font></a>--}}
-            {{--</li>--}}
+            <li>
+                <a href="{{ route('counter.dining.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-cutlery"></i>  用餐中_Dining</font></a>
+            </li>
+            <li>
+                <a href="{{ route('counter.booking.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-edit"></i>  新增訂位_Booking</font></a>
+            </li>
+            <li>
+                <a href=""><font color="#ffffff" face="微軟正黑體"><i class="fa fa-check-square-o"></i>  確認餐點_Check</font></a>
+            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->
