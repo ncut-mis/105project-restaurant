@@ -102,12 +102,9 @@ class StaffController extends Controller
         }
         else{
             if($position == "櫃台") {
-                return view('backstage.dashboard.index');
+                return redirect('backstage/counter/index');
             }
-            else
-            {
                 return view('backstage.chef.index');
-            }
         }
     }
 
