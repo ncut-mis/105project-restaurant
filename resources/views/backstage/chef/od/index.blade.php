@@ -32,7 +32,17 @@
                                 <td>{{$od->customer_id}}</td>
                                 <td>{{$od->table_id}}</td>
                                 <td>{{$od->time}}</td>
-                                <td><a href="{{ route('backstage.chef.detail.index',$od->id) }}" class="btn btn-info" style="text-decoration:none;">進入</a></td>
+                                <td>
+                                    <form method="POST" action="{{ route('backstage.chef.detail.index',$od->id) }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('get') }}
+                                        <div>
+                                            <button type="submit" class="btn btn-primary col-md-11 ">
+                                                進入明細
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
