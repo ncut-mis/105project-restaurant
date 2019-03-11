@@ -21,7 +21,6 @@
                             <th width="50" style="text-align: center">餐點名稱</th>
                             <th width="50" style="text-align: center">數量</th>
                             <th width="50" style="text-align: center">更改狀態</th>
-                            <th width="100" style="text-align: center">餐點是否完成</th>
                             <th width="100" style="text-align: center">餐點完成時間</th>
                         </tr>
                         </thead>
@@ -32,13 +31,18 @@
                                 <td>{{$de->meal_id}}</td>
                                 <td>{{$de->name}}</td>
                                 <td>{{$de->quantity}}</td>
-                                <td><a href="{{ route('backstage.chef.detail.edit',['id'=>$de->order_id,'deid'=>$de->id]) }}" class="btn btn-info" style="text-decoration:none;">修改</a></td>
-
-                                @if($de->status==1)
-                                    <td>已完成</td>
-                                    @else
-                                    <td>未完成</td>
-                                    @endif
+                                <td>
+                                    <form action="/backstage/chef/rcveod/{{$de->order_id}}/{{$de->id}}" method="POST" role="form">
+                                        {{ csrf_field() }}
+                                        {{ method_field('PATCH') }}
+                                        @if($de->status==0)
+                                            <input name="status" type="hidden" class="form-control" placeholder="請輸入狀態" value="1" required>
+                                            <button type="submit" class="btn btn-success">完成</button>
+                                        @else
+                                            已完成
+                                        @endif
+                                    </form>
+                                </td>
                                 <td>{{$de->updated_at}}</td>
                             </tr>
                             @endforeach
