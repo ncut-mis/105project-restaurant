@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Customer as CustomerEloquent;
+use App\Table as TableEloquent;
 use App\User as UserEloquent;
 use App\Order as OrderEloquent;
 use App\Detail as DetailEloquent;
@@ -35,7 +36,9 @@ class CounterController extends Controller
     }
     public function BookingIndex()
     {
-        return view('backstage.counter.booking.index');
+        $tables=TableEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        $data=['tables'=>$tables];
+        return view('backstage.counter.booking.index',$data);
     }
     /**
      * Show the form for creating a new resource.

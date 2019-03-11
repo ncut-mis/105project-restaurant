@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Table;
+use App\Table as TableEloquent;
 use Illuminate\Http\Request;
 
 class TableController extends Controller
@@ -67,9 +68,11 @@ class TableController extends Controller
      * @param  \App\Table  $table
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Table $table)
+    public function update()
     {
-        //
+        $tables=TableEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        $data=['tables'=>$tables];
+        return view('backstage.counter.booking.index',$data);
     }
 
     /**

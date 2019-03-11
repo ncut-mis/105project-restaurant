@@ -51,12 +51,14 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('chef/rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
     Route::get('chef/rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'DetailController@index']);
 
-    /*櫃台*/
+    /*櫃台index*/
     Route::get('/counter/index', ['as' => 'counter.login.index' , 'uses' => 'CounterController@index']);
     Route::get('/counter/history/index', ['as' => 'counter.history.index' , 'uses' => 'CounterController@HistoryIndex']);
     Route::get('/counter/dining/index', ['as' => 'counter.dining.index' , 'uses' => 'CounterController@DiningIndex']);
     Route::get('/counter/booking/index', ['as' => 'counter.booking.index' , 'uses' => 'CounterController@BookingIndex']);
 
+    /*櫃台booking細部*/
+    Route::get('/restaurant/seat/update', ['as' => 'restaurant.seat.update' , 'uses' => 'TableController@update']);
 
 
 });

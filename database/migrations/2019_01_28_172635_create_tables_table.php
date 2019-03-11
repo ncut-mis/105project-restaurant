@@ -18,6 +18,8 @@ class CreateTablesTable extends Migration
             $table->unsignedInteger('restaurant_id');
             $table->integer('table');
             $table->boolean('status');
+            $table->integer('row')->nullable();
+            $table->integer('col')->nullable();
             $table->timestamps();
         });
     }
