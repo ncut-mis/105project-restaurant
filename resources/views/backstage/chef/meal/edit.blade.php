@@ -11,7 +11,9 @@
     <!-- /.row -->
     @include('backstage.layouts.partials.validation')
     <!-- /.row -->
-
+    <div class="row" style="text-align:center" >
+        餐點類型：輸入1代表主餐、2代表開胃品、3代表沙拉、4代表前菜、5代表湯品、6代表甜品、7代表飲料。
+    </div>
     <div class="row">
         <form action="/backstage/chef/meal/{{$meal->id}}" method="POST" role="form">
             {{ csrf_field() }}
@@ -21,6 +23,13 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
+                            {{--餐點類型--}}
+                            <div class="form-group row">
+                                <label for="meal_types_id" class="col-md-4 col-form-label" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('餐點類型') }}</font></label>
+                                <div class="col-md-8">
+                                    <input name="meal_types_id" class="form-control" placeholder="請輸入名稱" value="{{$meal->meal_types_id}}" required>
+                                </div>
+                            </div>
                             {{--名稱--}}
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('名稱') }}</font></label>
