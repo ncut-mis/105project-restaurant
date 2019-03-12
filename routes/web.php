@@ -50,6 +50,7 @@ Route::group(['prefix' => 'backstage'], function() {
 
     Route::get('chef/rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
     Route::get('chef/rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'DetailController@index']);
+    Route::patch('chef/rcveod/{id}/{deid}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'DetailController@update']);
 
     /*櫃台index*/
     Route::get('/counter/index', ['as' => 'counter.login.index' , 'uses' => 'CounterController@index']);

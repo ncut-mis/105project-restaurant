@@ -17,8 +17,11 @@ class DetailController extends Controller
     public function index($id)
     {
         $detail = Detail::join('meals','details.meal_id','=','meals.id')
-        ->where('order_id',$id)->get();
-        $data = ['detail' => $detail];
+            ->where('order_id',$id)
+            ->select('details.id','details.meal_id','meals.name','details.quantity','details.status','details.updated_at','details.order_id')
+            ->get();
+
+        $data = ['detail' => $detail,];
         return view('backstage.chef.od.de.index',$data);
     }
 
@@ -60,9 +63,12 @@ class DetailController extends Controller
      * @param  \App\Detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Detail $detail)
+    public function edit(Detail $detail,$id,$deid)
     {
-        //
+        $detail = Detail::find($deid);
+        $data = ['detail' => $detail];
+        $data2=['ss'=>$id];
+        return view('backstage.chef.od.de.edit',$data,$data2);
     }
 
     /**
@@ -72,9 +78,13 @@ class DetailController extends Controller
      * @param  \App\Detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Detail $detail)
+    public function update(Request $request, Detail $detail,$id,$deid)
     {
-        //
+        $detail = Detail::find($deid);
+        $detail->status=$request->status;
+        $detail->save();
+        $data = ['ss'=>$id];
+        return redirect()->route('backstage.chef.detail.index',$data);
     }
 
     /**

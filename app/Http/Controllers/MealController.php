@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\MealType;
 use Auth;
 use App\Meal;
 use App\Restaurant;
@@ -39,6 +40,7 @@ class MealController extends Controller
     {
         Meal::create([
             'restaurant_id' => Auth::user()->restaurant_id,
+            'meal_types_id'=>$request['meal_types_id'],
             'name' => $request['name'],
             'photo' => $request['photo'],
             'ingredients' => $request['ingredients'],
