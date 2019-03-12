@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Restaurant;
 use Auth;
 use App\Table;
 use App\Table as TableEloquent;
@@ -13,9 +14,17 @@ class TableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function  check(Request $request, Restaurant $restaurant ,Table $table)
     {
-        //
+        $tables=TableEloquent::where('restaurant_id', $restaurant->id )->get();
+        return view('backstage.counter.booking.TableCheck',$data);
+    }
+
+    public function index(Restaurant $restaurant)
+    {
+        $tables=TableEloquent::where('restaurant_id', $restaurant->id )->get();
+        $data=['tables'=>$tables];
+        return view('backstage.counter.booking.table',$data);
     }
 
     /**
@@ -73,6 +82,8 @@ class TableController extends Controller
         $tables=TableEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
         $data=['tables'=>$tables];
         return view('backstage.counter.booking.index',$data);
+
+
     }
 
     /**
