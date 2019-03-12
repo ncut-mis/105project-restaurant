@@ -46,19 +46,15 @@
         <ul class="nav navbar-nav side-nav">
             <li class="active">
                 <a href="{{ route('backstage.dashboard.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-home"></i>　Home</font></a>
-            </li>
-            <li>
+
                 <a href="{{ route('backstage.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　人員管理</font></a>
-            </li>
-            <li>
+
+                {{--<a href="{{ route('backstage.manager.table.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-table"></i>　餐桌管理</font></a>--}}
+
+                <a href="{{ route('backstage.manager.coupon.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-gift"></i>　優惠券管理</font></a>
+
                 <a href="{{ route('backstage.chef.meal.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　餐點管理</font></a>
             </li>
-            {{--<li>--}}
-            {{--<a href="{{ route('back.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-edit"></i> 餐點管理</font></a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-            {{--<a href="{{ route('back.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-edit"></i> 優惠券管理</font></a>--}}
-            {{--</li>--}}
         </ul>
     </div>
     <!-- /.navbar-collapse -->
