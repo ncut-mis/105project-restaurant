@@ -18,6 +18,8 @@ class CreateCouponsTable extends Migration
             $table->unsignedInteger('restaurant_id');
             $table->string('title');
             $table->text('content');
+            $table->string('discount');
+            $table->string('lowestprice');
             $table->boolean('status');
             $table->dateTime('StartTime');
             $table->dateTime('EndTime');
