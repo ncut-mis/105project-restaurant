@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Coupon;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CouponController extends Controller
      */
     public function index()
     {
-        //
+        $coupon = Coupon::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        return view('backstage.manager.coupon.index', ['coupons' => $coupon]);
     }
 
     /**
@@ -24,7 +26,7 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+        return view('backstage.manager.coupon.create');
     }
 
     /**
@@ -35,7 +37,16 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Coupon::create([
+            'restaurant_id' => Auth::user()->restaurant_id,
+            'title' => $request['title'],
+            'content' => $request['content'],
+            'discount' => $request['discount'],
+            'lowestprice' => $request['lowestprice'],
+            'StartTime' => $request['StartTime'],
+            'EndTime' => $request['EndTime'],
+        ]);
+        return redirect()->route('backstage.manager.coupon.index')->with('success','成功新增 !');
     }
 
     /**
@@ -55,9 +66,11 @@ class CouponController extends Controller
      * @param  \App\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function edit(Coupon $coupon)
+    public function edit($id)
     {
-        //
+        $coupon=Coupon::find($id);
+        $data = ['coupons' => $coupon];
+        return view('backstage.manager.coupon.edit', $data);
     }
 
     /**
@@ -67,9 +80,11 @@ class CouponController extends Controller
      * @param  \App\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Coupon $coupon)
+    public function update(Request $request,$id)
     {
-        //
+        $coupon=Coupon::find($id);
+        $coupon->update($request->all());
+        return redirect()->route('backstage.manager.coupon.index')->with('success','修改成功 !');
     }
 
     /**
@@ -78,8 +93,9 @@ class CouponController extends Controller
      * @param  \App\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Coupon $coupon)
+    public function destroy($id)
     {
-        //
+        Coupon::destroy($id);
+        return redirect()->route('backstage.manager.coupon.index')->with('success','刪除完成 !');
     }
 }
