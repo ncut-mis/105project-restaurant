@@ -21,7 +21,9 @@ class CounterController extends Controller
 
     public function index()
     {
-        return view('backstage.counter.index');
+        $customers=CustomerEloquent::orderBy('created_at','DESC')->get();
+        $data=['customers'=>$customers];
+        return view('backstage.counter.index',$data);
     }
 
     public function HistoryIndex()
