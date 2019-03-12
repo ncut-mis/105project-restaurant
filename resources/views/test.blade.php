@@ -52,9 +52,33 @@
     <div id="target-container"></div>
 </div>
 
+@php
+    $x=5;
+    $h=1;
+@endphp
+@if ( $x === 5  && $h === 1)
+    我有一條記錄！
+@else
+    我沒有任何記錄！
+@endif
 
-@for($i=1;$i<51;$i++)
-    ({{$i}},	3,	7,	'',	'',	'',	60,	NULL,	NULL);
+
+
+@php
+    $o=0;
+    $j=1;
+@endphp
+@for($i=101;$i<151;$i++)
+    @php
+        $o++
+    @endphp
+    @if($o == 11)
+        @php
+            $o=1;
+            $j++;
+        @endphp
+    @endif
+    ({{$i}}, 3,	{{$i-100}},	'空閒中', {{$j}}, {{$o}}, '2019-01-28 22:21:52',	'2019-01-28 22:21:52'),
     <br>
 @endfor
 
