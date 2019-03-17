@@ -2,84 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $post = Post::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        return view('backstage.manager.post.index', ['posts' => $post]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('backstage.manager.post.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        Post::create([
+            'restaurant_id' => Auth::user()->restaurant_id,
+            'title' => $request['title'],
+            'content' => $request['content'],
+            'DateTime' => $request['DateTime'],
+        ]);
+        return redirect()->route('backstage.manager.post.index')->with('success','成功新增 !');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $post)
+    public function edit($id)
     {
-        //
+        $post=Post::find($id);
+        $data = ['posts' => $post];
+        return view('backstage.manager.post.edit', $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
+    public function update(Request $request,$id)
     {
-        //
+        $post=Post::find($id);
+        $post->update($request->all());
+        return redirect()->route('backstage.manager.post.index')->with('success','修改成功 !');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Post $post)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Post $post)
-    {
-        //
+        Post::destroy($id);
+        return redirect()->route('backstage.manager.post.index')->with('success','刪除完成 !');
     }
 }

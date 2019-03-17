@@ -26,6 +26,14 @@ Route::get('logout', 'Auth\LoginController@logout');
 /*餐廳後台*/
 Route::group(['prefix' => 'backstage'], function() {
     Route::get('/home'                   , 'StaffController@login2')->name('backstage.dashboard.index');
+    /*經理-post*/
+    Route::get('manager/post'           , 'PostController@index')->name('backstage.manager.post.index');
+    Route::get('manager/post/create'    , 'PostController@create')->name('backstage.manager.post.create');
+    Route::get('manager/post/{id}/edit' , 'PostController@edit')->name('backstage.manager.post.edit');
+    Route::patch('manager/post/{id}'    , 'PostController@update')->name('backstage.manager.post.update');
+    Route::post('manager/post'          , 'PostController@store')->name('backstage.manager.post.store');
+    Route::delete('manager/post/{id}'   , 'PostController@destroy')->name('backstage.manager.post.destroy');
+
     /*經理-staff*/
     Route::get('manager/staff'           , 'StaffController@index')->name('backstage.manager.staff.index');
     Route::get('manager/staff/create'    , 'StaffController@create')->name('backstage.manager.staff.create');
