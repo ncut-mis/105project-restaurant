@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\MealType;
-use Auth;
-use App\Meal;
-use App\Restaurant;
+
 use Illuminate\Http\Request;
 
-class MealController extends Controller
+class KitchenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +13,7 @@ class MealController extends Controller
      */
     public function index()
     {
-        $meal = Meal::where('restaurant_id', Auth::user()->restaurant_id)
-        ->orderBy('meal_types_id','ASC')
-        ->get();
-        return view('backstage.chef.meal.index', ['meal' => $meal]);
+        return view('backstage.chef.index');
     }
 
     /**
@@ -29,7 +23,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        return view('backstage.chef.meal.create');
+        //
     }
 
     /**
@@ -40,24 +34,16 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        Meal::create([
-            'restaurant_id' => Auth::user()->restaurant_id,
-            'meal_types_id'=>$request['meal_types_id'],
-            'name' => $request['name'],
-            'photo' => $request['photo'],
-            'ingredients' => $request['ingredients'],
-            'price' => $request['price'],
-        ]);
-        return redirect()->route('backstage.chef.meal.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Meal  $meal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Meal $meal)
+    public function show($id)
     {
         //
     }
@@ -65,39 +51,34 @@ class MealController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Meal  $meal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $abc = Meal::find($id);
-        $data = ['meal' => $abc];
-        return view('backstage.chef.meal.edit', $data);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Meal  $meal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $meal = Meal::find($id);
-        $meal->update($request->all());
-        return redirect()->route('backstage.chef.meal.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Meal  $meal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Meal::destroy($id);
-        return redirect()->route('backstage.chef.meal.index');
+        //
     }
 }

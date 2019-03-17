@@ -58,7 +58,12 @@ Route::group(['prefix' => 'backstage'], function() {
 //    Route::post('manager/table'          , 'TableController@store')->name('backstage.manager.table.store');
 //    Route::delete('manager/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
 
-    /*主廚*/
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+    /*主廚-家*/
+    Route::get('chef/home'          , ['as' => 'backstage.chef.home'  , 'uses' => 'KitchenController@index']);
+
+    /*主廚-餐點管理*/
     Route::get('chef/meal'          , ['as' => 'backstage.chef.meal.index'  , 'uses' => 'MealController@index']);
     Route::get('chef/meal/create'   , ['as' => 'backstage.chef.meal.create' , 'uses' => 'MealController@create']);
     Route::get('chef/meal/{id}/edit', ['as' => 'backstage.chef.meal.edit'   , 'uses' => 'MealController@edit']);
@@ -66,9 +71,12 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::post('chef/meal'         , ['as' => 'backstage.chef.meal.store'  , 'uses' => 'MealController@store']);
     Route::delete('chef/meal/{id}'  , ['as' => 'backstage.chef.meal.destroy', 'uses' => 'MealController@destroy']);
 
+    /*主廚-出餐管理*/
     Route::get('chef/rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
     Route::get('chef/rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'DetailController@index']);
     Route::patch('chef/rcveod/{id}/{deid}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'DetailController@update']);
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
 
     /*櫃台index*/
     Route::get('/counter/index', ['as' => 'counter.login.index' , 'uses' => 'CounterController@index']);

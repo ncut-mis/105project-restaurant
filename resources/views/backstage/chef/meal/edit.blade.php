@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.chef.layouts.master')
 @section('content')
     <!-- Page Heading -->
     <div class="row">
