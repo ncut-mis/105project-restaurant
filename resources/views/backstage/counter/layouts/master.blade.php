@@ -42,7 +42,7 @@
 
     <div id="wrapper">
 
-        @include('backstage.chef.layouts.partials.sidebar')
+        @include('backstage.counter.layouts.partials.sidebar')
 
         <div id="page-wrapper">
 
