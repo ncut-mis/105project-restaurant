@@ -42,6 +42,9 @@
             });
         });
     </script>
+
+    <script> window._izq = window._izq || []; window._izq.push(["init"]);</script>
+    <script src="https://cdn.izooto.com/scripts/45d97ee28ebeae341de34099ef80b9060d3674fe.js"></script>
 </head>
 
 <body>
