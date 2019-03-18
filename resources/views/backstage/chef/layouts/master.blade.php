@@ -24,39 +24,16 @@
             messagingSenderId: "390650303893"
         };
         firebase.initializeApp(config);
-        const messaging = firebase.messaging();
-        messaging.requestPermission()
-            .then(res => {
-                // 若允許通知 -> 向 firebase 拿 token
-                return messaging.getToken();
-            }, err => {
-                // 若拒絕通知
-                console.log(err);
-            })
-            .then(token => {
-                // 成功取得 token
-                postToken(token); // 打給後端 api
-                console.log(token);
-            })
-
-        // 接收到通知時
-        messaging.onMessage(payload => {
-            console.log('onMessage: ', payload);
-            var notifyMsg = payload.notification;
-            var notification = new Notification(notifyMsg.title, {
-                body: notifyMsg.body,
-                icon: notifyMsg.icon
-            });
-            notification.onclick = function (e) { // 綁定點擊事件
-                e.preventDefault(); // prevent the browser from focusing the Notification's tab
-                window.open(notifyMsg.click_action);
-            }
-        })
     </script>
-
+    <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-messaging.js"></script>
+
+
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
