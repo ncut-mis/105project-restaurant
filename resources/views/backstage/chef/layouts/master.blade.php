@@ -24,7 +24,39 @@
             messagingSenderId: "390650303893"
         };
         firebase.initializeApp(config);
+        const messaging = firebase.messaging();
+        messaging.requestPermission()
+            .then(res => {
+                // 若允許通知 -> 向 firebase 拿 token
+                return messaging.getToken();
+            }, err => {
+                // 若拒絕通知
+                console.log(err);
+            })
+            .then(token => {
+                // 成功取得 token
+                postToken(token); // 打給後端 api
+                console.log(token);
+            })
+
+        // 接收到通知時
+        messaging.onMessage(payload => {
+            console.log('onMessage: ', payload);
+            var notifyMsg = payload.notification;
+            var notification = new Notification(notifyMsg.title, {
+                body: notifyMsg.body,
+                icon: notifyMsg.icon
+            });
+            notification.onclick = function (e) { // 綁定點擊事件
+                e.preventDefault(); // prevent the browser from focusing the Notification's tab
+                window.open(notifyMsg.click_action);
+            }
+        })
     </script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-messaging.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -47,9 +79,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <![endif]-->
-
-    <script> window._izq = window._izq || []; window._izq.push(["init"]);</script>
-    <script src="https://cdn.izooto.com/scripts/45d97ee28ebeae341de34099ef80b9060d3674fe.js"></script>
 </head>
 
 <body>
