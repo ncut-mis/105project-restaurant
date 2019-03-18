@@ -11,6 +11,21 @@
 
     <title>餐廳 | 管理後台</title>
 
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCTnmGUSXbyvJKbrmIcXtXMze3mecGKF-A",
+            authDomain: "project-restaurants-ncut.firebaseapp.com",
+            databaseURL: "https://project-restaurants-ncut.firebaseio.com",
+            projectId: "project-restaurants-ncut",
+            storageBucket: "project-restaurants-ncut.appspot.com",
+            messagingSenderId: "390650303893"
+        };
+        firebase.initializeApp(config);
+    </script>
+
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -32,16 +47,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <![endif]-->
-
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-        var OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "59ec5b4e-aa4e-4ee2-877f-edf0b9265528",
-            });
-        });
-    </script>
 
     <script> window._izq = window._izq || []; window._izq.push(["init"]);</script>
     <script src="https://cdn.izooto.com/scripts/45d97ee28ebeae341de34099ef80b9060d3674fe.js"></script>
