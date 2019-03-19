@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
 
+    protected $fillable = [
+        'restaurant_id',
+        'status',
+    ];
+
     public function user(){
         return $this->belongsTo(UserEloquent::class);
     }

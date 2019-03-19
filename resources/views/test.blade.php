@@ -82,6 +82,18 @@
     <br>
 @endfor
 
+
+<div class="row">
+    <div class="col-lg-12">
+        <form class="col-md-12" role="form" id="CheckTable"
+              action="{{ route('restaurant.table.check',Auth::user()->restaurant_id) }}">
+            {{ csrf_field() }}
+            <input type="checkbox" id="{{$table->table}}" name="check[]"
+                   value="6">
+        </form>
+    </div>
+</div>
+
 <div class="accordion" id="accordionExample">
     <div class="card">
         <div class="card-header" id="headingOne">

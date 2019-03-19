@@ -185,41 +185,47 @@
             </h1>
         </div>
     </div>
-
     <div class="row">
         <div class="col-lg-12">
-            <button type="button" style="text-decoration:none;" class="btn btn-primary"><a
-                        href="{{ route('restaurant.seat.update') }}"><span style="color:white;">更新座位</span></a></button>
-            {{--/restaurant/{{ Auth::user()->restaurant_id}}/table--}}
-            <button type="button" style="text-decoration:none;" class="btn btn-primary"><a
-                        href="{{ route('restaurant.people.check',Auth::user()->restaurant_id) }}"><span style="color:white;">新增顧客</span></a></button>
+            <font color="#000000" size="5px" face="微軟正黑體">Step4->確認會員身分</font>
         </div>
     </div>
-
-
-    <div class="theatre">
-        <ol class="cabin">
-            @for($i=1;$i<=10;$i++)
-                <li class="row row--{{$i}}">
-                    <ol class="seats" type="A">
-                        @for($k=1;$k<=10;$k++)
-                            <li class="seat">
-                                @foreach($tables as $table)
-                                    @if($table->row == $i && $table->col == $k)
-                                        @if($table->status == "空閒中")
-                                            <label style="background-color: #337ab7" for="{{$i}}-{{$k}}">{{$i}}-{{$k}}
-                                                <p>{{ $table->status }}</label>
-                                        @else
-                                            <label for="{{$i}}-{{$k}}">{{$i}}-{{$k}}<p>{{ $table->status }}</label>
-                                        @endif
-                                        @break
-                                    @endif
-                                @endforeach
-                            </li>
-                        @endfor
-                    </ol>
-                </li>
-            @endfor
-        </ol>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
+             aria-valuemax="100">85%
+        </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12 justify-content-center" style="text-align:center">
+            {{$people}}
+            @foreach($tables as $table)
+                {{$table}}+
+            @endforeach
+        </div>
+    </div>
+    <div class="row">
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+
+
+
+
 @endsection
