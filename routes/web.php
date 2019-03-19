@@ -76,6 +76,9 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('chef/rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'DetailController@index']);
     Route::patch('chef/rcveod/{id}/{deid}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'DetailController@update']);
 
+    /*firebase測試*/
+    Route::get('chef/fire',['as'=>'backstage.chef.fire','uses'=>'KitchenController@fire']);
+
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 
     /*櫃台index*/

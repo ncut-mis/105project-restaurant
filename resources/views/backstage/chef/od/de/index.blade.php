@@ -17,18 +17,16 @@
                         <thead>
                         <tr>
                             <th width="50" style="text-align: center">明細編號</th>
-                            <th width="50" style="text-align: center">餐點編號</th>
                             <th width="50" style="text-align: center">餐點名稱</th>
                             <th width="50" style="text-align: center">數量</th>
                             <th width="50" style="text-align: center">更改狀態</th>
-                            <th width="100" style="text-align: center">餐點完成時間</th>
+                            <th width="50" style="text-align: center">發送通知</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($detail as $de)
                             <tr>
                                 <td>{{$de->id}}</td>
-                                <td>{{$de->meal_id}}</td>
                                 <td>{{$de->name}}</td>
                                 <td>{{$de->quantity}}</td>
                                 <td>
@@ -43,7 +41,36 @@
                                         @endif
                                     </form>
                                 </td>
-                                <td>{{$de->updated_at}}</td>
+                                <td>
+                                    <script>/*以JavaScript做網頁推播*/
+                                        function cc()
+                                        {
+                                            var notifyConfig = //宣告通知相關內容
+                                                {
+                                                    body: '\\ ^o^ /', // 設定內容
+                                                    icon: '/images/favicon.ico' // 設定 icon
+                                                };
+                                            if (Notification.permission === 'default' || Notification.permission === 'undefined')
+                                            //9~17行，請求使用者同意顯示瀏覽器通知功能
+                                            {
+                                                Notification.requestPermission(function (permission) {
+                                                    if (permission === 'granted')// 使用者同意授權
+                                                    {
+                                                    }
+                                                });
+                                            }
+                                            var notification = new Notification('有一份餐點完成囉!', notifyConfig); // 建立通知&通知的title
+                                            /* 點擊通知事件，待開發
+                                            notification.onclick = function (e)
+                                             {
+                                                 e.preventDefault(); // prevent the browser from focusing the Notification's tab
+                                                 window.open('http://project105-restaurant.herokuapp.com/backstage/counter/index'); // 打開特定網頁
+                                             }
+                                             */
+                                        }
+                                    </script>
+                                    <button id="abc" onclick="cc()">發送通知</button>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
