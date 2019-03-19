@@ -5,10 +5,19 @@ use \App\Customer as CustomerEloquent;
 use \App\Restaurant as RestaurantEloquent;
 use \App\Detail as DetailEloquent;
 use \App\CouponsStatus as CouponsStatusEloquent;
-use \App\Table as TableEloquent;
+use \App\OrderTable as OrderTableEloquent;
 use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
+    protected $fillable = [
+        'restaurant_id',
+        'customer_id',
+        'people',
+        'time',
+        'total',
+        'PayType'
+    ];
+
     public function customer(){
         return $this->belongsTo(CustomerEloquent::class);
     }
@@ -21,7 +30,7 @@ class Order extends Model
     public function CouponsStatus(){
         return $this->hasone(CouponsStatusEloquent::class);
     }
-    public function table(){
-        return $this->hasone(TableEloquent::class);
+    public function OrderTable(){
+        return $this->hasmany(OrderTableEloquent::class);
     }
 }
