@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.chef.layouts.master')
 @section('content')
 <!-- Page Heading -->
 <div class="row">
@@ -9,6 +9,21 @@
     </div>
 </div>
 <!-- /.row -->
-
+<div class="row">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
 <!-- /.row -->
 @endsection

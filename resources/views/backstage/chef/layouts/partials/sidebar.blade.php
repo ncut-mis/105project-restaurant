@@ -8,7 +8,7 @@
             {{--<span class="icon-bar"></span>--}}
             {{--<span class="icon-bar"></span>--}}
         {{--</button>--}}
-        <a class="navbar-brand" href="{{ route('backstage.dashboard.index') }}"><font color="#ffffff" face="微軟正黑體">餐廳點餐系統後台</font></a>
+        <a class="navbar-brand" href="{{ route('backstage.chef.home') }}"><font color="#ffffff" face="微軟正黑體">餐廳點餐系統後台</font></a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
@@ -44,17 +44,13 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li class="active">
-                <a href="{{ route('backstage.dashboard.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-home"></i>　Home</font></a>
-
-                <a href="{{ route('backstage.manager.post.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-clipboard"></i>　公告管理</font></a>
-
-                <a href="{{ route('backstage.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　人員管理</font></a>
-
-                {{--<a href="{{ route('backstage.manager.table.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-table"></i>　餐桌管理</font></a>--}}
-
-                <a href="{{ route('backstage.manager.coupon.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-gift"></i>　優惠券管理</font></a>
-
+            <li>
+                <a href="{{ route('backstage.chef.home') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-home"></i>  廚房_Home</font></a>
+            </li>
+            <li>
+                <a href="{{ route('backstage.chef.order.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　出餐管理</font></a>
+            </li>
+            <li>
                 <a href="{{ route('backstage.chef.meal.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　餐點管理</font></a>
             </li>
         </ul>

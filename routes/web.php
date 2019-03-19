@@ -12,35 +12,58 @@
 */
 
 Route::get('/',['as' => 'restaurant.index' , 'uses' => 'HomeController@index']);
+
 Route::get('restaurant/{id}' ,['as' => 'restaurant{id}.staffs' , 'uses' => 'HomeController@staff']);
 
 Route::get('restaurant/{id}/staff' ,['as' => 'restaurant.staffs.chose' , 'uses' => 'HomeController@chose']);
 
 Route::get('login/{id}' ,['as' => 'restaurant{id}.staffs.login' , 'uses' => 'StaffController@login']);
 
-
 /*登出及登入*/
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
-//Route::get('index', function () {
-//    return view('/index');
-//});
-
 /*餐廳後台*/
 Route::group(['prefix' => 'backstage'], function() {
-    /*經理*/
-    Route::get('/home'                  , ['as' => 'backstage.dashboard.index'      , 'uses' => 'StaffController@login2']);
-    Route::get('manager/staff'          , ['as' => 'backstage.manager.staff.index'  , 'uses' => 'StaffController@index']);
-    Route::get('manager/staff/create'   , ['as' => 'backstage.manager.staff.create' , 'uses' => 'StaffController@create']);
-    Route::get('manager/staff/{id}/edit', ['as' => 'backstage.manager.staff.edit'   , 'uses' => 'StaffController@edit']);
-    Route::patch('manager/staff/{id}'   , ['as' => 'backstage.manager.staff.update' , 'uses' => 'StaffController@update']);
-    Route::post('manager/staff'         , ['as' => 'backstage.manager.staff.store'  , 'uses' => 'StaffController@store']);
-    Route::delete('manager/staff/{id}'  , ['as' => 'backstage.manager.staff.destroy', 'uses' => 'StaffController@destroy']);
+    Route::get('/home'                   , 'StaffController@login2')->name('backstage.dashboard.index');
+    /*經理-post*/
+    Route::get('manager/post'           , 'PostController@index')->name('backstage.manager.post.index');
+    Route::get('manager/post/create'    , 'PostController@create')->name('backstage.manager.post.create');
+    Route::get('manager/post/{id}/edit' , 'PostController@edit')->name('backstage.manager.post.edit');
+    Route::patch('manager/post/{id}'    , 'PostController@update')->name('backstage.manager.post.update');
+    Route::post('manager/post'          , 'PostController@store')->name('backstage.manager.post.store');
+    Route::delete('manager/post/{id}'   , 'PostController@destroy')->name('backstage.manager.post.destroy');
 
-    /*主廚*/
+    /*經理-staff*/
+    Route::get('manager/staff'           , 'StaffController@index')->name('backstage.manager.staff.index');
+    Route::get('manager/staff/create'    , 'StaffController@create')->name('backstage.manager.staff.create');
+    Route::get('manager/staff/{id}/edit' , 'StaffController@edit')->name('backstage.manager.staff.edit');
+    Route::patch('manager/staff/{id}'    , 'StaffController@update')->name('backstage.manager.staff.update');
+    Route::post('manager/staff'          , 'StaffController@store')->name('backstage.manager.staff.store');
+    Route::delete('manager/staff/{id}'   , 'StaffController@destroy')->name('backstage.manager.staff.destroy');
+
+    /*經理-coupon*/
+    Route::get('manager/coupon'          , 'CouponController@index')->name('backstage.manager.coupon.index');
+    Route::get('manager/coupon/create'   , 'CouponController@create')->name('backstage.manager.coupon.create');
+    Route::get('manager/coupon/{id}/edit', 'CouponController@edit')->name('backstage.manager.coupon.edit');
+    Route::patch('manager/coupon/{id}'   , 'CouponController@update')->name('backstage.manager.coupon.update');
+    Route::post('manager/coupon'         , 'CouponController@store')->name('backstage.manager.coupon.store');
+    Route::delete('manager/coupon/{id}'  , 'CouponController@destroy')->name('backstage.manager.coupon.destroy');
+
+    /*經理-table*/
+//    Route::get('manager/table'           , 'TableController@index')->name('backstage.manager.table.index');
+//    Route::get('manager/table/create'    , 'TableController@create')->name('backstage.manager.table.create');
+//    Route::get('manager/table/{id}/edit' , 'TableController@edit')->name('backstage.manager.table.edit');
+//    Route::patch('manager/table/{id}'    , 'TableController@update')->name('backstage.manager.table.update');
+//    Route::post('manager/table'          , 'TableController@store')->name('backstage.manager.table.store');
+//    Route::delete('manager/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+    /*主廚-家*/
+    Route::get('chef/home'          , ['as' => 'backstage.chef.home'  , 'uses' => 'KitchenController@index']);
+
+    /*主廚-餐點管理*/
     Route::get('chef/meal'          , ['as' => 'backstage.chef.meal.index'  , 'uses' => 'MealController@index']);
     Route::get('chef/meal/create'   , ['as' => 'backstage.chef.meal.create' , 'uses' => 'MealController@create']);
     Route::get('chef/meal/{id}/edit', ['as' => 'backstage.chef.meal.edit'   , 'uses' => 'MealController@edit']);
@@ -48,9 +71,12 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::post('chef/meal'         , ['as' => 'backstage.chef.meal.store'  , 'uses' => 'MealController@store']);
     Route::delete('chef/meal/{id}'  , ['as' => 'backstage.chef.meal.destroy', 'uses' => 'MealController@destroy']);
 
+    /*主廚-出餐管理*/
     Route::get('chef/rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
     Route::get('chef/rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'DetailController@index']);
     Route::patch('chef/rcveod/{id}/{deid}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'DetailController@update']);
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
 
     /*櫃台index*/
     Route::get('/counter/index', ['as' => 'counter.login.index' , 'uses' => 'CounterController@index']);
