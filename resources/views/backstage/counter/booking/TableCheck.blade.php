@@ -187,15 +187,67 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <font color="#000000" size="5px" face="微軟正黑體">Step2->選擇身分</font>
+            <font color="#000000" size="5px" face="微軟正黑體">Step3->選擇身分</font>
         </div>
     </div>
     <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-             aria-valuemax="100">50%
+        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
+             aria-valuemax="100">75%
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 justify-content-center" style="text-align:center">
+            <form class="col-md-6" role="form" style="text-align:right;"
+                  action="{{ route('restaurant.member.check',Auth::user()->restaurant_id) }}">
+                {{ csrf_field() }}
+                <input class="form-control col-md-6 hidden" type="text" name="people" value="{{$people}}">
+                @foreach($checks as $check)
+                    <input class="form-control col-md-6 hidden" type="text" name="table[]" value="{{$check}}">
+                @endforeach
+                <button type="submit"
+                        style="text-decoration:none; width:300px;height:300px; margin-top: 20px; margin-right: 20px;"
+                        class="btn btn-primary">會員<br>member
+                </button>
+            </form>
+
+
+            <form class="col-md-6" method="POST" style="text-align:left;"
+                  action="{{ route('restaurant.customer.check',Auth::user()->restaurant_id) }}">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
+                <input class="form-control col-md-6 hidden" type="text" name="people" value="{{$people}}">
+                @foreach($checks as $check)
+                    <input class="form-control col-md-6 hidden" type="text" name="table[]" value="{{$check}}">
+                @endforeach
+                <button type="submit"
+                        style="text-decoration:none; width:300px;height:300px; margin-top: 20px; margin-right: 20px;"
+                        class="btn btn-primary">非會員<br>non-member
+                </button>
+            </form>
         </div>
     </div>
 
 
+    <div class="row">
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
 
 @endsection

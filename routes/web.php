@@ -61,8 +61,10 @@ Route::group(['prefix' => 'backstage'], function() {
     /*櫃台booking細部*/
     Route::get('/restaurant/seat/update', ['as' => 'restaurant.seat.update' , 'uses' => 'TableController@update']);
     Route::get('/restaurant/{restaurant}/table', ['as' => 'restaurant.table.index' , 'uses' => 'TableController@index']);
-    Route::get('/restaurant/{restaurant}/table/{table}',['as'=>'restaurant.table.check','uses'=>'TableController@check']);
-
+    Route::get('/restaurant/{restaurant}/table/check',['as'=>'restaurant.table.check','uses'=>'TableController@check']);
+    Route::get('/restaurant/{restaurant}/people/check',['as'=>'restaurant.people.check','uses'=>'TableController@PeopleCheck']);
+    Route::get('/restaurant/{restaurant}/member/check',['as'=>'restaurant.member.check','uses'=>'TableController@MemberCheck']);
+    Route::patch('/restaurant/{restaurant}/customer/check',['as'=>'restaurant.customer.check','uses'=>'TableController@CustomerCheck']);
 });
 
 
