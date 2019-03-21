@@ -219,6 +219,7 @@
                 @foreach($checks as $check)
                     <input class="form-control col-md-6 hidden" type="text" name="table[]" value="{{$check}}">
                 @endforeach
+                <input type="hidden" name="decide" value="<? echo $_SESSION['decide']; ?>">
                 <button type="submit"
                         style="text-decoration:none; width:300px;height:300px; margin-top: 20px; margin-right: 20px;"
                         class="btn btn-primary">非會員<br>non-member

@@ -31,42 +31,73 @@ class TableController extends Controller
 
     public function CustomerCheck(Request $request, Restaurant $restaurant)
     {
-        $people = $request['people'];
-        $tables = $request['table'];
-        $data = ['tables' => $tables, 'people' => $people];
+        if (!isset($_SESSION['decide'])) {
+            $_SESSION['decide'] = 0;
+        }
 
-        $customer = Customer::create([
-            'restaurant_id' => $restaurant->id,
-            'status' => 0,
-        ]);
-        $insertedId = $customer->id;
-
-        $order = Order::create([
-            'restaurant_id' => $restaurant->id,
-            'customer_id' => $insertedId,
-//            'table_id'=>1,//555
-            'people' => $request['people'],
-        ]);
-        $orderId = $order->id;
+        if ($_SESSION['decide'] == $_POST['decide']) {
+            $_SESSION['decide'] += 1;
 
 
-        foreach ($tables as $table)
-        {
-            $tableId = TableEloquent::where(['table' => $table, 'restaurant_id' => $restaurant->id])->firstOrFail();
-            OrderTable::create([
-                'order_id' => $orderId,
-                'table_id' => $tableId->id,
+            $people = $request['people'];
+            $tables = $request['table'];
+
+            //        --------------------------------------------------------------------------
+            //驗證碼新增
+            $random = 30;
+            $verification = "";
+            $b = "";
+            for ($i = 1; $i <= $random; $i = $i + 1) {
+                $c = rand(1, 3);
+                if ($c == 1) {
+                    $a = rand(97, 122);
+                    $b = chr($a);
+                }
+                if ($c == 2) {
+                    $a = rand(65, 90);
+                    $b = chr($a);
+                }
+                if ($c == 3) {
+                    $b = rand(0, 9);
+                }
+                $verification = $verification . $b;
+            }
+            //---------------------------------------------------------------------------------
+
+            $data = ['tables' => $tables, 'people' => $people, 'ver' => $verification];
+
+            $customer = Customer::create([
+                'restaurant_id' => $restaurant->id,
+                'status' => 0,
+                'verification' => $verification
             ]);
-        }
+            $insertedId = $customer->id;
 
-        foreach ($tables as $table)
-        {
-            $status = Table::where(['table' => $table, 'restaurant_id' => $restaurant->id])->firstOrFail();
-            $status->status = '點餐中';
-            $status->save();
-        }
+            $order = Order::create([
+                'restaurant_id' => $restaurant->id,
+                'customer_id' => $insertedId,
+//            'table_id'=>1,//555
+                'people' => $request['people'],
+            ]);
+            $orderId = $order->id;
 
-        return view('backstage.counter.booking.CustomerCheck', $data);
+
+            foreach ($tables as $table) {
+                $tableId = TableEloquent::where(['table' => $table, 'restaurant_id' => $restaurant->id])->firstOrFail();
+                OrderTable::create([
+                    'order_id' => $orderId,
+                    'table_id' => $tableId->id,
+                ]);
+            }
+
+            foreach ($tables as $table) {
+                $status = Table::where(['table' => $table, 'restaurant_id' => $restaurant->id])->firstOrFail();
+                $status->status = '點餐中';
+                $status->save();
+            }
+
+            return view('backstage.counter.booking.CustomerCheck', $data);
+        }
     }
 
     public function PeopleCheck()

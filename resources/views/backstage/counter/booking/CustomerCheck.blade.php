@@ -197,33 +197,40 @@
     </div>
     <div class="row">
         <div class="col-lg-12 justify-content-center" style="text-align:center">
-        {{$people}}
+            {{$people}}
             @foreach($tables as $table)
-            {{$table}}+
+                {{$table}}+
             @endforeach
+            {{$ver}}
+            先寫儲存 在寫一個路由 轉業面 不然會依值重複存
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 justify-content-center" style="text-align:center">
+            {!! QrCode::size(500)->generate('http://localhost:8000/555'); !!}
+            <p>請掃描->開始點餐流程</p>
         </div>
     </div>
     <div class="row">
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
+        <div class="col-lg-12 ">
+            <form class="col-md-12"
+                  action="{{ route('counter.booking.index') }}">
+                {{ csrf_field() }}
+                <button type="submit" id="submit" style="text-decoration:none; float: right;"
+                        class="btn btn-primary">確認
+                </button>
+            </form>
+        </div>
     </div>
+
+    {{--<button type="button" style="text-decoration:none;" class="btn btn-primary"><a--}}
+                {{--href="{{ route('restaurant.seat.update') }}"><span style="color:white;">確認</span></a></button>--}}
+
+
+
+
+
 
 
 
