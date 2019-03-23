@@ -26,37 +26,43 @@ Route::get('logout', 'Auth\LoginController@logout');
 /*餐廳後台*/
 Route::group(['prefix' => 'backstage'], function() {
     Route::get('/home'                   , 'StaffController@login2')->name('backstage.dashboard.index');
+
+    /*基本資料*/
+    Route::get('/information'           , 'RestaurantController@index')->name('backstage.manager.information.index');
+    Route::get('/information/{id}/edit' , 'RestaurantController@edit')->name('backstage.manager.information.edit');
+    Route::patch('/information/{id}'    , 'RestaurantController@update')->name('backstage.manager.information.update');
+
     /*經理-post*/
-    Route::get('manager/post'           , 'PostController@index')->name('backstage.manager.post.index');
-    Route::get('manager/post/create'    , 'PostController@create')->name('backstage.manager.post.create');
-    Route::get('manager/post/{id}/edit' , 'PostController@edit')->name('backstage.manager.post.edit');
-    Route::patch('manager/post/{id}'    , 'PostController@update')->name('backstage.manager.post.update');
-    Route::post('manager/post'          , 'PostController@store')->name('backstage.manager.post.store');
-    Route::delete('manager/post/{id}'   , 'PostController@destroy')->name('backstage.manager.post.destroy');
+    Route::get('/post'           , 'PostController@index')->name('backstage.manager.post.index');
+    Route::get('/post/create'    , 'PostController@create')->name('backstage.manager.post.create');
+    Route::get('/post/{id}/edit' , 'PostController@edit')->name('backstage.manager.post.edit');
+    Route::patch('/post/{id}'    , 'PostController@update')->name('backstage.manager.post.update');
+    Route::post('/post'          , 'PostController@store')->name('backstage.manager.post.store');
+    Route::delete('/post/{id}'   , 'PostController@destroy')->name('backstage.manager.post.destroy');
 
     /*經理-staff*/
-    Route::get('manager/staff'           , 'StaffController@index')->name('backstage.manager.staff.index');
-    Route::get('manager/staff/create'    , 'StaffController@create')->name('backstage.manager.staff.create');
-    Route::get('manager/staff/{id}/edit' , 'StaffController@edit')->name('backstage.manager.staff.edit');
-    Route::patch('manager/staff/{id}'    , 'StaffController@update')->name('backstage.manager.staff.update');
-    Route::post('manager/staff'          , 'StaffController@store')->name('backstage.manager.staff.store');
-    Route::delete('manager/staff/{id}'   , 'StaffController@destroy')->name('backstage.manager.staff.destroy');
+    Route::get('/staff'           , 'StaffController@index')->name('backstage.manager.staff.index');
+    Route::get('/staff/create'    , 'StaffController@create')->name('backstage.manager.staff.create');
+    Route::get('/staff/{id}/edit' , 'StaffController@edit')->name('backstage.manager.staff.edit');
+    Route::patch('/staff/{id}'    , 'StaffController@update')->name('backstage.manager.staff.update');
+    Route::post('/staff'          , 'StaffController@store')->name('backstage.manager.staff.store');
+    Route::delete('/staff/{id}'   , 'StaffController@destroy')->name('backstage.manager.staff.destroy');
 
     /*經理-coupon*/
-    Route::get('manager/coupon'          , 'CouponController@index')->name('backstage.manager.coupon.index');
-    Route::get('manager/coupon/create'   , 'CouponController@create')->name('backstage.manager.coupon.create');
-    Route::get('manager/coupon/{id}/edit', 'CouponController@edit')->name('backstage.manager.coupon.edit');
-    Route::patch('manager/coupon/{id}'   , 'CouponController@update')->name('backstage.manager.coupon.update');
-    Route::post('manager/coupon'         , 'CouponController@store')->name('backstage.manager.coupon.store');
-    Route::delete('manager/coupon/{id}'  , 'CouponController@destroy')->name('backstage.manager.coupon.destroy');
+    Route::get('/coupon'          , 'CouponController@index')->name('backstage.manager.coupon.index');
+    Route::get('/coupon/create'   , 'CouponController@create')->name('backstage.manager.coupon.create');
+    Route::get('/coupon/{id}/edit', 'CouponController@edit')->name('backstage.manager.coupon.edit');
+    Route::patch('/coupon/{id}'   , 'CouponController@update')->name('backstage.manager.coupon.update');
+    Route::post('/coupon'         , 'CouponController@store')->name('backstage.manager.coupon.store');
+    Route::delete('/coupon/{id}'  , 'CouponController@destroy')->name('backstage.manager.coupon.destroy');
 
     /*經理-table*/
-//    Route::get('manager/table'           , 'TableController@index')->name('backstage.manager.table.index');
-//    Route::get('manager/table/create'    , 'TableController@create')->name('backstage.manager.table.create');
-//    Route::get('manager/table/{id}/edit' , 'TableController@edit')->name('backstage.manager.table.edit');
-//    Route::patch('manager/table/{id}'    , 'TableController@update')->name('backstage.manager.table.update');
-//    Route::post('manager/table'          , 'TableController@store')->name('backstage.manager.table.store');
-//    Route::delete('manager/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
+//    Route::get('/table'           , 'TableController@index')->name('backstage.manager.table.index');
+//    Route::get('/table/create'    , 'TableController@create')->name('backstage.manager.table.create');
+//    Route::get('/table/{id}/edit' , 'TableController@edit')->name('backstage.manager.table.edit');
+//    Route::patch('/table/{id}'    , 'TableController@update')->name('backstage.manager.table.update');
+//    Route::post('/table'          , 'TableController@store')->name('backstage.manager.table.store');
+//    Route::delete('/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 

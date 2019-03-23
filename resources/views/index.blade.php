@@ -52,16 +52,16 @@
                                     {{ method_field('get') }}
                                     <div class="row justify-content-center">
                                         @php
-                                            $img = getimagesize($rs->logo);
+                                            $img = getimagesize('img/logo/'. $rs->logo);
                                         @endphp
 
                                         @if($img[0]<$img[1])
                                             <div class="pic">
-                                                <img  src="{{$rs->logo}}"  class="center-block " alt="boy">
+                                                <img  src="{{url('img/logo/'. $rs->logo)}}"  class="center-block " alt="boy">
                                             </div>
                                         @else
                                             <div class="pic2">
-                                                <img  src="{{$rs->logo}}"  class="center-block " alt="boy">
+                                                <img  src="{{url('img/logo/'. $rs->logo)}}"  class="center-block " alt="boy">
                                             </div>
                                         @endif
                                     </div>

@@ -13,7 +13,7 @@
 <!-- /.row -->
 
 <div class="row">
-    <form action="/backstage/manager/staff/{{$staff->id}}" method="POST" role="form">
+    <form action="/backstage/staff/{{$staff->id}}" method="POST" role="form">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
         <div class="col-md-12">
