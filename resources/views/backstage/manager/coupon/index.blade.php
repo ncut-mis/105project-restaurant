@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.manager.layouts.master')
 @section('content')
 
     <style>
@@ -37,16 +37,16 @@
                 <thead style="border:2px #9BA2AB solid;">
                     <tr style="background-color: lightgrey;">
                         <th width="80" style="text-align: center">優惠券名稱</th>
-                        <th width="80" style="text-align: center">內容</th>
-                        <th width="120" style="text-align: center">折扣金額</th>
-                        <th width="120" style="text-align: center">最低消費金額</th>
-                        <th width="200" style="text-align: center">開始時間</th>
-                        <th width="200" style="text-align: center">結束時間</th>
-                        <th width="200" style="text-align: center">發放狀態</th>
+                        <th width="120" style="text-align: center">內容</th>
+                        <th width="100" style="text-align: center">折扣金額</th>
+                        <th width="100" style="text-align: center">最低消費<br>金額</th>
+                        <th width="180" style="text-align: center">開始時間</th>
+                        <th width="180" style="text-align: center">結束時間</th>
+                        <th width="100" style="text-align: center">發放狀態</th>
                         <th width="100" style="text-align: center">發送優惠券</th>
-                        <th width="100" style="text-align: center">已兌換數量</th>
-                        <th width="100" style="text-align: center">修改</th>
-                        <th width="100" style="text-align: center">刪除</th>
+                        <th width="100" style="text-align: center">已兌換<br>數量</th>
+                        <th width="80" style="text-align: center">修改</th>
+                        <th width="80" style="text-align: center">刪除</th>
                     </tr>
                 </thead>
                 <tbody style="border:3px #9BA2AB solid;">
@@ -91,7 +91,7 @@
                                     <button  class="btn btn-danger" disabled>刪除</button>
                                 </form>
                             @else
-                                <form action="{{ route('backstage.manager.coupon.destroy', $coupon->id) }}" method="POST">
+                                <form action="{{ route('backstage.manager.coupon.destroy', $coupon->id) }}" method="POST" onsubmit="return ConfirmDelete()">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button  class="btn btn-danger">刪除</button>
@@ -106,5 +106,16 @@
     </div>
 </div>
 </font>
+
+    <script>
+        function ConfirmDelete()
+        {
+            var x = confirm("確定要刪除該優惠券嗎?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+    </script>
 <!-- /.row -->
 @endsection

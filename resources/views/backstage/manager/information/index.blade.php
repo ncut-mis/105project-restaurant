@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.manager.layouts.master')
 @section('content')
 
 <!-- Page Heading -->
@@ -36,19 +36,19 @@
                 <tbody>
                 @foreach($restaurants as $res)
                     <tr>
-                        <td><font color="#000000" face="微軟正黑體" size="5">{{ __('　餐廳名稱：') }}</font><font color="#000000" face="微軟正黑體" size="4">{{$res->name}}</font></td>
+                        <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　餐廳名稱：') }}</b></font><font color="#000000" face="微軟正黑體" size="4">{{$res->name}}</font></td>
                     </tr>
                     <tr>
-                        <td><font color="#000000" face="微軟正黑體" size="5">{{ __('　ＬＯＧＯ：') }}</font><img src="{{url('img/logo/'. $res->logo)}}" width=20%></td>
+                        <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　ＬＯＧＯ：') }}</b></font><img src="{{url('img/logo/'. $res->logo)}}" width=20%></td>
                     </tr>
                     <tr>
-                        <td><font color="#000000" face="微軟正黑體" size="5">{{ __('　電　　話：') }}</font><font color="#000000" face="微軟正黑體" size="4">{{$res->phone}}</font></td>
+                        <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　電　　話：') }}</b></font><font color="#000000" face="微軟正黑體" size="4">{{$res->phone}}</font></td>
                     </tr>
                     <tr>
-                        <td><font color="#000000" face="微軟正黑體" size="5">{{ __('　地　　址：') }}</font><font color="#000000" face="微軟正黑體" size="4">{{$res->address}}</font></td>
+                        <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　地　　址：') }}</b></font><font color="#000000" face="微軟正黑體" size="4">{{$res->address}}</font></td>
                     </tr>
                     <tr>
-                        <td><font color="#000000" face="微軟正黑體" size="5">{{ __('　營業時間：') }}</font><font color="#000000" face="微軟正黑體" size="4">{{$res->opening_hours}}</font>~<font color="#000000" face="微軟正黑體" size="4">{{$res->end_hours}}</font></td>
+                        <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　營業時間：') }}</b></font><font color="#000000" face="微軟正黑體" size="4">{{$res->opening_hours}}</font>~<font color="#000000" face="微軟正黑體" size="4">{{$res->end_hours}}</font></td>
                     </tr>
                 @endforeach
                 </tbody>

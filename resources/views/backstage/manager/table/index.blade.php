@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.manager.layouts.master')
 @section('content')
 
     <head>

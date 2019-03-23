@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.manager.layouts.master')
 @section('content')
 
     <style>
@@ -53,7 +53,7 @@
                             <a href="{{ route('backstage.manager.post.edit',$post->id) }}" class="btn btn-info" style="text-decoration:none;">修改</a>
                         </td>
                         <td>
-                            <form action="{{ route('backstage.manager.post.destroy', $post->id) }}" method="POST">
+                            <form action="{{ route('backstage.manager.post.destroy', $post->id) }}" method="POST" onsubmit="return ConfirmDelete()">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button  class="btn btn-danger">刪除</button>
@@ -67,5 +67,16 @@
     </div>
 </div>
 </font>
+
+    <script>
+        function ConfirmDelete()
+        {
+            var x = confirm("確定要刪除該公告嗎?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+    </script>
 <!-- /.row -->
 @endsection

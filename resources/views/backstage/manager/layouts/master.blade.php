@@ -49,7 +49,7 @@
 
     <div id="wrapper">
 
-        @include('backstage.layouts.partials.sidebar')
+        @include('backstage.manager.layouts.partials.sidebar')
 
         <div id="page-wrapper">
 

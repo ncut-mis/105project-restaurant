@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.manager.layouts.master')
 @section('content')
 <!-- Page Heading -->
 <div class="row">
@@ -9,7 +9,7 @@
     </div>
 </div>
 <!-- /.row -->
-@include('backstage.layouts.partials.validation')
+@include('backstage.manager.layouts.partials.validation')
 <!-- /.row -->
 
 <div class="row">
@@ -84,13 +84,16 @@
                         </div>
                         {{--更新--}}
                         <div class="form-group row">
-                            <div class="col-md-4"></div>
+                            <div class="col-md-2"></div>
                             <div class="col-md-4" style="text-align:center">
                                 <div class="text-right">
                                     <button type="submit" class="btn btn-success">更新</button>
                                 </div>
                             </div>
-                            <div class="col-md-4"></div>
+                            <div class="col-md-4" style="text-align:center">
+                                <button type="button" onclick="history.back()" class="btn btn-danger">取消</button>
+                            </div>
+                            <div class="col-md-2"></div>
                         </div>
                     </div>
                 </div>

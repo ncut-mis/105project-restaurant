@@ -98,7 +98,7 @@ class StaffController extends Controller
     {
         $position=Auth::user()->position;
         if($position == "經理"){
-            return view('backstage.dashboard.index');
+            return view('backstage.manager.index');
         }
         else{
             if($position == "櫃台") {

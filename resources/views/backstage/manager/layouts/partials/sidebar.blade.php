@@ -8,7 +8,7 @@
             {{--<span class="icon-bar"></span>--}}
             {{--<span class="icon-bar"></span>--}}
         {{--</button>--}}
-        <a class="navbar-brand" href="{{ route('backstage.dashboard.index') }}"><font color="#ffffff" face="微軟正黑體">餐廳點餐系統後台</font></a>
+        <a class="navbar-brand" href="{{ route('backstage.manager.index') }}"><font color="#ffffff" face="微軟正黑體">餐廳點餐系統後台</font></a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
@@ -45,7 +45,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li class="active">
-                <a href="{{ route('backstage.dashboard.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-home"></i>　Home</font></a>
+                <a href="{{ route('backstage.manager.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-home"></i>　Home</font></a>
 
                 <a href="{{ route('backstage.manager.information.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-info-circle"></i>　基本資料</font></a>
 
