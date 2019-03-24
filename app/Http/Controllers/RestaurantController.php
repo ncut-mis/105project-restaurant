@@ -2,84 +2,65 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Staff;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use \Carbon\Carbon as Carbon;
 
 class RestaurantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $data=Staff::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        $restaurant = Restaurant::find($data);
+        return view('backstage.manager.information.index', ['restaurants' => $restaurant]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
-     */
     public function show(Restaurant $restaurant)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Restaurant $restaurant)
+    public function edit($id)
     {
-        //
+        $restaurants=Restaurant::find($id);
+        $data = ['restaurants' => $restaurants];
+        return view('backstage.manager.information.edit',$data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(Request $request,$id)
     {
-        //
+        $restaurants=Restaurant::find($id);
+        $file = $request->file('logo');
+        $destinationPath = 'img/logo';
+        $image=$file->getClientOriginalExtension();
+        $file_name=(Carbon::now()->timestamp).'.'.$image;
+        $file->move($destinationPath, $file_name);
+
+        $restaurants->update([
+            'name' => $request['name'],
+            'logo' => $file_name,
+            'phone' => $request['phone'],
+            'address' => $request['address'],
+            'opening_hours' => $request['opening_hours'],
+            'end_hours' => $request['end_hours'],
+        ]);
+        return redirect()->route('backstage.manager.information.index')->with('success','修改成功 !');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Restaurant $restaurant)
     {
-        //
+
     }
 }

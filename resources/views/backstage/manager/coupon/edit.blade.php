@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.manager.layouts.master')
 @section('content')
 <!-- Page Heading -->
 <div class="row">
@@ -9,11 +9,11 @@
     </div>
 </div>
 <!-- /.row -->
-@include('backstage.layouts.partials.validation')
+@include('backstage.manager.layouts.partials.validation')
 <!-- /.row -->
 
 <div class="row">
-    <form action="/backstage/manager/coupon/{{$coupons->id}}" method="POST" role="form">
+    <form action="/backstage/coupon/{{$coupons->id}}" method="POST" role="form">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
         <div class="col-md-12">

@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.manager.layouts.master')
 @section('content')
 <!-- Page Heading -->
 <div class="row">
@@ -18,12 +18,16 @@
 <!-- /.row -->
 <font color="#000000" face="微軟正黑體" style="text-align: center">
 <div class="row">
+    @if(session('success'))
+        <div class="alert alert-success">{{session('success')}}</div>
+    @elseif(session('error'))
+        <div class="alert alert-danger">{{session('error')}}</div>
+    @endif
     <div class="col-lg-12">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        {{--<th width="50" style="text-align: center">編號</th>--}}
+            <table class="table table-bordered table-hover" style="border:3px #9BA2AB solid;">
+                <thead style="border:2px #9BA2AB solid;">
+                    <tr style="background-color: lightgrey;">
                         <th width="80" style="text-align: center">姓名</th>
                         <th width="80" style="text-align: center">職稱</th>
                         <th width="120" style="text-align: center">信箱</th>
@@ -33,17 +37,16 @@
                         <th width="100" style="text-align: center">刪除</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="border:3px #9BA2AB solid;">
                 @foreach($staff as $sf)
                     <tr>
-                        {{--<td>{{$sf->id}}</td>--}}
                         <td>{{$sf->name}}</td>
                         <td>{{$sf->position}}</td>
                         <td>{{$sf->email}}</td>
                         <td>{{$sf->phone}}</td>
                         <td>{{$sf->address}}</td>
                         <td><a href="{{ route('backstage.manager.staff.edit',$sf->id) }}" class="btn btn-info" style="text-decoration:none;">修改</a></td>
-                        <td><form action="{{ route('backstage.manager.staff.destroy', $sf->id) }}" method="POST">
+                        <td><form action="{{ route('backstage.manager.staff.destroy', $sf->id) }}" method="POST" onsubmit="return ConfirmDelete()">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button  class="btn btn-danger">刪除</button>
@@ -53,28 +56,20 @@
                 @endforeach
                 </tbody>
             </table>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
         </div>
     </div>
 </div>
 </font>
+
+<script>
+    function ConfirmDelete()
+    {
+        var x = confirm("確定要刪除該人員帳號嗎?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
 <!-- /.row -->
 @endsection

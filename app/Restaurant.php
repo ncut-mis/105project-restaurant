@@ -9,9 +9,22 @@ use \App\Order as OrderEloquent;
 use \App\Table as TableEloquent;
 use \App\Customer as CustomerEloquent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Restaurant extends Model
 {
+    use Notifiable;
+    protected $table = 'restaurants';
+    protected $fillable = [
+        'id',
+        'name',
+        'logo',
+        'phone',
+        'address',
+        'opening_hours',
+        'end_hours',
+    ];
+
     public function staff(){
         return $this->hasMany(StaffEloquent::class);
     }

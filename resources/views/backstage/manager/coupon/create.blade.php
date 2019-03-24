@@ -1,4 +1,4 @@
-@extends('backstage.layouts.master')
+@extends('backstage.manager.layouts.master')
 @section('content')
 
     <script>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <!-- /.row -->
-    @include('backstage.layouts.partials.validation')
+    @include('backstage.manager.layouts.partials.validation')
 
     <!-- /.row -->
     <div class="row justify-content-center">
