@@ -78,6 +78,7 @@ Route::group(['prefix' => 'backstage'], function() {
 
     /*firebase測試*/
     Route::get('chef/fire',['as'=>'backstage.chef.fire','uses'=>'KitchenController@fire']);
+    Route::get('chef/fire2',['as'=>'backstage.chef.fire2','uses'=>'KitchenController@fire2']);
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 
