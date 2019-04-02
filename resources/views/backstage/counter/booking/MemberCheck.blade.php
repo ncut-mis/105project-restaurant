@@ -174,6 +174,10 @@
             -webkit-animation-name: rubberBand;
             animation-name: rubberBand;
         }
+
+
+
+
     </style>
 </head>
 @section('content')
@@ -196,33 +200,30 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 justify-content-center" style="text-align:center">
-            {{$people}}
-            @foreach($tables as $table)
-                {{$table}}+
-            @endforeach
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3" style="text-align:center" >
+            <font size="20px">會員驗證：</font>
+            <br>
+            <div style="margin-top: 20px"></div>
+            <input type="text" class="form-control memberCenter" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            <div style="margin-top: 20px"></div>
+            <button type="submit"
+                    style="text-decoration:none; width:150px;height:150px; margin-top: 20px; margin-right: 20px;"
+                    class="btn btn-primary"><font size="3px">掃描後</font><br><font size="10px">確認</font>
+            </button>
         </div>
     </div>
+
     <div class="row">
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
+
     </div>
 
 
