@@ -1,83 +1,7 @@
-<div class="form-group">
-    <div class="form-cgroup">
-        <label for="">Blog Title</label>
-        <input class="form-control" type="text" id="username">
-    </div>
-    <div class="form-cgroup">
-        <label for="">Blog Description</label>
-        <input class="form-control" type="text" id="message">
-    </div>
-    <input class="btn btn-info" type="button" id="btnGetMessage" value="Get Message">
-    <ul class="list-group" id="comment"></ul>
-</div>
-<!DOCTYPE html>
-<html lang="en-US">
 <head>
-    <title>Hello World!</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script>
-        var dnperm = document.getElementById('dnperm');
-        dnperm.addEventListener('click',function (e) {
-            e.preventDefault();
-            if(!window.Notification)
-            {
-                alert('Not Supported');
-            }
-            else
-            {
-                Notification.requestPermission().then(function (p) {
-                    if(p ==='denied')
-                    {
-                        alert('You denied to show Notification');
-                    }
-                    else if(p === 'granted')
-                    {
-                        alert('You allowed to show Notification');
-                    }
-                })
-            }
-        });
-
-        function writeUserData(name,message)
-        {
-            database.push().set(
-            {
-                username:name,
-                message: message
-            });
-        }
-        function removeUserData(userId)
-        {
-            firebase.database().ref('/users'+userId).remove();
-        }
-        function rendrUI(obj)
-        {
-            var i = 0;
-            var html='';
-            var keys = Object.keys(obj);
-            for(i=0;i<keys.length; i++)
-            {
-                html+="<li><b><i>"+obj[keys[i]].username+"</li></b> says:"<obj[keys[i]].message+"<li>";
-            }
-            $('#comment').html(html);
-        }
-        $('#btnGetMessage').click(function()
-        {
-            writeUserData($('#username').val() , $('#message').val());
-            $('#username').val('');
-            $('#message').val('');
-        });
-
-        $(document).ready(function ()
-        {
-            $('body').on('click','#btnRemove',function ()
-            {
-                removeUserData($(this).data('id'));
-            })
-        });
-
+        $(document).ready(function () {
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyCTnmGUSXbyvJKbrmIcXtXMze3mecGKF-A",
@@ -88,33 +12,81 @@
             messagingSenderId: "390650303893"
         };
         firebase.initializeApp(config);
+        const messaging = firebase.messaging();
+            //收到訊息後的處理
+            messaging.onMessage(function (payload) {
+                //Log
+                $('#log').prepend("Message received :" + JSON.stringify(payload) + "<br><br>");
 
-        var database = firebase.database().ref().child("/users/");
-
-        database.on('value',function (snapshot)
-        {
-            rendrUI(snapshot.val());
-        });
-
-        database.on('child_added',function (data)
-        {
-            if(Notification.Permission!=='default')
-            {
-                var notify;
-                notify = new Notification('CodeWife - '+data.val().username,{
-                    'body':data.val().message,
-                    'icon':'bell.png',
-                    'tag':data.getKey()
-                    });
-                notify.onclick=function () {
-                    alert(this.tag);
+                //如果可以顯示通知就做顯示通知
+                if (Notification.permission === 'granted') {
+                    ShowNotification(payload.data.title, payload.data.body);
+                    //三秒後自動關閉
+                    setTimeout(notification.close.bind(notification), 3000);
                 }
-            }
-            else
-            {
-                alert('please allow the notification first');
-            }
+            });
         });
-
     </script>
 </head>
+<body>
+<script>
+    function RegistUserTokenToSelfServer(user_token, successFunc, errorFunc) {
+        var $res = '';
+        $.ajax({
+            type: "POST",
+            url: "receive_user_token.aspx",
+            contentType: 'application/x-www-form-urlencoded',
+            async: true,
+            cache: false,
+            dataType: 'text',
+            data: { user_token: user_token },
+            success: function (data) {
+                if (data.hasOwnProperty("d")) {
+                    $res = data.d;
+                    if (successFunc != null)
+                        successFunc(data.d);
+                }
+                else {
+                    $res = data;
+                    if (successFunc != null)
+                        successFunc(data);
+                }
+            },
+            error: function (e) {
+                if (errorFunc != null)
+                    errorFunc(e);
+            }
+
+
+        });
+        return $res;
+    }
+
+
+    $('#btnStarGetTokenAndReceivePush').click(function () {
+
+        messaging.getToken()
+            .then(function (currentToken) {
+                $('#log').append("TOKEN: " + currentToken + "<br><br>")
+                if (currentToken) {
+                    RegistUserTokenToSelfServer(currentToken, function (result) {
+                        $('#log').prepend("送回給自己 Server 的結果 :" + result + "<br><br>")
+                    });
+                } else {
+                    $('#log').prepend('註冊失敗請檢查相關設定.');
+                }
+            })
+            .catch(function (err) {
+
+                $('#log').prepend("跟 Server 註冊失敗 原因:" + err + "<br>");
+            });
+
+    });
+
+</script>
+<script>
+
+
+</script>
+
+</body>

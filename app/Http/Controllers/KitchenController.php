@@ -90,4 +90,8 @@ class KitchenController extends Controller
     {
         return view('backstage.chef.noti.index2');
     }
+    public function fire3()
+    {
+        return view('backstage.chef.noti.index3');
+    }
 }
