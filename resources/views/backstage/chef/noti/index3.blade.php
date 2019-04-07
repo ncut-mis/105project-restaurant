@@ -49,8 +49,8 @@
     var key = 'AAAAWvSSlZU:APA91bEdu07BlcRY0i-y2av_bPdNmP5e218LTZFotxsiMUxvS9i98gKBDmtTV5Zh19Z6rOM8xw-uHshM9B3lXYQ42y_kbHiZAkFqVfX7TxkWmX_2_r8Mgmbcik6hmjNhJVOfMhlJCKCo';
     var to = 'cij7n-dXlXg:APA91bGgoxiSuHEVD09lU9DRlvUTkWCWkVVUVbHU6QXrCJufwvbSP8w2f8rRmpBQCj1yjWH86jzgnAhLf9WGhbajH2Elp3BDEUT1mP_-Ps9QKvToKlXbmsRCdOzdg4TOqFvgQjb06042';
     var notification = {
-        'title':123,
-        'body': 999,
+        'title':'receive_my title',
+        'body': 'Hello world!',
         'click_action': 'http://localhost:8000'
     };
     fetch('https://fcm.googleapis.com/fcm/send', {
