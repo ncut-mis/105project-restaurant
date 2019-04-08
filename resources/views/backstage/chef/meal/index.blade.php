@@ -42,7 +42,7 @@
                         @foreach($meal as $ml)
                             <tr>
                                 {{--<td>{{$sf->id}}</td>--}}
-                                <td>{{$ml->meal_types_id}}</td>
+                                <td>{{$ml->category_id}}</td>
                                 <td>{{$ml->name}}</td>
                                 <td>{{$ml->photo}}</td>
                                 <td>{{$ml->ingredients}}</td>

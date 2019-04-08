@@ -112,7 +112,7 @@ class KitchenController extends Controller
             ->select('token')
             ->get();
         $abc = ['restaurant'=>$restaurant];
-        
+
 
         $token = "dGtUbr_cro0:APA91bEoMfJzpTZL9xFZj1rQRsunnUYx0QCK3A0DExumVK7x8mWa0WIsBy_UndMu4AYUX9qOsZxtRfKraVNXIROGoC9RDEg-S1IkJ9Oe3BbzxDCElSb0QMXYVixw57Iz-cngCOBptDqv";
 

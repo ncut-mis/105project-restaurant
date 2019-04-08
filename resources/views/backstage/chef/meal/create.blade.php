@@ -9,7 +9,7 @@
         </div>
     </div>
     <!-- /.row -->
-    @include('backstage.layouts.partials.validation')
+    @include('backstage.chef.layouts.partials.validation')
 
     <!-- /.row -->
     <div class="row" style="text-align:center" >
@@ -23,9 +23,9 @@
                     <div class="card-body">
                         {{--餐點類型--}}
                         <div class="form-group row">
-                            <label for="meal_types_id" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('餐點類型') }}</font></label>
+                            <label for="category_id" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('餐點類型') }}</font></label>
                             <div class="col-md-8">
-                                <input id="meal_types_id" type="text" class="form-control" name="meal_types_id" required>
+                                <input id="category_id" type="text" class="form-control" name="category_id" required>
                             </div>
                         </div>
                         {{--名稱--}}

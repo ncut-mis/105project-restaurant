@@ -17,7 +17,7 @@ class MealController extends Controller
     public function index()
     {
         $meal = Meal::where('restaurant_id', Auth::user()->restaurant_id)
-        ->orderBy('meal_types_id','ASC')
+        ->orderBy('category_id','ASC')
         ->get();
         return view('backstage.chef.meal.index', ['meal' => $meal]);
     }
@@ -42,7 +42,7 @@ class MealController extends Controller
     {
         Meal::create([
             'restaurant_id' => Auth::user()->restaurant_id,
-            'meal_types_id'=>$request['meal_types_id'],
+            'category_id'=>$request['category_id'],
             'name' => $request['name'],
             'photo' => $request['photo'],
             'ingredients' => $request['ingredients'],

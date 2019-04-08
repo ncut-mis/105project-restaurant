@@ -9,7 +9,7 @@
         </div>
     </div>
     <!-- /.row -->
-    @include('backstage.layouts.partials.validation')
+    @include('backstage.chef.layouts.partials.validation')
     <!-- /.row -->
     <div class="row" style="text-align:center" >
         餐點類型：輸入1代表主餐、2代表開胃品、3代表沙拉、4代表前菜、5代表湯品、6代表甜品、7代表飲料。

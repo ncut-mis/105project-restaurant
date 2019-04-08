@@ -24,16 +24,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($detail as $de)
+                        @foreach($item as $it)
                             <tr>
-                                <td>{{$de->id}}</td>
-                                <td>{{$de->name}}</td>
-                                <td>{{$de->quantity}}</td>
+                                <td>{{$it->id}}</td>
+                                <td>{{$it->name}}</td>
+                                <td>{{$it->quantity}}</td>
                                 <td>
-                                    <form action="/backstage/chef/rcveod/{{$de->order_id}}/{{$de->id}}" method="POST" role="form">
+                                    <form action="/backstage/chef/rcveod/{{$it->order_id}}/{{$it->id}}" method="POST" role="form">
                                         {{ csrf_field() }}
                                         {{ method_field('PATCH') }}
-                                        @if($de->status==0)
+                                        @if($it->status==0)
                                             <input name="status" type="hidden" class="form-control" placeholder="請輸入狀態" value="1" required>
                                             <button type="submit" class="btn btn-success">完成</button>
                                         @else
