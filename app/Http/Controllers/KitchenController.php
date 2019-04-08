@@ -107,12 +107,14 @@ class KitchenController extends Controller
         $notification = $notificationBuilder->build();
         $data = $dataBuilder->build();
 
+
         $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
             ->select('token')
             ->get();
         $abc = ['restaurant'=>$restaurant];
+        
 
-        $token = "cij7n-dXlXg:APA91bGgoxiSuHEVD09lU9DRlvUTkWCWkVVUVbHU6QXrCJufwvbSP8w2f8rRmpBQCj1yjWH86jzgnAhLf9WGhbajH2Elp3BDEUT1mP_-Ps9QKvToKlXbmsRCdOzdg4TOqFvgQjb06042";
+        $token = "dGtUbr_cro0:APA91bEoMfJzpTZL9xFZj1rQRsunnUYx0QCK3A0DExumVK7x8mWa0WIsBy_UndMu4AYUX9qOsZxtRfKraVNXIROGoC9RDEg-S1IkJ9Oe3BbzxDCElSb0QMXYVixw57Iz-cngCOBptDqv";
 
         $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
 
