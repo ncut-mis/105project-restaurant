@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Restaurant;
 use Illuminate\Http\Request;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
+use Auth;
 use FCM;
 
 class KitchenController extends Controller
@@ -105,6 +107,11 @@ class KitchenController extends Controller
         $notification = $notificationBuilder->build();
         $data = $dataBuilder->build();
 
+        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
+            ->select('token')
+            ->get();
+        $abc = ['restaurant'=>$restaurant];
+
         $token = "cij7n-dXlXg:APA91bGgoxiSuHEVD09lU9DRlvUTkWCWkVVUVbHU6QXrCJufwvbSP8w2f8rRmpBQCj1yjWH86jzgnAhLf9WGhbajH2Elp3BDEUT1mP_-Ps9QKvToKlXbmsRCdOzdg4TOqFvgQjb06042";
 
         $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
@@ -123,10 +130,31 @@ class KitchenController extends Controller
         $downstreamResponse->tokensToRetry();
 
 // return Array (key:token, value:errror) - in production you should remove from your database the tokens
-        return view('backstage.chef.noti.index2');
+        return view('backstage.chef.noti.index2',$abc);
     }
     public function fire3()
     {
         return view('backstage.chef.noti.index3');
+    }
+    public function messagetest()
+    {
+        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
+        ->get();
+        $data = ['restaurant'=>$restaurant];
+        return view('backstage.chef.noti.index4',$data);
+    }
+    public function messagetestedit($id)
+    {
+        $abc = Restaurant::find($id);
+        $bbc = ['restaurant' => $abc];
+        return view('backstage.chef.noti.edit', $bbc);
+    }
+    public function messagetestupdate(Request $request, $id)
+    {
+        $abc = Restaurant::find($id);
+        $abc->token=$request->token;
+        $abc->save();
+        $data = ['123'=>$abc];
+        return redirect()->route('backstage.chef.messagetest',$data);
     }
 }
