@@ -109,12 +109,10 @@ class KitchenController extends Controller
 
 
         $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
-            ->select('token')
-            ->get();
-        $abc = ['restaurant'=>$restaurant];
+            ->value('token');
 
 
-        $token = "dGtUbr_cro0:APA91bEoMfJzpTZL9xFZj1rQRsunnUYx0QCK3A0DExumVK7x8mWa0WIsBy_UndMu4AYUX9qOsZxtRfKraVNXIROGoC9RDEg-S1IkJ9Oe3BbzxDCElSb0QMXYVixw57Iz-cngCOBptDqv";
+        $token = $restaurant;
 
         $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
 
@@ -132,7 +130,7 @@ class KitchenController extends Controller
         $downstreamResponse->tokensToRetry();
 
 // return Array (key:token, value:errror) - in production you should remove from your database the tokens
-        return view('backstage.chef.noti.index2',$abc);
+        return view('backstage.chef.noti.index2');
     }
     public function fire3()
     {
