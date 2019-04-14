@@ -16,7 +16,6 @@
 <body>
 <script>
     const messaging = firebase.messaging();
-
     messaging.requestPermission().then(res=>
         {
             return messaging.getToken();
@@ -47,7 +46,7 @@
     });
 
     var key = 'AAAAWvSSlZU:APA91bEdu07BlcRY0i-y2av_bPdNmP5e218LTZFotxsiMUxvS9i98gKBDmtTV5Zh19Z6rOM8xw-uHshM9B3lXYQ42y_kbHiZAkFqVfX7TxkWmX_2_r8Mgmbcik6hmjNhJVOfMhlJCKCo';
-    var to = 'dGtUbr_cro0:APA91bEoMfJzpTZL9xFZj1rQRsunnUYx0QCK3A0DExumVK7x8mWa0WIsBy_UndMu4AYUX9qOsZxtRfKraVNXIROGoC9RDEg-S1IkJ9Oe3BbzxDCElSb0QMXYVixw57Iz-cngCOBptDqv';
+    var to = 'eTexRuVS0rM:APA91bH-2Rs0eIG8xMrak3v0a6bINMvRUuq9j5sByG1_k7-nJxs421NU7Qac4kPpnGFIrpHCe_R7A_CnJXuc3uf1hXP52vl9glR6RoK-DM1ngs7ppIOV_wV5sZO0Tuj6k-qx3DxE6FtH';
     var notification = {
         'title':'receive_my title',
         'body': 'Hello world!',

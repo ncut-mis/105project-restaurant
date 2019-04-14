@@ -136,6 +136,36 @@ class KitchenController extends Controller
     {
         return view('backstage.chef.noti.index3');
     }
+    public function noti()
+    {
+        $optionBuilder = new OptionsBuilder();
+        $optionBuilder->setTimeToLive(60*20);
+
+        $notificationBuilder = new PayloadNotificationBuilder('my title');
+        $notificationBuilder->setBody('Hello world')
+            ->setSound('default');
+
+        $dataBuilder = new PayloadDataBuilder();
+        $dataBuilder->addData(['a_data' => 'my_data']);
+
+        $option = $optionBuilder->build();
+        $notification = $notificationBuilder->build();
+        $data = $dataBuilder->build();
+
+        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
+            ->value('token');
+
+        $token = $restaurant;
+
+        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+
+        $downstreamResponse->numberSuccess();
+        $downstreamResponse->numberFailure();
+        $downstreamResponse->tokensToDelete();
+        $downstreamResponse->tokensToModify();
+        $downstreamResponse->tokensToRetry();
+        return redirect()->route('backstage.chef.meal.index');
+    }
     public function messagetest()
     {
         $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
