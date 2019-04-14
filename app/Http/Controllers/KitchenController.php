@@ -153,11 +153,13 @@ class KitchenController extends Controller
         $data = $dataBuilder->build();
 
         $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
-            ->value('token');
+            ->pluck('token')
+            ->toArray();
+        $tokens = $restaurant;
 
-        $token = $restaurant;
+        sleep(5);
 
-        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+        $downstreamResponse = FCM::sendTo($tokens, $option, $notification, $data);
 
         $downstreamResponse->numberSuccess();
         $downstreamResponse->numberFailure();
