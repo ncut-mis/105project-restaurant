@@ -17,7 +17,14 @@
             <p></p>
             下列餐點均依照上述順序排列。
         </div>
+<<<<<<< HEAD
         <a href="{{ route('backstage.chef.meal.create') }}" class="btn btn-success"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-plus-circle"> 新增餐點</i></font></a>
+=======
+    <div>
+            <a href="{{ route('backstage.chef.meal.create') }}" class="btn btn-success"><font color="#ffffff" face="微軟正黑體">新增餐點</font></a>
+            <a href="{{ route('noti') }}" class="btn btn-info"><font color="#ffffff" face="微軟正黑體">發送通知(Laravel-FCM版)</font></a>
+        </div>
+>>>>>>> b8f165878039a9ddcd1a0a17ace32b71887ee53e
     </div>
     </font>
     <!-- /.row -->

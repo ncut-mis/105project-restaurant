@@ -1,5 +1,18 @@
 @extends('layouts.back')
 <head>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCTnmGUSXbyvJKbrmIcXtXMze3mecGKF-A",
+            authDomain: "project-restaurants-ncut.firebaseapp.com",
+            databaseURL: "https://project-restaurants-ncut.firebaseio.com",
+            projectId: "project-restaurants-ncut",
+            storageBucket: "project-restaurants-ncut.appspot.com",
+            messagingSenderId: "390650303893"
+        };
+        firebase.initializeApp(config);
+    </script>
     <style>
         .pic {
             position:relative;
@@ -33,7 +46,31 @@
         /*}*/
     </style>
 </head>
-
+<body>
+<script>
+    const messaging = firebase.messaging();
+    if('serviceWorker' in navigator) {
+        console.log('支援sw');
+        navigator.serviceWorker.register("firebase-messaging-sw.js")
+            .then(registration => {
+                messaging.useServiceWorker(registration);
+                messaging.requestPermission()
+                    .then(() => {
+                        // getToken();
+                        console.log('允許通知')
+                    })
+                    .catch(() => {
+                        console.log('unable to get permission to notify');
+                    });
+                console.log('成功', registration);
+            }).catch(err => {
+            console.log('fail', err);
+        })
+    } else {
+        console.log('不支援sw');
+    }
+</script>
+</body>
 @section('content')
 
             <div class="col-md-12">

@@ -1,5 +1,6 @@
 <?php
-
+ini_set("display_errors", "On");
+error_reporting(E_ALL & ~E_NOTICE);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,6 +87,11 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('chef/fire',['as'=>'backstage.chef.fire','uses'=>'KitchenController@fire']);
     Route::get('chef/fire2',['as'=>'backstage.chef.fire2','uses'=>'KitchenController@fire2']);
     Route::get('chef/fire3',['as'=>'backstage.chef.fire3','uses'=>'KitchenController@fire3']);
+
+
+    Route::get('chef/noti',['as'=>'noti','uses'=>'KitchenController@noti']);
+
+
     Route::get('chef/messagetest',['as'=>'backstage.chef.messagetest','uses'=>'KitchenController@messagetest']);
     Route::get('chef/messagetest/{id}/edit',['as'=>'backstage.chef.messagetest.edit','uses'=>'KitchenController@messagetestedit']);
     Route::patch('chef/messagetest/{id}',['as'=>'backstage.chef.messagetest.edit.update','uses'=>'KitchenController@messagetestupdate']);

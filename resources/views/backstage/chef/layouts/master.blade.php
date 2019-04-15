@@ -12,29 +12,6 @@
     <title>餐廳 | 管理後台</title>
 
 
-    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCTnmGUSXbyvJKbrmIcXtXMze3mecGKF-A",
-            authDomain: "project-restaurants-ncut.firebaseapp.com",
-            databaseURL: "https://project-restaurants-ncut.firebaseio.com",
-            projectId: "project-restaurants-ncut",
-            storageBucket: "project-restaurants-ncut.appspot.com",
-            messagingSenderId: "390650303893"
-        };
-        firebase.initializeApp(config);
-    </script>
-    <!-- Firebase App is always required and must be first -->
-    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
-    <!-- Add additional services that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-messaging.js"></script>
-
-
-
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -59,8 +36,6 @@
 </head>
 
 <body>
-
-
     <div id="wrapper">
 
         @include('backstage.chef.layouts.partials.sidebar')
