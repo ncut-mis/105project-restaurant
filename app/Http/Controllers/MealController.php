@@ -6,14 +6,10 @@ use Auth;
 use App\Meal;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Carbon\Carbon as Carbon;
 
 class MealController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $meal = Meal::where('restaurant_id', Auth::user()->restaurant_id)
@@ -22,52 +18,30 @@ class MealController extends Controller
         return view('backstage.chef.meal.index', ['meal' => $meal]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('backstage.chef.meal.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        $file = $request->file('photo');
+        $destinationPath = 'img/meal';
+        $image=$file->getClientOriginalExtension();
+        $file_name=(Carbon::now()->timestamp).'.'.$image;
+        $file->move($destinationPath, $file_name);
+
         Meal::create([
             'restaurant_id' => Auth::user()->restaurant_id,
             'category_id'=>$request['category_id'],
             'name' => $request['name'],
-            'photo' => $request['photo'],
+            'photo' => $file_name,
             'ingredients' => $request['ingredients'],
             'price' => $request['price'],
         ]);
         return redirect()->route('backstage.chef.meal.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Meal  $meal
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Meal $meal)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Meal  $meal
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $abc = Meal::find($id);
@@ -75,26 +49,26 @@ class MealController extends Controller
         return view('backstage.chef.meal.edit', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Meal  $meal
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $meal = Meal::find($id);
-        $meal->update($request->all());
+        $file = $request->file('photo');
+        $destinationPath = 'img/meal';
+        $image=$file->getClientOriginalExtension();
+        $file_name=(Carbon::now()->timestamp).'.'.$image;
+        $file->move($destinationPath, $file_name);
+
+        $meal->update([
+            'restaurant_id' => Auth::user()->restaurant_id,
+            'category_id'=>$request['category_id'],
+            'name' => $request['name'],
+            'photo' => $file_name,
+            'ingredients' => $request['ingredients'],
+            'price' => $request['price'],
+        ]);
         return redirect()->route('backstage.chef.meal.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Meal  $meal
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Meal::destroy($id);
