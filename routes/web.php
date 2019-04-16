@@ -65,6 +65,11 @@ Route::group(['prefix' => 'backstage'], function() {
 //    Route::post('/table'          , 'TableController@store')->name('backstage.manager.table.store');
 //    Route::delete('/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
 
+    /*餐廳token修改*/
+    Route::get('token',['as'=>'backstage.manager.token.index','uses'=>'RestaurantController@tokenindex']);
+    Route::get('token/{id}/edit',['as'=>'backstage.manager.token.edit','uses'=>'RestaurantController@tokenedit']);
+    Route::patch('token/{id}',['as'=>'backstage.manager.token.update','uses'=>'RestaurantController@tokenupdate']);
+
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 
     /*主廚-家*/
@@ -84,17 +89,9 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::patch('chef/rcveod/{id}/{item_id}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'ItemController@update']);
 
     /*firebase測試*/
-    Route::get('chef/fire',['as'=>'backstage.chef.fire','uses'=>'KitchenController@fire']);
-    Route::get('chef/fire2',['as'=>'backstage.chef.fire2','uses'=>'KitchenController@fire2']);
-    Route::get('chef/fire3',['as'=>'backstage.chef.fire3','uses'=>'KitchenController@fire3']);
+    Route::get('chef/fire',['as'=>'backstage.chef.fire3','uses'=>'KitchenController@fire']);//firebase搭配javascript-fetch指令
+    Route::get('chef/noti',['as'=>'noti','uses'=>'KitchenController@noti']);//firebase搭配laravel-fcm套件的按鈕
 
-
-    Route::get('chef/noti',['as'=>'noti','uses'=>'KitchenController@noti']);
-
-
-    Route::get('chef/messagetest',['as'=>'backstage.chef.messagetest','uses'=>'KitchenController@messagetest']);
-    Route::get('chef/messagetest/{id}/edit',['as'=>'backstage.chef.messagetest.edit','uses'=>'KitchenController@messagetestedit']);
-    Route::patch('chef/messagetest/{id}',['as'=>'backstage.chef.messagetest.edit.update','uses'=>'KitchenController@messagetestupdate']);
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 

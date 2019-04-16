@@ -18,25 +18,11 @@
                             <td>{{$rs->id}}</td>
                             <td>{{$rs->name}}</td>
                             <td>{{$rs->token}}</td>
-                            <td><a href="{{ route('backstage.chef.messagetest.edit',$rs->id) }}" class="btn btn-info" style="text-decoration:none;">修改</a></td>
+                            <td><a href="{{ route('backstage.manager.token.edit',$rs->id) }}" class="btn btn-info" style="text-decoration:none;">修改</a></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>

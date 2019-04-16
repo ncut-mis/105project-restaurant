@@ -1,5 +1,3 @@
-
-
 <head>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script>
@@ -44,7 +42,7 @@
 </div>
 </body>
 
-<form action="/backstage/chef/messagetest/{{$restaurant->id}}" method="POST" role="form">
+<form action="/backstage/token/{{$restaurant->id}}" method="POST" role="form">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
     <div class="col-md-12">

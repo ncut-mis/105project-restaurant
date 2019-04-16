@@ -86,55 +86,9 @@ class KitchenController extends Controller
     {
         //
     }
-
     public function fire()
     {
         return view('backstage.chef.noti.index');
-    }
-    public function fire2()
-    {
-        $optionBuilder = new OptionsBuilder();
-        $optionBuilder->setTimeToLive(60*20);
-
-        $notificationBuilder = new PayloadNotificationBuilder('my title');
-        $notificationBuilder->setBody('Hello world')
-            ->setSound('default');
-
-        $dataBuilder = new PayloadDataBuilder();
-        $dataBuilder->addData(['a_data' => 'my_data']);
-
-        $option = $optionBuilder->build();
-        $notification = $notificationBuilder->build();
-        $data = $dataBuilder->build();
-
-
-        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
-            ->value('token');
-
-
-        $token = $restaurant;
-
-        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
-
-        $downstreamResponse->numberSuccess();
-        $downstreamResponse->numberFailure();
-
-
-//return Array - you must remove all this tokens in your database
-        $downstreamResponse->tokensToDelete();
-
-//return Array (key : oldToken, value : new token - you must change the token in your database )
-        $downstreamResponse->tokensToModify();
-
-//return Array - you should try to resend the message to the tokens in the array
-        $downstreamResponse->tokensToRetry();
-
-// return Array (key:token, value:errror) - in production you should remove from your database the tokens
-        return view('backstage.chef.noti.index2');
-    }
-    public function fire3()
-    {
-        return view('backstage.chef.noti.index3');
     }
     public function noti()
     {
@@ -157,7 +111,7 @@ class KitchenController extends Controller
             ->toArray();
         $tokens = $restaurant;
 
-        sleep(5);
+        sleep(1);
 
         $downstreamResponse = FCM::sendTo($tokens, $option, $notification, $data);
 
@@ -167,26 +121,5 @@ class KitchenController extends Controller
         $downstreamResponse->tokensToModify();
         $downstreamResponse->tokensToRetry();
         return redirect()->route('backstage.chef.meal.index');
-    }
-    public function messagetest()
-    {
-        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
-        ->get();
-        $data = ['restaurant'=>$restaurant];
-        return view('backstage.chef.noti.index4',$data);
-    }
-    public function messagetestedit($id)
-    {
-        $abc = Restaurant::find($id);
-        $bbc = ['restaurant' => $abc];
-        return view('backstage.chef.noti.edit', $bbc);
-    }
-    public function messagetestupdate(Request $request, $id)
-    {
-        $abc = Restaurant::find($id);
-        $abc->token=$request->token;
-        $abc->save();
-        $data = ['123'=>$abc];
-        return redirect()->route('backstage.chef.messagetest',$data);
     }
 }
