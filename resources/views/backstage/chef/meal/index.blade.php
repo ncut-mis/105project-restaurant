@@ -19,7 +19,7 @@
         </div>
         <div>
             <a href="{{ route('backstage.chef.meal.create') }}" class="btn btn-success"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-plus-circle"> 新增餐點</i></font></a>
-            <a href="{{ route('noti') }}" class="btn btn-info"><font color="#ffffff" face="微軟正黑體">發送通知(Laravel-FCM版)</font></a>
+            <a href="{{ route('backstage.chef.noti') }}" class="btn btn-info"><font color="#ffffff" face="微軟正黑體">發送通知(Laravel-FCM版)</font></a>
         </div>
     </div>
     </font>

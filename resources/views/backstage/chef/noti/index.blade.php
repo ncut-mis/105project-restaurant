@@ -47,7 +47,7 @@
 
     var key = 'AAAAWvSSlZU:APA91bEdu07BlcRY0i-y2av_bPdNmP5e218LTZFotxsiMUxvS9i98gKBDmtTV5Zh19Z6rOM8xw-uHshM9B3lXYQ42y_kbHiZAkFqVfX7TxkWmX_2_r8Mgmbcik6hmjNhJVOfMhlJCKCo';
 
-    var to = 'eTexRuVS0rM:APA91bH-2Rs0eIG8xMrak3v0a6bINMvRUuq9j5sByG1_k7-nJxs421NU7Qac4kPpnGFIrpHCe_R7A_CnJXuc3uf1hXP52vl9glR6RoK-DM1ngs7ppIOV_wV5sZO0Tuj6k-qx3DxE6FtH';
+    var to = '';
 
     var notification = {
         'title':'receive_my title',

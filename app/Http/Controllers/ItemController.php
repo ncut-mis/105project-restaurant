@@ -1,9 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Order;
 use Auth;
 use App\Item;
 use Illuminate\Http\Request;
+use LaravelFCM\Message\OptionsBuilder;
+use LaravelFCM\Message\PayloadDataBuilder;
+use LaravelFCM\Message\PayloadNotificationBuilder;
+use FCM;
+use App\Restaurant;
 
 class ItemController extends Controller
 {
@@ -94,5 +100,49 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         //
+    }
+    public function noti(Request $request, Item $item,$id,$item_id)
+    {
+        $abc = ['ss'=>$id];
+
+        $name = Item::join('meals','items.meal_id','=','meals.id')
+            ->where('order_id',$id)
+            ->where('items.id',$item_id)
+            ->value('name');
+
+        $number = Item::where('id',$item_id)->value('quantity');
+
+        $title = $name.'   完成囉！';
+        $body = '數量：  '.$number.'  份';
+
+        $optionBuilder = new OptionsBuilder();
+        $optionBuilder->setTimeToLive(60*20);
+
+        $notificationBuilder = new PayloadNotificationBuilder($title);
+        $notificationBuilder->setBody($body)
+            ->setSound('default');
+
+        $dataBuilder = new PayloadDataBuilder();
+        $dataBuilder->addData(['a_data' => 'my_data']);
+
+        $option = $optionBuilder->build();
+        $notification = $notificationBuilder->build();
+        $data = $dataBuilder->build();
+
+        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
+            ->pluck('token')
+            ->toArray();
+        $tokens = $restaurant;
+
+        sleep(1);
+
+        $downstreamResponse = FCM::sendTo($tokens, $option, $notification, $data);
+
+        $downstreamResponse->numberSuccess();
+        $downstreamResponse->numberFailure();
+        $downstreamResponse->tokensToDelete();
+        $downstreamResponse->tokensToModify();
+        $downstreamResponse->tokensToRetry();
+        return redirect()->route('backstage.chef.detail.index',$abc);
     }
 }
