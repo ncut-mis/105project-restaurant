@@ -83,9 +83,51 @@
 @endfor
 
 
+----------------------
+<br>
 
+@php
+    $a='16156655635211171012321710';
+    $b=strlen( $a );
+@endphp
+@for ($i=0;$i<=$b;$i=$i+1)
+    @php
+        switch ( substr( $a,$i,1)) {
+         case "0":
+               echo "NOTE_,";
+               break;
+           case "1":
+               echo "NOTE_C4,";
+               break;
+           case "2":
+               echo "NOTE_D4,";
+               break;
+           case "3":
+               echo "NOTE_E4,";
+               break;
+           case "4":
+               echo "NOTE_F4,";
+               break;
+           case "5":
+               echo "NOTE_G4,";
+               break;
+           case "6":
+               echo "NOTE_A4,";
+               break;
+           case "7":
+               echo "NOTE_B4,";
+               break;
+       }
+    @endphp
+@endfor
+<br>
+我是{{$b}}個
+<br>
+@for ($i=0;$i<$b;$i=$i+1)
+    16,
 
-
+@endfor
+<br>
 {{--驗證碼產生--}}
 --------------------------------------------
 <br>
