@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Staff extends Authenticatable
 {
     use Notifiable;
-    protected $table = 'staff';
+    protected $table = 'staffs';
     protected $fillable = [
         'id',
         'restaurant_id',

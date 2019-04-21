@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Restaurant;
 use Illuminate\Http\Request;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
+use Auth;
 use FCM;
 
 class KitchenController extends Controller
@@ -84,12 +86,11 @@ class KitchenController extends Controller
     {
         //
     }
-
     public function fire()
     {
         return view('backstage.chef.noti.index');
     }
-    public function fire2()
+    public function noti()
     {
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
@@ -105,28 +106,20 @@ class KitchenController extends Controller
         $notification = $notificationBuilder->build();
         $data = $dataBuilder->build();
 
-        $token = "dGtUbr_cro0:APA91bEoMfJzpTZL9xFZj1rQRsunnUYx0QCK3A0DExumVK7x8mWa0WIsBy_UndMu4AYUX9qOsZxtRfKraVNXIROGoC9RDEg-S1IkJ9Oe3BbzxDCElSb0QMXYVixw57Iz-cngCOBptDqv";
+        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
+            ->pluck('token')
+            ->toArray();
+        $tokens = $restaurant;
 
-        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+        sleep(1);
+
+        $downstreamResponse = FCM::sendTo($tokens, $option, $notification, $data);
 
         $downstreamResponse->numberSuccess();
         $downstreamResponse->numberFailure();
-
-
-//return Array - you must remove all this tokens in your database
         $downstreamResponse->tokensToDelete();
-
-//return Array (key : oldToken, value : new token - you must change the token in your database )
         $downstreamResponse->tokensToModify();
-
-//return Array - you should try to resend the message to the tokens in the array
         $downstreamResponse->tokensToRetry();
-
-// return Array (key:token, value:errror) - in production you should remove from your database the tokens
-        return view('backstage.chef.noti.index2');
-    }
-    public function fire3()
-    {
-        return view('backstage.chef.noti.index3');
+        return redirect()->route('backstage.chef.meal.index');
     }
 }

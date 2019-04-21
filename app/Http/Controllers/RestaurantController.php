@@ -63,4 +63,26 @@ class RestaurantController extends Controller
     {
 
     }
+
+    public function tokenindex()
+    {
+        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
+            ->get();
+        $data = ['restaurant'=>$restaurant];
+        return view('backstage.manager.token.index',$data);
+    }
+    public function tokenedit($id)
+    {
+        $abc = Restaurant::find($id);
+        $bbc = ['restaurant' => $abc];
+        return view('backstage.manager.token.edit', $bbc);
+    }
+    public function tokenupdate(Request $request, $id)
+    {
+        $abc = Restaurant::find($id);
+        $abc->token=$request->token;
+        $abc->save();
+        $data = ['123'=>$abc];
+        return redirect()->route('backstage.manager.token.index',$data);
+    }
 }

@@ -9,13 +9,13 @@
         </div>
     </div>
     <!-- /.row -->
-    @include('backstage.layouts.partials.validation')
+    @include('backstage.chef.layouts.partials.validation')
     <!-- /.row -->
     <div class="row" style="text-align:center" >
         餐點類型：輸入1代表主餐、2代表開胃品、3代表沙拉、4代表前菜、5代表湯品、6代表甜品、7代表飲料。
     </div>
     <div class="row">
-        <form action="/backstage/chef/meal/{{$meal->id}}" method="POST" role="form">
+        <form action="/backstage/chef/meal/{{$meal->id}}" method="POST" role="form" enctype ="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
             <div class="col-md-12">
@@ -27,7 +27,7 @@
                             <div class="form-group row">
                                 <label for="meal_types_id" class="col-md-4 col-form-label" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('餐點類型') }}</font></label>
                                 <div class="col-md-8">
-                                    <input name="meal_types_id" class="form-control" placeholder="請輸入名稱" value="{{$meal->meal_types_id}}" required>
+                                    <input name="category_id" class="form-control" placeholder="請輸入名稱" value="{{$meal->category_id}}" required>
                                 </div>
                             </div>
                             {{--名稱--}}
@@ -38,10 +38,10 @@
                                 </div>
                             </div>
                             {{--照片--}}
-                            <div class="form-group row">
-                                <label for="position" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('照片') }}</font></label>
+                            <div class="form-group row{{ $errors->has('photo') ? ' has-error' : '' }}">
+                                <label for="logo" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('照片') }}</font></label>
                                 <div class="col-md-8">
-                                    <input name="photo" class="form-control" placeholder="請輸入照片網址" value="{{$meal->photo}}" required>
+                                    <input type="file" name="photo" class="form-control" accept ="image/*">
                                 </div>
                             </div>
                             {{--原料說明--}}

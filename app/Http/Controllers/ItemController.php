@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Order;
 use Auth;
-use App\Coupon;
+use App\Item;
 use Illuminate\Http\Request;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
@@ -11,17 +11,22 @@ use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 use App\Restaurant;
 
-class CouponController extends Controller
+class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $coupon = Coupon::where('restaurant_id', Auth::user()->restaurant_id)->get();
-        return view('backstage.manager.coupon.index', ['coupons' => $coupon]);
+        $item = Item::join('meals','items.meal_id','=','meals.id')
+            ->where('order_id',$id)
+            ->select('items.id','items.meal_id','meals.name','items.quantity','items.status','items.updated_at','items.order_id')
+            ->get();
+
+        $data = ['item' => $item,];
+        return view('backstage.chef.od.de.index',$data);
     }
 
     /**
@@ -31,7 +36,7 @@ class CouponController extends Controller
      */
     public function create()
     {
-        return view('backstage.manager.coupon.create');
+        //
     }
 
     /**
@@ -42,25 +47,16 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        Coupon::create([
-            'restaurant_id' => Auth::user()->restaurant_id,
-            'title' => $request['title'],
-            'content' => $request['content'],
-            'discount' => $request['discount'],
-            'lowestprice' => $request['lowestprice'],
-            'StartTime' => $request['StartTime'],
-            'EndTime' => $request['EndTime'],
-        ]);
-        return redirect()->route('backstage.manager.coupon.index')->with('success','成功新增 !');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Coupon  $coupon
+     * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function show(Coupon $coupon)
+    public function show(Item $item)
     {
         //
     }
@@ -68,46 +64,56 @@ class CouponController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Coupon  $coupon
+     * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Item $item,$id,$item_id)
     {
-        $coupon=Coupon::find($id);
-        $data = ['coupons' => $coupon];
-        return view('backstage.manager.coupon.edit', $data);
+        $item = Item::find($item_id);
+        $data = ['item' => $item];
+        $data2=['ss'=>$id];
+        return view('backstage.chef.od.de.edit',$data,$data2);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Coupon  $coupon
+     * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, Item $item,$id,$item_id)
     {
-        $coupon=Coupon::find($id);
-        $coupon->update($request->all());
-        return redirect()->route('backstage.manager.coupon.index')->with('success','修改成功 !');
+        $item = Item::find($item_id);
+        $item->status=$request->status;
+        $item->save();
+        $data = ['ss'=>$id];
+        return redirect()->route('backstage.chef.detail.index',$data);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Coupon  $coupon
+     * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Item $item)
     {
-        Coupon::destroy($id);
-        return redirect()->route('backstage.manager.coupon.index')->with('success','刪除完成 !');
+        //
     }
-    public function noti($id)
+    public function noti(Request $request, Item $item,$id,$item_id)
     {
-        $title = Coupon::where('id',$id)->value('title');
+        $abc = ['ss'=>$id];
 
-        $body = Coupon::where('id',$id)->value('content');
+        $name = Item::join('meals','items.meal_id','=','meals.id')
+            ->where('order_id',$id)
+            ->where('items.id',$item_id)
+            ->value('name');
+
+        $number = Item::where('id',$item_id)->value('quantity');
+
+        $title = $name.'   完成囉！';
+        $body = '數量：  '.$number.'  份';
 
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
@@ -137,6 +143,6 @@ class CouponController extends Controller
         $downstreamResponse->tokensToDelete();
         $downstreamResponse->tokensToModify();
         $downstreamResponse->tokensToRetry();
-        return redirect()->route('backstage.manager.coupon.index');
+        return redirect()->route('backstage.chef.detail.index',$abc);
     }
 }

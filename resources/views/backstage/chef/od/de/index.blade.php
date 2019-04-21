@@ -24,16 +24,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($detail as $de)
+                        @foreach($item as $it)
                             <tr>
-                                <td>{{$de->id}}</td>
-                                <td>{{$de->name}}</td>
-                                <td>{{$de->quantity}}</td>
+                                <td>{{$it->id}}</td>
+                                <td>{{$it->name}}</td>
+                                <td>{{$it->quantity}}</td>
                                 <td>
-                                    <form action="/backstage/chef/rcveod/{{$de->order_id}}/{{$de->id}}" method="POST" role="form">
+                                    <form action="/backstage/chef/rcveod/{{$it->order_id}}/{{$it->id}}" method="POST" role="form">
                                         {{ csrf_field() }}
                                         {{ method_field('PATCH') }}
-                                        @if($de->status==0)
+                                        @if($it->status==0)
                                             <input name="status" type="hidden" class="form-control" placeholder="請輸入狀態" value="1" required>
                                             <button type="submit" class="btn btn-success">完成</button>
                                         @else
@@ -42,34 +42,15 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <script>/*以JavaScript做網頁推播*/
-                                        function cc()
-                                        {
-                                            var notifyConfig = //宣告通知相關內容
-                                                {
-                                                    body: '\\ ^o^ /', // 設定內容
-                                                    icon: '/images/favicon.ico' // 設定 icon
-                                                };
-                                            if (Notification.permission === 'default' || Notification.permission === 'undefined')
-                                            //9~17行，請求使用者同意顯示瀏覽器通知功能
-                                            {
-                                                Notification.requestPermission(function (permission) {
-                                                    if (permission === 'granted')// 使用者同意授權
-                                                    {
-                                                    }
-                                                });
-                                            }
-                                            var notification = new Notification('有一份餐點完成囉!', notifyConfig); // 建立通知&通知的title
-                                            /* 點擊通知事件，待開發
-                                            notification.onclick = function (e)
-                                             {
-                                                 e.preventDefault(); // prevent the browser from focusing the Notification's tab
-                                                 window.open('http://project105-restaurant.herokuapp.com/backstage/counter/index'); // 打開特定網頁
-                                             }
-                                             */
-                                        }
-                                    </script>
-                                    <button id="abc" onclick="cc()">發送通知</button>
+                                    <form method="POST" action="{{ route('backstage.chef.detail.noti',[$it->order_id,$it->id]) }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('get') }}
+                                        <div>
+                                            <button type="submit" class="btn btn-primary col-md-11 ">
+                                                發送
+                                            </button>
+                                        </div>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
