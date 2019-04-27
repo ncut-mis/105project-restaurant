@@ -57,6 +57,9 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::post('/coupon'         , 'CouponController@store')->name('backstage.manager.coupon.store');
     Route::delete('/coupon/{id}'  , 'CouponController@destroy')->name('backstage.manager.coupon.destroy');
 
+    /*經理-coupon發送通知*/
+    Route::get('/{id}/coupon-noti'          , 'CouponController@noti')->name('backstage.manager.coupon.noti');
+
     /*經理-table*/
 //    Route::get('/table'           , 'TableController@index')->name('backstage.manager.table.index');
 //    Route::get('/table/create'    , 'TableController@create')->name('backstage.manager.table.create');
@@ -65,7 +68,7 @@ Route::group(['prefix' => 'backstage'], function() {
 //    Route::post('/table'          , 'TableController@store')->name('backstage.manager.table.store');
 //    Route::delete('/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
 
-    /*餐廳token修改*/
+    /*經理-餐廳token修改*/
     Route::get('token',['as'=>'backstage.manager.token.index','uses'=>'RestaurantController@tokenindex']);
     Route::get('token/{id}/edit',['as'=>'backstage.manager.token.edit','uses'=>'RestaurantController@tokenedit']);
     Route::patch('token/{id}',['as'=>'backstage.manager.token.update','uses'=>'RestaurantController@tokenupdate']);
@@ -88,9 +91,12 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('chef/rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'ItemController@index']);
     Route::patch('chef/rcveod/{id}/{item_id}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'ItemController@update']);
 
+    /*主廚-出餐完成通知*/
+    Route::get('chef/rcveod/{id}/{item_id}/noti' , ['as' => 'backstage.chef.detail.noti' , 'uses' => 'ItemController@noti']);
+
     /*firebase測試*/
     Route::get('chef/fire',['as'=>'backstage.chef.fire3','uses'=>'KitchenController@fire']);//firebase搭配javascript-fetch指令
-    Route::get('chef/noti',['as'=>'noti','uses'=>'KitchenController@noti']);//firebase搭配laravel-fcm套件的按鈕
+    Route::get('chef/noti',['as'=>'backstage.chef.noti','uses'=>'KitchenController@noti']);//firebase搭配laravel-fcm套件的按鈕
 
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/

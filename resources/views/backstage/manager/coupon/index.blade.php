@@ -65,7 +65,7 @@
                             @endif
                         </td>
                         <td>
-                            <button class="btn btn-primary"><a href="" style="color:white"><strong>發送</strong></a></button>
+                            <button class="btn btn-primary"><a href="{{ route('backstage.manager.coupon.noti',$coupon->id) }}" style="color:white"><strong>發送</strong></a></button>
                         </td>
                         <td>{{$coupon->count}}張</td>
                         <td>
