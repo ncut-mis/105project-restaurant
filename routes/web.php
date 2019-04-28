@@ -79,24 +79,24 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('chef/home'          , ['as' => 'backstage.chef.home'  , 'uses' => 'KitchenController@index']);
 
     /*主廚-餐點管理*/
-    Route::get('chef/meal'          , ['as' => 'backstage.chef.meal.index'  , 'uses' => 'MealController@index']);
-    Route::get('chef/meal/create'   , ['as' => 'backstage.chef.meal.create' , 'uses' => 'MealController@create']);
-    Route::get('chef/meal/{id}/edit', ['as' => 'backstage.chef.meal.edit'   , 'uses' => 'MealController@edit']);
-    Route::patch('chef/meal/{id}'   , ['as' => 'backstage.chef.meal.update' , 'uses' => 'MealController@update']);
-    Route::post('chef/meal'         , ['as' => 'backstage.chef.meal.store'  , 'uses' => 'MealController@store']);
-    Route::delete('chef/meal/{id}'  , ['as' => 'backstage.chef.meal.destroy', 'uses' => 'MealController@destroy']);
+    Route::get('meal'          , ['as' => 'backstage.chef.meal.index'  , 'uses' => 'MealController@index']);
+    Route::get('meal/create'   , ['as' => 'backstage.chef.meal.create' , 'uses' => 'MealController@create']);
+    Route::get('meal/{id}/edit', ['as' => 'backstage.chef.meal.edit'   , 'uses' => 'MealController@edit']);
+    Route::patch('meal/{id}'   , ['as' => 'backstage.chef.meal.update' , 'uses' => 'MealController@update']);
+    Route::post('meal'         , ['as' => 'backstage.chef.meal.store'  , 'uses' => 'MealController@store']);
+    Route::delete('meal/{id}'  , ['as' => 'backstage.chef.meal.destroy', 'uses' => 'MealController@destroy']);
 
     /*主廚-出餐管理*/
-    Route::get('chef/rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
-    Route::get('chef/rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'ItemController@index']);
-    Route::patch('chef/rcveod/{id}/{item_id}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'ItemController@update']);
+    Route::get('rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
+    Route::get('rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'ItemController@index']);
+    Route::patch('rcveod/{id}/{item_id}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'ItemController@update']);
 
     /*主廚-出餐完成通知*/
-    Route::get('chef/rcveod/{id}/{item_id}/noti' , ['as' => 'backstage.chef.detail.noti' , 'uses' => 'ItemController@noti']);
+    Route::get('rcveod/{id}/{item_id}/noti' , ['as' => 'backstage.chef.detail.noti' , 'uses' => 'ItemController@noti']);
 
     /*firebase測試*/
-    Route::get('chef/fire',['as'=>'backstage.chef.fire3','uses'=>'KitchenController@fire']);//firebase搭配javascript-fetch指令
-    Route::get('chef/noti',['as'=>'backstage.chef.noti','uses'=>'KitchenController@noti']);//firebase搭配laravel-fcm套件的按鈕
+    Route::get('firejava',['as'=>'backstage.chef.fire3','uses'=>'KitchenController@fire']);//firebase搭配javascript-fetch指令
+    Route::get('firelara',['as'=>'backstage.chef.noti','uses'=>'KitchenController@noti']);//firebase搭配laravel-fcm套件的按鈕
 
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/

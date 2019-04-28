@@ -15,7 +15,7 @@
         餐點類型：輸入1代表主餐、2代表開胃品、3代表沙拉、4代表前菜、5代表湯品、6代表甜品、7代表飲料。
     </div>
     <div class="row">
-        <form action="/backstage/chef/meal/{{$meal->id}}" method="POST" role="form" enctype ="multipart/form-data">
+        <form action="/backstage/meal/{{$meal->id}}" method="POST" role="form" enctype ="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
             <div class="col-md-12">

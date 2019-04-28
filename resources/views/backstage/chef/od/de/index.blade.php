@@ -30,7 +30,7 @@
                                 <td>{{$it->name}}</td>
                                 <td>{{$it->quantity}}</td>
                                 <td>
-                                    <form action="/backstage/chef/rcveod/{{$it->order_id}}/{{$it->id}}" method="POST" role="form">
+                                    <form action="/backstage/rcveod/{{$it->order_id}}/{{$it->id}}" method="POST" role="form">
                                         {{ csrf_field() }}
                                         {{ method_field('PATCH') }}
                                         @if($it->status==0)
