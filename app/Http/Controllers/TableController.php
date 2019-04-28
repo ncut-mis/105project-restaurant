@@ -8,7 +8,7 @@ use Auth;
 use App\Table;
 use App\Customer;
 use App\Order;
-use App\OrderTable;
+use App\DiningTable;
 use App\Table as TableEloquent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -68,30 +68,29 @@ class TableController extends Controller
 
             $customer = Customer::create([
                 'restaurant_id' => $restaurant->id,
-                'status' => 0,
-                'verification' => $verification
+                'verification_code' => $verification
             ]);
             $insertedId = $customer->id;
 
             $order = Order::create([
+                'number' => $request['people'],
                 'restaurant_id' => $restaurant->id,
                 'customer_id' => $insertedId,
-//            'table_id'=>1,//555
-                'people' => $request['people'],
+
             ]);
             $orderId = $order->id;
 
 
             foreach ($tables as $table) {
-                $tableId = TableEloquent::where(['table' => $table, 'restaurant_id' => $restaurant->id])->firstOrFail();
-                OrderTable::create([
+                $tableId = TableEloquent::where(['number' => $table, 'restaurant_id' => $restaurant->id])->firstOrFail();
+                DiningTable::create([
                     'order_id' => $orderId,
                     'table_id' => $tableId->id,
                 ]);
             }
 
             foreach ($tables as $table) {
-                $status = Table::where(['table' => $table, 'restaurant_id' => $restaurant->id])->firstOrFail();
+                $status = Table::where(['number' => $table, 'restaurant_id' => $restaurant->id])->firstOrFail();
                 $status->status = '點餐中';
                 $status->save();
             }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\OrderTable;
+use App\DiningTable;
 use Illuminate\Http\Request;
 
 class OrderTableController extends Controller
@@ -41,10 +41,10 @@ class OrderTableController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\OrderTable  $orderTable
+     * @param  \App\DiningTable  $orderTable
      * @return \Illuminate\Http\Response
      */
-    public function show(OrderTable $orderTable)
+    public function show(DiningTable $orderTable)
     {
         //
     }
@@ -52,10 +52,10 @@ class OrderTableController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\OrderTable  $orderTable
+     * @param  \App\DiningTable  $orderTable
      * @return \Illuminate\Http\Response
      */
-    public function edit(OrderTable $orderTable)
+    public function edit(DiningTable $orderTable)
     {
         //
     }
@@ -64,10 +64,10 @@ class OrderTableController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\OrderTable  $orderTable
+     * @param  \App\DiningTable  $orderTable
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderTable $orderTable)
+    public function update(Request $request, DiningTable $orderTable)
     {
         //
     }
@@ -75,10 +75,10 @@ class OrderTableController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\OrderTable  $orderTable
+     * @param  \App\DiningTable  $orderTable
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OrderTable $orderTable)
+    public function destroy(DiningTable $orderTable)
     {
         //
     }

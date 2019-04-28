@@ -3,7 +3,7 @@
 namespace App;
 
 use \App\Restaurant as RestaurantEloquent;
-use \App\OrderTable as OrderTableEloquent;
+use \App\DiningTable as OrderTableEloquent;
 use Illuminate\Database\Eloquent\Model;
 
 class Table extends Model

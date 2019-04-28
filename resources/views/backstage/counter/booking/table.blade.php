@@ -239,15 +239,15 @@
                                     @foreach($tables as $table)
                                         @if($table->row == $i && $table->col == $k)
                                             @if($table->status == "空閒中")
-                                                <input type="checkbox" id="{{$table->table}}" name="check[]" onClick="return checkDate({{$num}})"
-                                                       value="{{$table->table}}">
+                                                <input type="checkbox" id="{{$table->number}}" name="check[]" onClick="return checkDate({{$num}})"
+                                                       value="{{$table->number}}">
                                                 {{--checked="checked"--}}
-                                                <label for="{{$table->table}}">{{$i}}-{{$k}}<p>{{ $table->status }}
+                                                <label for="{{$table->number}}">{{$i}}-{{$k}}<p>{{ $table->status }}
                                                 </label>
 
                                             @else
-                                                <input type="checkbox" disabled id="{{$table->table}}"/>
-                                                <label for="{{$table->table}}">{{$i}}-{{$k}}<p>{{ $table->status }}
+                                                <input type="checkbox" disabled id="{{$table->number}}"/>
+                                                <label for="{{$table->number}}">{{$i}}-{{$k}}<p>{{ $table->status }}
                                                 </label>
                                             @endif
                                             @break

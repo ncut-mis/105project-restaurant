@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\OrderTable::class, function (Faker $faker) {
+$factory->define(App\DiningTable::class, function (Faker $faker) {
     return [
         //
     ];

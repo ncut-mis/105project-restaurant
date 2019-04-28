@@ -5,14 +5,14 @@ use \App\Customer as CustomerEloquent;
 use \App\Restaurant as RestaurantEloquent;
 use \App\Detail as DetailEloquent;
 use \App\CouponsStatus as CouponsStatusEloquent;
-use \App\OrderTable as OrderTableEloquent;
+use \App\DiningTable as OrderTableEloquent;
 use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $fillable = [
         'restaurant_id',
         'customer_id',
-        'people',
+        'number',
         'time',
         'total',
         'PayType'
