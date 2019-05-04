@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Coupon;
+use App\Member_Coupon;
+use App\User;
 use Illuminate\Http\Request;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
@@ -105,6 +107,17 @@ class CouponController extends Controller
     }
     public function noti($id)
     {
+        $member = User::where('restaurant_id',Auth::user()->restaurant_id)->pluck('id');
+        $i = count($member);
+        for($a = 0;$a<$i;$a++)
+        {
+            Member_Coupon::create([
+                'coupon_id' => $id,
+                'member_id' => $member[$a],
+            ]);
+        }
+
+
         $title = Coupon::where('id',$id)->value('title');
 
         $body = Coupon::where('id',$id)->value('content');
@@ -123,10 +136,10 @@ class CouponController extends Controller
         $notification = $notificationBuilder->build();
         $data = $dataBuilder->build();
 
-        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
+        $member_noti = User::where('restaurant_id',Auth::user()->restaurant_id)
             ->pluck('token')
             ->toArray();
-        $tokens = $restaurant;
+        $tokens = $member_noti;
 
         sleep(1);
 
@@ -137,6 +150,11 @@ class CouponController extends Controller
         $downstreamResponse->tokensToDelete();
         $downstreamResponse->tokensToModify();
         $downstreamResponse->tokensToRetry();
+
+
+
+
+
         return redirect()->route('backstage.manager.coupon.index');
     }
 }
