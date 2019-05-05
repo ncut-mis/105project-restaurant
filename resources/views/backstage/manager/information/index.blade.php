@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            <font color="#000000" face="微軟正黑體">基本資料</font>
+            <font color="#000000" face="微軟正黑體"><i class="fa fa-info-circle"></i> 基本資料</font>
         </h1>
     </div>
 </div>
@@ -13,7 +13,7 @@
 <!-- /.row -->
 <div class="row" style="margin-bottom: 20px; text-align:right">
     <div class="col-lg-12">
-        <a href="{{ route('backstage.manager.information.edit',Auth::user()->restaurant_id)}}" class="btn btn-info"><font color="#ffffff" face="微軟正黑體">修改餐廳基本資料</font></a>
+        <a href="{{ route('backstage.manager.information.edit',Auth::user()->restaurant_id)}}" class="btn btn-info"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-edit"></i> 修改餐廳基本資料</font></a>
     </div>
 </div>
 
@@ -48,7 +48,7 @@
                         <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　地　　址：') }}</b></font><font color="#000000" face="微軟正黑體" size="4">{{$res->address}}</font></td>
                     </tr>
                     <tr>
-                        <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　營業時間：') }}</b></font><font color="#000000" face="微軟正黑體" size="4">{{$res->opening_hours}}</font>~<font color="#000000" face="微軟正黑體" size="4">{{$res->end_hours}}</font></td>
+                        <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　營業時間：') }}</b></font><font color="#000000" face="微軟正黑體" size="4">{{$res->OpenHour}}</font>~<font color="#000000" face="微軟正黑體" size="4">{{$res->EndHour}}</font></td>
                     </tr>
                 @endforeach
                 </tbody>

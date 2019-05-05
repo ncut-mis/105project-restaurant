@@ -10,25 +10,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $rs=Restaurant::orderBy('id','ASC')->get();
-        $data=['restaurants'=>$rs];
-        return view('index',$data);
-    }
-    public function staff($id)
-    {
-        $rs=Restaurant::where('id',$id)->get();
-        $data=['restaurants'=>$rs];
-
-//        $sts=Staff::where('res_id',$id)->get();
-//        $data2=['staffs'=>$sts];
-//        return view('auth.restaurantstaff',$data,$data2);
-        return view('auth.login11',$data);
-    }
-
-    public function chose(Request $request)
-    {
-        $users=Staff::where(['restaurant_id'=>$request->restaurant_id,'position'=>$request->position])->get();
-        $data=['users'=>$users];
-        return view('/auth/login22',$data);
+        return view('welcome');
     }
 }

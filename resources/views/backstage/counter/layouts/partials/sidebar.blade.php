@@ -8,7 +8,7 @@
             {{--<span class="icon-bar"></span>--}}
             {{--<span class="icon-bar"></span>--}}
         {{--</button>--}}
-        <a class="navbar-brand" href="{{ route('backstage.dashboard.index') }}"><font color="#ffffff" face="微軟正黑體">餐廳點餐系統後台</font></a>
+        <a class="navbar-brand"><font color="#ffffff" face="微軟正黑體">餐廳點餐系統後台</font></a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">

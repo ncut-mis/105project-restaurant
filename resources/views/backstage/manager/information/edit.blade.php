@@ -53,14 +53,14 @@
                         <div class="form-group row">
                             <label for="opening_hours" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="4">{{ __('營業時間_Open') }}</font></label>
                             <div class="col-md-8">
-                                <input name="opening_hours" type="time" class="form-control" placeholder="請輸入營業時間_open" value="{{$restaurants->opening_hours}}">
+                                <input name="OpenHour" type="time" class="form-control" placeholder="請輸入營業時間_open" value="{{$restaurants->OpenHour}}">
                             </div>
                         </div>
                         {{--營業時間_end--}}
                         <div class="form-group row">
                             <label for="end_hours" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="4">{{ __('營業時間_End') }}</font></label>
                             <div class="col-md-8">
-                                <input name="end_hours" type="time" class="form-control" placeholder="請輸入營業時間_End" value="{{$restaurants->end_hours}}">
+                                <input name="EndHour" type="time" class="form-control" placeholder="請輸入營業時間_End" value="{{$restaurants->EndHour}}">
                             </div>
                         </div>
                         {{--更新--}}

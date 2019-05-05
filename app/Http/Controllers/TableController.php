@@ -15,11 +15,6 @@ use Illuminate\Support\Facades\DB;
 
 class TableController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function MemberCheck(Request $request, Restaurant $restaurant)
     {
         $people = $request['people'];
@@ -122,56 +117,34 @@ class TableController extends Controller
         return view('backstage.counter.booking.table', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index_2(Restaurant $restaurant, Request $request)
+    {
+        $num = $request['num'];
+        $tables = TableEloquent::where('restaurant_id', $restaurant->id)->get();
+        $data = ['tables' => $tables, 'num' => $num];
+        return view('backstage.manager.table.index', $data);
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Table $table
-     * @return \Illuminate\Http\Response
-     */
     public function show(Table $table)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Table $table
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Table $table)
     {
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Table $table
-     * @return \Illuminate\Http\Response
-     */
     public function update()
     {
         $tables = TableEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
@@ -181,12 +154,6 @@ class TableController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Table $table
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Table $table)
     {
         //

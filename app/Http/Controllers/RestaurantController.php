@@ -53,8 +53,8 @@ class RestaurantController extends Controller
             'logo' => $file_name,
             'phone' => $request['phone'],
             'address' => $request['address'],
-            'opening_hours' => $request['opening_hours'],
-            'end_hours' => $request['end_hours'],
+            'OpenHour' => $request['OpenHour'],
+            'EndHour' => $request['EndHour'],
         ]);
         return redirect()->route('backstage.manager.information.index')->with('success','修改成功 !');
     }

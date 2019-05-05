@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            <font color="#000000" face="微軟正黑體">人員管理 <small>所有人員列表</small></font>
+            <font color="#000000" face="微軟正黑體"><i class="fa fa-users"></i> 人員管理 <small>所有人員列表</small></font>
         </h1>
     </div>
 </div>
@@ -12,7 +12,7 @@
 
 <div class="row" style="margin-bottom: 20px; text-align:right">
     <div class="col-lg-12">
-        <a href="{{ route('backstage.manager.staff.create') }}" class="btn btn-success"><font color="#ffffff" face="微軟正黑體">新增人員</font></a>
+        <a href="{{ route('backstage.manager.staff.create') }}" class="btn btn-success"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-plus-circle"></i> 新增人員</font></a>
     </div>
 </div>
 <!-- /.row -->
@@ -45,11 +45,11 @@
                         <td>{{$sf->email}}</td>
                         <td>{{$sf->phone}}</td>
                         <td>{{$sf->address}}</td>
-                        <td><a href="{{ route('backstage.manager.staff.edit',$sf->id) }}" class="btn btn-info" style="text-decoration:none;">修改</a></td>
+                        <td><a href="{{ route('backstage.manager.staff.edit',$sf->id) }}" class="btn btn-info" style="text-decoration:none;"><i class="fa fa-edit"></i> 修改</a></td>
                         <td><form action="{{ route('backstage.manager.staff.destroy', $sf->id) }}" method="POST" onsubmit="return ConfirmDelete()">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                <button  class="btn btn-danger">刪除</button>
+                                <button  class="btn btn-danger"><i class="fa fa-trash"></i> 刪除</button>
                             </form>
                         </td>
                     </tr>

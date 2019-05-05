@@ -32,7 +32,7 @@
                         <div class="form-group row">
                             <label for="content" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('內容') }}</font></label>
                             <div class="col-md-8">
-                                <input name="content" class="form-control" placeholder="請輸入內容" value="{{$posts->content}}" required>
+                                <textarea name="content" class="form-control" placeholder="請輸入內容" required>{{$posts->content}}</textarea>
                             </div>
                         </div>
                         {{--日期--}}

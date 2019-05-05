@@ -1,98 +1,82 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #FFFFFF;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+@extends('layouts.back')
+@section('content')
+    <div class="col-md-12">
+        <div class="card" style="border-style:none;background-color:transparent;padding-top: 50px;text-align: center">
+            {{--            <font color="#000000" face="微軟正黑體" size="100"><b>尚食併狂-餐廳後台</b></font>--}}
+            <font color="#000000" face="微軟正黑體" size="100"><b>餐廳後台</b></font>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                @if(session('success'))
+                    <div class="alert alert-success">{{session('success')}}</div>
+                @elseif(session('error'))
+                    <div class="alert alert-danger">{{session('error')}}</div>
+                @endif
+                <div class="card">
+                    <form method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+                        <div class="card-header" style="text-align: center">
+                            <font color="#737373" face="微軟正黑體" size="6"><b>{{ __('餐廳人員登入') }}</b></font>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="position" class="col-sm-3" style="text-align:right;line-height:35px;"><font color="#000000" face="微軟正黑體" size="4"><b>{{ __('職稱　') }}</b></font></label>
+                                <div class="col-sm-9" style="text-align: left;line-height:35px;">
+                                    <form>
+                                        <select name="position">
+                                            　<option value="">請 選 擇 職 稱</option>
+                                            　<option value="經理">經理</option>
+                                            　<option value="櫃台">櫃台</option>
+                                            　<option value="主廚">主廚</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-md-3" style="text-align:right;line-height:35px;"><font color="#000000" face="微軟正黑體" size="4"><b>{{ __('帳號　') }}</b></font></label>
+                                <div class="col-md-9">
+                                    <input id="email" type="email" name="email" value="" required="required" placeholder="請輸入信箱" autofocus="autofocus" class="form-control">
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-md-3" style="text-align:right;line-height:35px;"><font color='#000000' face="微軟正黑體" size="4"><b>{{ __('密碼　') }}</b></font></label>
+                                <div class="col-md-9">
+                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="請輸入信箱">
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <button type="submit" class="btn btn-primary col-md-5" onclick="myFunction()">
+                                    {{ __('Login') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = confirm("確定要登入?");
+            if (x)
+                return true;
+            else
+                alert("無此帳號或已被停權！若有任何問題，請與您的管理員聯絡！!");
+        }
+    </script>
+@endsection
