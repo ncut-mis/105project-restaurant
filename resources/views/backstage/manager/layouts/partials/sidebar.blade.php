@@ -53,12 +53,13 @@
 
                 <a href="{{ route('backstage.manager.staff.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　人員管理</font></a>
 
-                {{--<a href="{{ route('backstage.manager.table.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-table"></i>　餐桌管理</font></a>--}}
+                <a href="{{ url('/666') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-table"></i>　餐桌管理</font></a>
 
                 <a href="{{ route('backstage.manager.coupon.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-gift"></i>　優惠券管理</font></a>
 
 
                 <a href="{{ route('backstage.manager.token.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-gift"></i>　token管理</font></a>
+
             </li>
         </ul>
     </div>

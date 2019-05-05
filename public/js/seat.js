@@ -717,7 +717,7 @@ function dropItems(idOfDraggedItem, targetId, x, y) {
     var numericIdSource = idOfDraggedItem.replace(/[^0-9]/gi, '') / 1;	// Find numeric id of source
     if (numericIdTarget - numericIdSource == 100) {	// In the html above, there's a difference in 100 between the id of the country and it's capital(example:
         // Oslo have id "box1" and Norway have id "box101", i.e. 1 + 100.
-        sourceObj.style.backgroundColor = '#0F0';	// Set green background color for dragged object
+        sourceObj.style.backgroundColor = '';	// Set green background color for dragged object
     } else {
         sourceObj.style.backgroundColor = '';	// Reset back to default white background color
     }
@@ -738,6 +738,49 @@ dragDropObj.addSource('box4', true);	// Make <div id="box4"> dragable. slide ite
 dragDropObj.addSource('box5', true);	// Make <div id="box4"> dragable. slide item back into original position after drop
 dragDropObj.addSource('box6', true);	// Make <div id="box4"> dragable. slide item back into original position after drop
 dragDropObj.addSource('box7', true);	// Make <div id="box4"> dragable. slide item back into original position after drop
+dragDropObj.addSource('box8', true);	// Make <div id="box1"> dragable. slide item back into original position after drop
+dragDropObj.addSource('box9', true);	// Make <div id="box2"> dragable. slide item back into original position after drop
+dragDropObj.addSource('box10', true);	// Make <div id="box3"> dragable. slide item back into original position after drop
+dragDropObj.addSource('box11', true);	// Make <div id="box4"> dragable. slide item back into original position after drop
+dragDropObj.addSource('box12', true);	// Make <div id="box4"> dragable. slide item back into original position after drop
+dragDropObj.addSource('box13', true);	// Make <div id="box4"> dragable. slide item back into original position after drop
+dragDropObj.addSource('box14', true);	// Make <div id="box4"> dragable. slide item back into original position after drop
+dragDropObj.addSource('box15', true);
+dragDropObj.addSource('box16', true);
+dragDropObj.addSource('box17', true);
+dragDropObj.addSource('box18', true);
+dragDropObj.addSource('box19', true);
+dragDropObj.addSource('box20', true);
+dragDropObj.addSource('box21', true);
+dragDropObj.addSource('box22', true);
+dragDropObj.addSource('box23', true);
+dragDropObj.addSource('box24', true);
+dragDropObj.addSource('box25', true);
+dragDropObj.addSource('box26', true);
+dragDropObj.addSource('box27', true);
+dragDropObj.addSource('box28', true);
+dragDropObj.addSource('box29', true);
+dragDropObj.addSource('box30', true);
+dragDropObj.addSource('box31', true);
+dragDropObj.addSource('box32', true);
+dragDropObj.addSource('box33', true);
+dragDropObj.addSource('box34', true);
+dragDropObj.addSource('box35', true);
+dragDropObj.addSource('box36', true);
+dragDropObj.addSource('box37', true);
+dragDropObj.addSource('box38', true);
+dragDropObj.addSource('box39', true);
+dragDropObj.addSource('box40', true);
+dragDropObj.addSource('box41', true);
+dragDropObj.addSource('box42', true);
+dragDropObj.addSource('box43', true);
+dragDropObj.addSource('box44', true);
+dragDropObj.addSource('box45', true);
+dragDropObj.addSource('box46', true);
+dragDropObj.addSource('box47', true);
+dragDropObj.addSource('box48', true);
+dragDropObj.addSource('box49', true);
+dragDropObj.addSource('box50', true);
 
 
 // Assigning drop events on the countries
@@ -748,6 +791,51 @@ dragDropObj.addTarget('box104', 'dropItems'); // Set <div id="leftColumn"> as a 
 dragDropObj.addTarget('box105', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
 dragDropObj.addTarget('box106', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
 dragDropObj.addTarget('box107', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
+dragDropObj.addTarget('box108', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
+dragDropObj.addTarget('box109', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
+dragDropObj.addTarget('box110', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
+dragDropObj.addTarget('box111', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
+dragDropObj.addTarget('box112', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
+dragDropObj.addTarget('box113', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
+dragDropObj.addTarget('box114', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
+dragDropObj.addTarget('box115', 'dropItems');
+dragDropObj.addTarget('box116', 'dropItems');
+dragDropObj.addTarget('box117', 'dropItems');
+dragDropObj.addTarget('box118', 'dropItems');
+dragDropObj.addTarget('box119', 'dropItems');
+dragDropObj.addTarget('box120', 'dropItems');
+dragDropObj.addTarget('box121', 'dropItems');
+dragDropObj.addTarget('box122', 'dropItems');
+dragDropObj.addTarget('box123', 'dropItems');
+dragDropObj.addTarget('box124', 'dropItems');
+dragDropObj.addTarget('box125', 'dropItems');
+dragDropObj.addTarget('box126', 'dropItems');
+dragDropObj.addTarget('box127', 'dropItems');
+dragDropObj.addTarget('box128', 'dropItems');
+dragDropObj.addTarget('box129', 'dropItems');
+dragDropObj.addTarget('box130', 'dropItems');
+dragDropObj.addTarget('box131', 'dropItems');
+dragDropObj.addTarget('box132', 'dropItems');
+dragDropObj.addTarget('box133', 'dropItems');
+dragDropObj.addTarget('box134', 'dropItems');
+dragDropObj.addTarget('box135', 'dropItems');
+dragDropObj.addTarget('box136', 'dropItems');
+dragDropObj.addTarget('box137', 'dropItems');
+dragDropObj.addTarget('box138', 'dropItems');
+dragDropObj.addTarget('box139', 'dropItems');
+dragDropObj.addTarget('box140', 'dropItems');
+dragDropObj.addTarget('box141', 'dropItems');
+dragDropObj.addTarget('box142', 'dropItems');
+dragDropObj.addTarget('box143', 'dropItems');
+dragDropObj.addTarget('box144', 'dropItems');
+dragDropObj.addTarget('box145', 'dropItems');
+dragDropObj.addTarget('box146', 'dropItems');
+dragDropObj.addTarget('box147', 'dropItems');
+dragDropObj.addTarget('box148', 'dropItems');
+dragDropObj.addTarget('box149', 'dropItems');
+dragDropObj.addTarget('box150', 'dropItems');
+
 dragDropObj.addTarget('capitals', 'dropItems'); // Set <div id="leftColumn"> as a drop target. Call function dropItems on drop
+
 
 dragDropObj.init();	// Initizlizing drag and drop object

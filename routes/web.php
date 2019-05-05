@@ -131,6 +131,10 @@ Route::get('555', function () {
     return view('/test');
 });
 
+//seat
+Route::get('666',function () {
+    return view('/backstage/manager/seat/seat');
+});
 
 //掃描QR頁面
 Route::get('scanning', function () {
