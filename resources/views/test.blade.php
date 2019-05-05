@@ -68,7 +68,7 @@
     $o=0;
     $j=1;
 @endphp
-@for($i=101;$i<151;$i++)
+@for($i=1;$i<51;$i++)
     @php
         $o++
     @endphp
@@ -78,7 +78,7 @@
             $j++;
         @endphp
     @endif
-    ({{$i}}, 3,	{{$i-100}},	'空閒中', {{$j}}, {{$o}}, '2019-01-28 22:21:52',	'2019-01-28 22:21:52'),
+    dragDropObj.addTarget('box1{{$i}}', 'dropItems');
     <br>
 @endfor
 

@@ -19,6 +19,7 @@ class StaffController extends Controller
     public function login2()
     {
         $position=Auth::user()->position;
+
         $open=Auth::user()->open;
         if($position == "經理" && $open==0){
             return view('backstage.manager.index');
