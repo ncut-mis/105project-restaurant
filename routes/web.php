@@ -14,9 +14,9 @@ error_reporting(E_ALL & ~E_NOTICE);
 
 Route::get('/',['as' => 'restaurant.index' , 'uses' => 'HomeController@index']);
 
-Route::get('restaurant/{id}' ,['as' => 'restaurant{id}.staffs' , 'uses' => 'HomeController@staff']);
+//Route::get('restaurant/{id}' ,['as' => 'restaurant{id}.staffs' , 'uses' => 'HomeController@staff']);
 
-Route::get('restaurant/{id}/staff' ,['as' => 'restaurant.staffs.chose' , 'uses' => 'HomeController@chose']);
+//Route::get('restaurant/{id}/staff' ,['as' => 'restaurant.staffs.chose' , 'uses' => 'HomeController@chose']);
 
 Route::get('login/{id}' ,['as' => 'restaurant{id}.staffs.login' , 'uses' => 'StaffController@login']);
 
@@ -26,7 +26,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 /*餐廳後台*/
 Route::group(['prefix' => 'backstage'], function() {
-    Route::get('/home'                   , 'StaffController@login2')->name('backstage.dashboard.index');
+    Route::get('/home'                   , 'StaffController@login2')->name('backstage.manager.index');
 
     /*基本資料*/
     Route::get('/information'           , 'RestaurantController@index')->name('backstage.manager.information.index');
@@ -61,12 +61,12 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('/{id}/coupon-noti'          , 'CouponController@noti')->name('backstage.manager.coupon.noti');
 
     /*經理-table*/
-//    Route::get('/table'           , 'TableController@index')->name('backstage.manager.table.index');
-//    Route::get('/table/create'    , 'TableController@create')->name('backstage.manager.table.create');
-//    Route::get('/table/{id}/edit' , 'TableController@edit')->name('backstage.manager.table.edit');
-//    Route::patch('/table/{id}'    , 'TableController@update')->name('backstage.manager.table.update');
-//    Route::post('/table'          , 'TableController@store')->name('backstage.manager.table.store');
-//    Route::delete('/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
+    Route::get('/table'           , 'TableController@index_2')->name('backstage.manager.table.index');
+    Route::get('/table/create'    , 'TableController@create')->name('backstage.manager.table.create');
+    Route::get('/table/{id}/edit' , 'TableController@edit')->name('backstage.manager.table.edit');
+    Route::patch('/table/{id}'    , 'TableController@update')->name('backstage.manager.table.update');
+    Route::post('/table'          , 'TableController@store')->name('backstage.manager.table.store');
+    Route::delete('/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
 
     /*經理-餐廳token修改*/
     Route::get('token',['as'=>'backstage.manager.token.index','uses'=>'RestaurantController@tokenindex']);

@@ -7,104 +7,32 @@ use App\Staff;
 use Illuminate\Http\Request;
 class StaffController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-//    public function index(Request $request)
+//    public function login($id)
 //    {
-//        $users=Staff::where('position',$request->position)->get();
-//        $data=['users'=>$users];
-//        return view('/auth/login11',$data);
-//    }
-    public function login($id)
-    {
-        $user=Staff::find($id);
-
-        $data=['user'=>$user];
-
-        return view('/auth/login33',$data);
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-//    public function create()
-//    {
-//        //
-//    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-//    public function store(Request $request)
-//    {
-//        //
-//    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Staff  $staff
-     * @return \Illuminate\Http\Response
-     */
-//    public function show(Staff $staff)
-//    {
-//        //
-//    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Staff  $staff
-     * @return \Illuminate\Http\Response
-     */
-//    public function edit(Staff $staff)
-//    {
-//        //
-//    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Staff  $staff
-     * @return \Illuminate\Http\Response
-     */
-//    public function update(Request $request, Staff $staff)
-//    {
-//        //
-//    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Staff  $staff
-     * @return \Illuminate\Http\Response
-     */
-//    public function destroy(Staff $staff)
-//    {
-//        //
+//        $user=Staff::find($id);
+//
+//        $data=['user'=>$user];
+//
+//        return view('/auth/login33',$data);
 //    }
 
     public function login2()
     {
         $position=Auth::user()->position;
-        if($position == "經理"){
-            return view('backstage.dashboard.index');
+        $open=Auth::user()->open;
+        if($position == "經理" && $open==0){
+            return view('backstage.manager.index');
         }
         else{
-            if($position == "櫃台") {
+            if($position == "櫃台" && $open==0) {
                 return redirect('backstage/counter/index');
             }
-                return view('backstage.chef.index');
+            else{
+                if($position == "主廚" && $open==0){
+                    return view('backstage.chef.index');
+                }
+                return redirect('/logout')->with('error','無此帳號或此帳號已被停權！若有任何問題，請與您的管理員聯絡！');
+            }
         }
     }
 
