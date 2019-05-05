@@ -58,7 +58,7 @@
                 <a href="{{ route('backstage.manager.coupon.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-gift"></i>　優惠券管理</font></a>
 
 
-                <a href="{{ route('backstage.manager.token.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-gift"></i>　token管理</font></a>
+                <a href="{{ route('backstage.manager.token.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-key"></i>　token管理</font></a>
             </li>
         </ul>
     </div>

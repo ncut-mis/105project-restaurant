@@ -41,14 +41,14 @@
                         <div class="form-group row">
                             <label for="content" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('內容') }}</font></label>
                             <div class="col-md-8">
-                                <input id="content" type="text" class="form-control" name="content" required>
+                                <textarea id="content" type="text" class="form-control" name="content" required></textarea>
                             </div>
                         </div>
                         {{--日期--}}
                         <div class="form-group row">
                             <label for="DateTime" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('張貼日期') }}</font></label>
                             <div class="col-md-8">
-                                <input id="DateTime" type="datetime-local" class="form-control" name="DateTime" required>
+                                <input id="DateTime" type="date" class="form-control" name="DateTime" required>
                             </div>
                         </div>
                         <div class="form-group row">

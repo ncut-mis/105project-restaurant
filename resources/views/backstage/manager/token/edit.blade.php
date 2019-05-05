@@ -1,75 +1,47 @@
-<head>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCTnmGUSXbyvJKbrmIcXtXMze3mecGKF-A",
-            authDomain: "project-restaurants-ncut.firebaseapp.com",
-            databaseURL: "https://project-restaurants-ncut.firebaseio.com",
-            projectId: "project-restaurants-ncut",
-            storageBucket: "project-restaurants-ncut.appspot.com",
-            messagingSenderId: "390650303893"
-        };
-        firebase.initializeApp(config);
-    </script>
-</head>
-<body>
-<p id="token"></p>
-<script>
-    const messaging = firebase.messaging();
-
-    messaging.requestPermission().then(res=>
-        {
-            return messaging.getToken();
-
-        }
-        , err => {
-            // 若拒絕通知
-            console.log(err);
-        })
-        .then(token => {
-            // 成功取得 token
-            console.log(token);
-            document.getElementById("token").innerHTML = "目前網站token為：<br>" +token;
-        });
-</script>
-
-<p></p>
-
-<div>
-
-    <button class=" col-md-12">123</button>
+@extends('backstage.manager.layouts.master')
+@section('content')
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <font color="#000000" face="微軟正黑體"><i class="fa fa-edit"></i> 修改Token </font>
+        </h1>
+    </div>
 </div>
-</body>
+<!-- /.row -->
+@include('backstage.manager.layouts.partials.validation')
+<!-- /.row -->
 
-<form action="/backstage/token/{{$restaurant->id}}" method="POST" role="form">
-    {{ csrf_field() }}
-    {{ method_field('PATCH') }}
-    <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    {{--名稱--}}
-                    <div class="form-group row">
-                        <label for="token" class="col-md-4 col-form-label" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('更新token，將上面顯示的token複製貼上於下方') }}</font></label>
-                        <div class="col-md-8">
-                            <input name="token" class="form-control" placeholder="請輸入名稱" value="{{$restaurant->token}}" required>
-                        </div>
-                    </div>
-                    {{--更新--}}
-                    <div class="form-group row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4" style="text-align:center">
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-success">更新</button>
-                            </div>
-                        </div>
-                        <div class="col-md-4"></div>
-                    </div>
-                </div>
+<div class="row">
+    <form action="/backstage/token/{{$restaurant->id}}" method="POST" role="form">
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" style="border:3px #9BA2AB solid;">
+                    <thead style="border:2px #9BA2AB solid;">
+                    <tr style="background-color: lightgrey;">
+                        <th width="700" style="text-align: center">Token</th>
+                        <th width=50" style="text-align: center">送出</th>
+                    </tr>
+                    </thead>
+                    <tbody style="border:3px #9BA2AB solid;">
+                        <tr>
+                            <td>
+                                <input name="token" class="form-control" placeholder="請輸入名稱" value="{{$restaurant->token}}" required>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success">更新</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="col-md-3"></div>
-    </div>
-</form>
+    </form>
+</div>
+
+<!-- /.row -->
+@endsection
