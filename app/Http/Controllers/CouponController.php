@@ -93,8 +93,7 @@ class CouponController extends Controller
 
         $notificationBuilder = new PayloadNotificationBuilder($title);
         $notificationBuilder->setBody($body)
-            ->setSound('default')
-            ->setClickAction('https://105project-platform.azurewebsites.net/coupon/{$id}');
+            ->setSound('default');
 
         $dataBuilder = new PayloadDataBuilder();
         $dataBuilder->addData(['a_data' => 'my_data']);
