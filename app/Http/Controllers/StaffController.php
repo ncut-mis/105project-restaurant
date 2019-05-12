@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Restaurant;
 use Auth;
 use App\Staff;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class StaffController extends Controller
     {
         $position=Auth::user()->position;
 
-        $open=Auth::user()->open;
+        $restaurant_id=Auth::user()->restaurant_id;
+        $open=Restaurant::where(['id'=>$restaurant_id])->value('open');
+
         if($position == "經理" && $open==0){
             return view('backstage.manager.index');
         }
