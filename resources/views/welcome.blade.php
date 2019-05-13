@@ -24,19 +24,6 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="position" class="col-sm-3" style="text-align:right;line-height:35px;"><font color="#000000" face="微軟正黑體" size="4"><b>{{ __('職稱　') }}</b></font></label>
-                                <div class="col-sm-9" style="text-align: left;line-height:35px;">
-                                    <form>
-                                        <select name="position">
-                                            　<option value="">請 選 擇 職 稱</option>
-                                            　<option value="經理">經理</option>
-                                            　<option value="櫃台">櫃台</option>
-                                            　<option value="主廚">主廚</option>
-                                        </select>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label for="email" class="col-md-3" style="text-align:right;line-height:35px;"><font color="#000000" face="微軟正黑體" size="4"><b>{{ __('帳號　') }}</b></font></label>
                                 <div class="col-md-9">
                                     <input id="email" type="email" name="email" value="" required="required" placeholder="請輸入信箱" autofocus="autofocus" class="form-control">

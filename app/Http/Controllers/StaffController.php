@@ -23,22 +23,17 @@ class StaffController extends Controller
 
         $restaurant_id=Auth::user()->restaurant_id;
         $open=Restaurant::where(['id'=>$restaurant_id])->value('open');
-
-        if($position == "經理" && $open==0){
+//echo $position,$open;
+        if($position == "經理" && $open==0)
             return view('backstage.manager.index');
-        }
-        else{
-            if($position == "櫃台" && $open==0) {
+        else
+            if($position == "櫃台" && $open==0)
                 return redirect('backstage/counter/index');
-            }
-            else{
-                if($position == "主廚" && $open==0){
+            else
+                if($position == "主廚" && $open==0)
                     return view('backstage.chef.index');
-                }
                 echo "<script>alert('無此帳號或已被停權！若有任何問題，請與您的管理員聯絡！');location.href = '/logout';</script>";
 //                redirect('/logout');
-            }
-        }
     }
 
     public function index()
