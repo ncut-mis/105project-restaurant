@@ -114,6 +114,8 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('/restaurant/{restaurant}/people/check',['as'=>'restaurant.people.check','uses'=>'TableController@PeopleCheck']);
     Route::get('/restaurant/{restaurant}/member/check',['as'=>'restaurant.member.check','uses'=>'TableController@MemberCheck']);
     Route::patch('/restaurant/{restaurant}/customer/check',['as'=>'restaurant.customer.check','uses'=>'TableController@CustomerCheck']);
+    Route::get('/restaurant/{restaurant}/member/check/store',['as'=>'restaurant.member.store','uses'=>'MemberCheckController@store']);
+
 });
 
 

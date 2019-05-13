@@ -18,8 +18,8 @@ class TableController extends Controller
     public function MemberCheck(Request $request, Restaurant $restaurant)
     {
         $people = $request['people'];
-        $tables = $request['table'];
-        $data = ['tables' => $tables, 'people' => $people];
+        $checks = $request['table'];
+        $data = ['checks' => $checks, 'people' => $people];
         return view('backstage.counter.booking.MemberCheck', $data);
 
     }
