@@ -174,8 +174,6 @@
             -webkit-animation-name: rubberBand;
             animation-name: rubberBand;
         }
-
-
     </style>
 </head>
 @section('content')
@@ -189,65 +187,52 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <font color="#000000" size="5px" face="微軟正黑體">Step4->確認會員身分</font>
+            <font color="#000000" size="5px" face="微軟正黑體">Step5->顯示訂位條碼</font>
         </div>
     </div>
     <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-             aria-valuemax="100">85%
+        <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
+             aria-valuemax="100">100%
         </div>
     </div>
     <div class="row">
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
+        <div class="col-lg-12 justify-content-center" style="text-align:center">
+            {{$people}}
+            @foreach($tables as $table)
+                {{$table}}+
+            @endforeach
+            {{$ver}}+{{$cus}}
+            先寫儲存 在寫一個路由 轉業面 不然會依值重複存
+        </div>
     </div>
 
-
-    <form role="form"
-          action="{{ route('restaurant.member.store',Auth::user()->restaurant_id) }}">
-        {{ csrf_field() }}
-
-        <div class="row">
-
-            <div class="col-lg-6 col-lg-offset-3" style="text-align:center">
-
-
-                <font size="20px">會員驗證：</font>
-                <br>
-                <div style="margin-top: 20px"></div>
-
-
-                @foreach($checks as $check)
-                    <input class="form-control col-md-6 hidden" type="text" name="table[]" value="{{$check}}">
-                @endforeach
-
-
-                <input class="form-control col-md-6 hidden" type="text" name="people" value="{{$people}}">
-
-                <input type="text" class="form-control memberCenter" name="ver" aria-label="Sizing example input"
-                       aria-describedby="inputGroup-sizing-lg">
-
-                <div style="margin-top: 20px"></div>
-                <button type="submit"
-                        style="text-decoration:none; width:150px;height:150px; margin-top: 20px; margin-right: 20px;"
-                        class="btn btn-primary"><font size="3px">掃描後</font><br><font size="10px">確認</font>
+    <div class="row">
+        <div class="col-lg-12 justify-content-center" style="text-align:center">
+            @php
+                $v1="https://105project-order.azurewebsites.net/customer/".$cus."/verify/".$ver
+            @endphp
+            {!! QrCode::size(500)->generate($v1); !!}
+            <p>請掃描->開始點餐流程</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 ">
+            <form class="col-md-12"
+                  action="{{ route('counter.booking.index') }}">
+                {{ csrf_field() }}
+                <button type="submit" id="submit" style="text-decoration:none; float: right;"
+                        class="btn btn-primary">確認
                 </button>
-
-
-            </div>
-
+            </form>
         </div>
-    </form>
-
-
-    <div class="row">
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-
     </div>
+
+    {{--<button type="button" style="text-decoration:none;" class="btn btn-primary"><a--}}
+                {{--href="{{ route('restaurant.seat.update') }}"><span style="color:white;">確認</span></a></button>--}}
+
+
+
+
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Restaurant;
 use Auth;
 use App\Staff;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class StaffController extends Controller
     {
         $position=Auth::user()->position;
 
-        $open=Auth::user()->open;
+        $restaurant_id=Auth::user()->restaurant_id;
+        $open=Restaurant::where(['id'=>$restaurant_id])->value('open');
+
         if($position == "經理" && $open==0){
             return view('backstage.manager.index');
         }
@@ -32,14 +35,10 @@ class StaffController extends Controller
                 if($position == "主廚" && $open==0){
                     return view('backstage.chef.index');
                 }
-                return redirect('/logout')->with('error','無此帳號或此帳號已被停權！若有任何問題，請與您的管理員聯絡！');
+                echo "<script>alert('無此帳號或已被停權！若有任何問題，請與您的管理員聯絡！');location.href = '/logout';</script>";
+//                redirect('/logout');
             }
         }
-    }
-
-    public function logout()
-    {
-        return view('auth.login11');
     }
 
     public function index()
