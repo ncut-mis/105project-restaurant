@@ -72,7 +72,7 @@ class MemberCheckController extends Controller
         }
         //---------------------------------------------------------------------------------
 
-        $data = ['tables' => $tables, 'people' => $people, 'ver' => $verification, 'dog' => $dog];
+
 
         $customer = Customer::create([
             'restaurant_id' => $restaurant->id,
@@ -103,6 +103,11 @@ class MemberCheckController extends Controller
             $status->status = '點餐中';
             $status->save();
         }
+
+
+
+        $data = ['tables' => $tables, 'people' => $people, 'ver' => $verification, 'dog' => $dog, 'cus' => $insertedId];
+
 
         return view('backstage.counter.booking.MemberStore', $data);
 
