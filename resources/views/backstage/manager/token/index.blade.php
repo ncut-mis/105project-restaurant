@@ -44,7 +44,7 @@
                     <tr>
                         <td>{{$rs->token}}</td>
                         <td>
-                            <a href="{{ route('backstage.manager.token.edit',$rs->id) }}" class="btn btn-info" style="text-decoration:none;"><i class="fa fa-edit"></i> 修改</a></td>
+                            <a href="{{ route('backstage.manager.token.edit',$rs->id) }}" class="btn btn-info" style="text-decoration:none;"><i class="fa fa-edit"></i> 修改</a>
                         </td>
                     </tr>
                 @endforeach
@@ -54,16 +54,5 @@
     </div>
 </div>
 </font>
-
-    <script>
-        function ConfirmDelete()
-        {
-            var x = confirm("確定要刪除該公告嗎?");
-            if (x)
-                return true;
-            else
-                return false;
-        }
-    </script>
 <!-- /.row -->
 @endsection

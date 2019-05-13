@@ -42,8 +42,8 @@
                         <th width="100" style="text-align: center">最低消費<br>金額</th>
                         <th width="180" style="text-align: center">開始時間</th>
                         <th width="180" style="text-align: center">結束時間</th>
-                        <th width="100" style="text-align: center">發放狀態</th>
                         <th width="100" style="text-align: center">發送優惠券</th>
+{{--                        <th width="100" style="text-align: center">發放狀態</th>--}}
                         <th width="100" style="text-align: center">已兌換<br>數量</th>
                         <th width="80" style="text-align: center">修改</th>
                         <th width="80" style="text-align: center">刪除</th>
@@ -58,19 +58,30 @@
                         <td>{{$coupon->lowestprice}}</td>
                         <td>{{$coupon->StartTime}}</td>
                         <td>{{$coupon->EndTime}}</td>
-                        <td>@if($coupon->status ==0)
-                                <strong>未發送</strong>
-                            @elseif(($coupon->status==1))
-                                <strong>已發送</strong>
+                        <td>
+                            @if($coupon->status ==0)
+                                <form action="/backstage/manager/coupon/{{$coupon->id}}" method="POST">
+                                    <a href ="{{ route('backstage.manager.coupon.noti',$coupon->id) }}" class="btn btn-primary " type="submit" role="button"><i class="fa fa-paper-plane"></i> {{($coupon->status)?'已發送':'發送'}}</a>
+                                    {{ csrf_field() }}
+                                </form>
+                            @elseif($coupon->status ==1)
+                                <button class="btn btn-primary" disabled>
+                                    <strong><i class="fa fa-paper-plane"></i>已發送</strong>
+                                </button>
                             @endif
                         </td>
-                        <td>
-                            <button class="btn btn-primary"><a href="{{ route('backstage.manager.coupon.noti',$coupon->id) }}" style="text-decoration:none;color:white"><i class="fa fa-paper-plane"></i> 發送</a></button>
-                        </td>
+{{--                        <td>--}}
+{{--                            <form action="/backstage/manager/coupon/{{$coupon->id}}" method="POST">--}}
+{{--                                <a href ="/backstage/manager/coupon/{{$coupon->id}}/noti" class="btn btn-primary " type="submit" role="button"><i class="fa fa-paper-plane"></i>{{($coupon->status)?'已發送':'發送'}}</a>--}}
+{{--                                {{ csrf_field() }}--}}
+{{--                            </form>--}}
+{{--                            <button class="btn btn-primary"><a href="{{ route('backstage.manager.coupon.noti',$coupon->id) }}" style="text-decoration:none;color:white"> 發送</a></button>--}}
+{{--                        </td>--}}
+
                         <td>{{$coupon->count}}張</td>
                         <td>
                             @if($coupon->status==1)
-                                <button class="btn btn-info" disabled><a href="{{route('backstage.manager.coupon.edit',$coupon->id)}}" style="text-decoration:none;color: white"><i class="fa fa-edit"></i> 修改</a></button>
+                                <button class="btn btn-info" disabled><i class="fa fa-edit"></i> 修改</button>
                             @else
                                 <button class="btn btn-info"><a href="{{route('backstage.manager.coupon.edit',$coupon->id)}}" style="text-decoration:none;color: white"><i class="fa fa-edit"></i> 修改</a></button>
                             @endif
