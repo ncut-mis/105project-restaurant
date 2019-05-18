@@ -8,6 +8,7 @@ use \App\Meal as MealEloquent;
 use \App\Order as OrderEloquent;
 use \App\Table as TableEloquent;
 use \App\Customer as CustomerEloquent;
+use \App\Member_restaurant as Member_restaurantsEloquent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
@@ -46,4 +47,8 @@ class Restaurant extends Model
     public function customer(){
         return $this->hasMany(CustomerEloquent::class);
     }
+    public function member_restaurants(){
+        return $this->hasMany(Member_restaurantsEloquent::class);
+    }
+
 }
