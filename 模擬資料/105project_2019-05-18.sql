@@ -67,9 +67,9 @@ INSERT INTO `coupons` (`id`, `restaurant_id`, `title`, `content`, `discount`, `p
 (1,	1,	'8折優惠卷',	'可以折8折優惠',	'',	'',	'',	1,	'2019-01-17 14:53:10',	'2019-01-20 14:53:10',	NULL,	NULL),
 (2,	1,	'6折優惠卷',	'可以折6折優惠',	'',	'',	'',	0,	'2019-01-17 14:53:10',	'2019-01-20 14:53:10',	NULL,	NULL),
 (3,	1,	'95折優惠券',	'可以折95折優惠',	'',	'',	'',	0,	'2019-01-17 00:00:00',	'2019-01-29 14:53:10',	NULL,	NULL),
-(4,	3,	'滿1000抵100',	'消費總金額達1000折100',	'100',	'',	'1000',	0,	'2019-03-26 12:00:00',	'2019-03-31 12:00:00',	NULL,	NULL),
-(5,	3,	'贈送胖子一隻',	'無價',	'0',	'',	'999999',	0,	'2019-04-25 01:00:00',	'2019-05-09 12:59:00',	'2019-04-19 01:25:36',	'2019-04-19 01:25:36'),
-(6,	3,	'test',	'test',	'',	'',	'',	0,	'2019-05-01 00:00:07',	'2019-05-01 00:00:07',	NULL,	NULL);
+(4,	3,	'滿1000抵100',	'消費總金額達1000折100',	'100',	'',	'1000',	0,	'2019-03-26 12:00:00',	'2019-03-31 12:00:00',	NULL,	'2019-05-18 03:04:48'),
+(5,	3,	'贈送胖子一隻',	'無價',	'0',	'',	'999999',	0,	'2019-04-25 01:00:00',	'2019-05-09 12:59:00',	'2019-04-19 01:25:36',	'2019-05-18 03:02:59'),
+(6,	3,	'test',	'test',	'',	'',	'',	0,	'2019-05-01 00:00:07',	'2019-05-01 00:00:07',	NULL,	'2019-05-18 03:04:09');
 
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
@@ -361,7 +361,7 @@ INSERT INTO `members` (`id`, `name`, `email`, `email_verified_at`, `password`, `
 (3,	'曾郁閔',	'm3@gmail.com',	NULL,	'123456',	'1998-01-03',	'09-9999-9999',	'台中',	NULL,	NULL,	NULL,	NULL,	NULL),
 (5,	'江珮妤',	'm4@gmail.com',	NULL,	'123456',	'1998-01-04',	'09-9999-9999',	'台中',	NULL,	NULL,	NULL,	NULL,	NULL),
 (6,	'劉宜樺',	'm5@gmail.com',	NULL,	'123456',	'1998-01-05',	'09-9999-9999',	'台中',	NULL,	NULL,	NULL,	NULL,	NULL),
-(7,	'黃婉綾',	'm6@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-06',	'09-9999-9999',	'台中',	'zVj619',	'eFEPIAqWEds:APA91bGzws8oUdNKny_3-5g6a27OecxPL_yH9tD_XAtDU9ZK4swmH7rOzGewULKvfCOchdPBgo5I-zxKfKO_8ceBqqRFbmKq23PbBLSncnJsysX2pMvQG59W5pdwatdCMr6YtvrKWfCv',	NULL,	NULL,	'2019-05-17 22:10:11'),
+(7,	'黃婉綾',	'm6@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-06',	'09-9999-9999',	'台中',	'zVj619',	'cg3cge-0YuY:APA91bGx1HDiA7QeEj6vRjE7crwdKSOMclXt3RTogR7o_4oxBERrq92o0rRLTBDCz17b7hdLduAM3tuUkBcPUN47vH6DJI2jDRq1ecIuaEPlCThGyQAcflaLSDwN3cXhlRr7BupYezpD',	NULL,	NULL,	'2019-05-17 22:10:11'),
 (8,	'test',	'test@gmail.com',	NULL,	'$2y$10$uD9Z3LewvIarMC.Eyg7y1u90eGUKbv2qOhcJcqZvyLZFp/mSh4Uwm',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
 (9,	'測試',	'm99@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-30',	'09-9999-9999',	'台中',	NULL,	'c2iYgkVfe64:APA91bFtWwEN8eqbzZA_OMv35npUCXknCo1ynC1FkJmUQFvqdeaQHDEFeaSM_7OchKTgInMRPifh6OqYNAO0rlN32k6VittNmTKrw_Tqmfwib4fcKo_np989vjNzlCdARG5X9jU3d3QT',	NULL,	NULL,	'2019-05-03 00:57:33'),
 (10,	'測試b',	'm999@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-30',	'09-9999-9999',	'台中',	NULL,	'c2iYgkVfe64:APA91bFtWwEN8eqbzZA_OMv35npUCXknCo1ynC1FkJmUQFvqdeaQHDEFeaSM_7OchKTgInMRPifh6OqYNAO0rlN32k6VittNmTKrw_Tqmfwib4fcKo_np989vjNzlCdARG5X9jU3d3QT',	NULL,	NULL,	'2019-05-03 00:57:33');
@@ -410,7 +410,9 @@ CREATE TABLE `member_restaurants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `member_restaurants` (`id`, `restaurant_id`, `member_id`, `status`, `created_at`, `updated_at`) VALUES
-(11,	3,	7,	1,	'2019-05-18 00:51:12',	'2019-05-18 00:51:12');
+(11,	3,	7,	1,	'2019-05-18 00:51:12',	'2019-05-18 00:51:12'),
+(12,	3,	10,	1,	'2019-05-18 02:06:40',	'2019-05-18 02:06:40'),
+(13,	3,	9,	1,	'2019-05-18 02:06:40',	'2019-05-18 02:06:40');
 
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
@@ -589,7 +591,7 @@ INSERT INTO `staffs` (`id`, `restaurant_id`, `name`, `email`, `email_verified_at
 (12,	3,	'何發棋',	'14@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'09-9999-9999',	'406台中市太平區中山路一段14號',	'櫃台',	'XSvwz3hgSZqUJDhWAOQYugg9OwZUavz3I3YW2EDrL3JTerCG6yY1CNOsFrQc',	0,	NULL,	NULL),
 (13,	3,	'劉彩羽',	'16@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'09-9999-9999',	'406台中市太平區中山路一段16號',	'主廚',	'NyZhl5HWeQKl80BnOHQKhhhNVoJ1v7sGe2LIL4UsEYPNILLkdUCaIkzBpqQ2',	0,	NULL,	NULL),
 (14,	3,	'蕭晴晶',	'18@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'09-9999-9999',	'406台中市太平區中山路一段18號',	'主廚',	'laNLUAJPcrDjIuNGt3LUfWS3LMO3z7ZS7bSKS0v7uk0Ufp4dLa2x6vW7pyeN',	1,	NULL,	'2019-04-13 02:06:31'),
-(15,	3,	'郭家維',	'19@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'09-9999-9999',	'406台中市太平區中山路一段19號',	'經理',	'XymiVPzbH0aKwforhrPeBvlGCE91lCsQRaEgBesp4paeKq9qgp66dMNEe1Iw',	0,	NULL,	NULL);
+(15,	3,	'郭家維',	'19@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'09-9999-9999',	'406台中市太平區中山路一段19號',	'經理',	'iQuzdkUCd5Z7MaIu3O4XyIS3TN97ydAIvtrmkOFa2iRRHGfNARem77e65Rlv',	0,	NULL,	NULL);
 
 DROP TABLE IF EXISTS `tables`;
 CREATE TABLE `tables` (
@@ -759,4 +761,4 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2019-05-18 08:52:34
+-- 2019-05-18 11:06:18
