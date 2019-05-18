@@ -339,7 +339,6 @@ INSERT INTO `meal_keywords` (`id`, `meal_id`, `keyword_id`, `created_at`, `updat
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE `members` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `restaurant_id` int(10) unsigned NOT NULL,
   `name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -356,16 +355,16 @@ CREATE TABLE `members` (
   UNIQUE KEY `members_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `members` (`id`, `restaurant_id`, `name`, `email`, `email_verified_at`, `password`, `birthday`, `phone`, `address`, `verification_code`, `token`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1,	0,	'高偉瀚',	'm1@gmail.com',	NULL,	'abcabc',	'1998-01-01',	'09-9999-9999',	'406太平區中山路一段319號',	NULL,	NULL,	NULL,	NULL,	NULL),
-(2,	0,	'白貫良',	'm2@gmail.com',	NULL,	'123456',	'1998-01-02',	'09-9999-9999',	'台中市太平區',	NULL,	NULL,	NULL,	NULL,	NULL),
-(3,	0,	'曾郁閔',	'm3@gmail.com',	NULL,	'123456',	'1998-01-03',	'09-9999-9999',	'台中',	NULL,	NULL,	NULL,	NULL,	NULL),
-(5,	0,	'江珮妤',	'm4@gmail.com',	NULL,	'123456',	'1998-01-04',	'09-9999-9999',	'台中',	NULL,	NULL,	NULL,	NULL,	NULL),
-(6,	0,	'劉宜樺',	'm5@gmail.com',	NULL,	'123456',	'1998-01-05',	'09-9999-9999',	'台中',	NULL,	NULL,	NULL,	NULL,	NULL),
-(7,	3,	'黃婉綾',	'm6@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-06',	'09-9999-9999',	'台中',	'zVj619',	'eFEPIAqWEds:APA91bGzws8oUdNKny_3-5g6a27OecxPL_yH9tD_XAtDU9ZK4swmH7rOzGewULKvfCOchdPBgo5I-zxKfKO_8ceBqqRFbmKq23PbBLSncnJsysX2pMvQG59W5pdwatdCMr6YtvrKWfCv',	NULL,	NULL,	'2019-05-17 22:10:11'),
-(8,	0,	'test',	'test@gmail.com',	NULL,	'$2y$10$uD9Z3LewvIarMC.Eyg7y1u90eGUKbv2qOhcJcqZvyLZFp/mSh4Uwm',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
-(9,	3,	'測試',	'm99@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-30',	'09-9999-9999',	'台中',	NULL,	'c2iYgkVfe64:APA91bFtWwEN8eqbzZA_OMv35npUCXknCo1ynC1FkJmUQFvqdeaQHDEFeaSM_7OchKTgInMRPifh6OqYNAO0rlN32k6VittNmTKrw_Tqmfwib4fcKo_np989vjNzlCdARG5X9jU3d3QT',	NULL,	NULL,	'2019-05-03 00:57:33'),
-(10,	3,	'測試b',	'm999@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-30',	'09-9999-9999',	'台中',	NULL,	'c2iYgkVfe64:APA91bFtWwEN8eqbzZA_OMv35npUCXknCo1ynC1FkJmUQFvqdeaQHDEFeaSM_7OchKTgInMRPifh6OqYNAO0rlN32k6VittNmTKrw_Tqmfwib4fcKo_np989vjNzlCdARG5X9jU3d3QT',	NULL,	NULL,	'2019-05-03 00:57:33');
+INSERT INTO `members` (`id`, `name`, `email`, `email_verified_at`, `password`, `birthday`, `phone`, `address`, `verification_code`, `token`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1,	'高偉瀚',	'm1@gmail.com',	NULL,	'abcabc',	'1998-01-01',	'09-9999-9999',	'406太平區中山路一段319號',	NULL,	NULL,	NULL,	NULL,	NULL),
+(2,	'白貫良',	'm2@gmail.com',	NULL,	'123456',	'1998-01-02',	'09-9999-9999',	'台中市太平區',	NULL,	NULL,	NULL,	NULL,	NULL),
+(3,	'曾郁閔',	'm3@gmail.com',	NULL,	'123456',	'1998-01-03',	'09-9999-9999',	'台中',	NULL,	NULL,	NULL,	NULL,	NULL),
+(5,	'江珮妤',	'm4@gmail.com',	NULL,	'123456',	'1998-01-04',	'09-9999-9999',	'台中',	NULL,	NULL,	NULL,	NULL,	NULL),
+(6,	'劉宜樺',	'm5@gmail.com',	NULL,	'123456',	'1998-01-05',	'09-9999-9999',	'台中',	NULL,	NULL,	NULL,	NULL,	NULL),
+(7,	'黃婉綾',	'm6@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-06',	'09-9999-9999',	'台中',	'zVj619',	'eFEPIAqWEds:APA91bGzws8oUdNKny_3-5g6a27OecxPL_yH9tD_XAtDU9ZK4swmH7rOzGewULKvfCOchdPBgo5I-zxKfKO_8ceBqqRFbmKq23PbBLSncnJsysX2pMvQG59W5pdwatdCMr6YtvrKWfCv',	NULL,	NULL,	'2019-05-17 22:10:11'),
+(8,	'test',	'test@gmail.com',	NULL,	'$2y$10$uD9Z3LewvIarMC.Eyg7y1u90eGUKbv2qOhcJcqZvyLZFp/mSh4Uwm',	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL,	NULL),
+(9,	'測試',	'm99@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-30',	'09-9999-9999',	'台中',	NULL,	'c2iYgkVfe64:APA91bFtWwEN8eqbzZA_OMv35npUCXknCo1ynC1FkJmUQFvqdeaQHDEFeaSM_7OchKTgInMRPifh6OqYNAO0rlN32k6VittNmTKrw_Tqmfwib4fcKo_np989vjNzlCdARG5X9jU3d3QT',	NULL,	NULL,	'2019-05-03 00:57:33'),
+(10,	'測試b',	'm999@gmail.com',	NULL,	'$2y$10$9Gg8n6Ut486mFl9kYj5jFOi0LHQesfZsOiNzkgfL0GN9C3.YQox8m',	'1998-01-30',	'09-9999-9999',	'台中',	NULL,	'c2iYgkVfe64:APA91bFtWwEN8eqbzZA_OMv35npUCXknCo1ynC1FkJmUQFvqdeaQHDEFeaSM_7OchKTgInMRPifh6OqYNAO0rlN32k6VittNmTKrw_Tqmfwib4fcKo_np989vjNzlCdARG5X9jU3d3QT',	NULL,	NULL,	'2019-05-03 00:57:33');
 
 DROP TABLE IF EXISTS `member_coupons`;
 CREATE TABLE `member_coupons` (
@@ -410,6 +409,8 @@ CREATE TABLE `member_restaurants` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `member_restaurants` (`id`, `restaurant_id`, `member_id`, `status`, `created_at`, `updated_at`) VALUES
+(11,	3,	7,	1,	'2019-05-18 00:51:12',	'2019-05-18 00:51:12');
 
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
@@ -758,4 +759,4 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2019-05-18 07:44:45
+-- 2019-05-18 08:52:34
