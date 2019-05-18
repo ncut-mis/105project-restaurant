@@ -401,7 +401,10 @@ INSERT INTO `member_coupons` (`id`, `coupon_id`, `member_id`, `order_id`, `statu
 
 DROP TABLE IF EXISTS `member_restaurants`;
 CREATE TABLE `member_restaurants` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `restaurant_id` int(10) unsigned NOT NULL,
+  `member_id` int(10) unsigned NOT NULL,
+  `status` int(10) unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -755,4 +758,4 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- 2019-05-18 06:50:59
+-- 2019-05-18 07:44:45
