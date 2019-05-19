@@ -30,7 +30,31 @@
             height: 280px;
         }
 
-        .dragableBox, .dragableBoxRight {
+        .dragableBox{
+            width: 98px;
+            height: 38px;
+            border: 1px solid #000;
+            background-color: #FFFF33;
+            margin-bottom: 5px;
+            margin-right: 5px;
+            float: left;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            position: absolute;
+        }
+        .dragableBox:hover {
+            cursor: pointer;
+        }
+        .dragableBox.green {
+            background: #7fc77e;
+            color: #537a52;
+        }
+        .dragableBox.green:hover {
+            background: #77e475;
+        }
+
+        .dragableBoxRight {
             width: 98px;
             height: 38px;
             border: 1px solid #000;
@@ -72,7 +96,6 @@
         img {
             border: 0px;
         }
-
     </style>
 </head>
 @section('content')
@@ -88,6 +111,10 @@
     </div>
 
     <div id="mainContainer">
+
+
+
+
 
         <div id="countries">
 
@@ -109,7 +136,7 @@
             <p><b>剩餘桌位</b></p>
             <div id="dropContent">
                 @for($i=1;$i<51;$i++)
-                    <div class="dragableBox" id="box{{$i}}">桌位 {{$i}}</div>
+                    <div class="dragableBox green" id="box{{$i}}">桌位 {{$i}}</div>
                 @endfor
             </div>
         </div>
