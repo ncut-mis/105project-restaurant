@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Member_restaurant;
 use Auth;
 use App\Coupon;
 use App\Member_Coupon;
@@ -73,7 +74,7 @@ class CouponController extends Controller
             ]);
         }
 
-        $member = User::where('restaurant_id',Auth::user()->restaurant_id)->pluck('id');
+        $member = Member_restaurant::where('restaurant_id',Auth::user()->restaurant_id)->pluck('member_id');
         $i = count($member);
         for($a = 0;$a<$i;$a++)
         {
@@ -82,7 +83,6 @@ class CouponController extends Controller
                 'member_id' => $member[$a],
             ]);
         }
-
 
         $title = Coupon::where('id',$id)->value('title');
 
@@ -102,7 +102,8 @@ class CouponController extends Controller
         $notification = $notificationBuilder->build();
         $data = $dataBuilder->build();
 
-        $member_noti = User::where('restaurant_id',Auth::user()->restaurant_id)
+        $member_noti = User::join('member_restaurants','member_restaurants.member_id','=','members.id')
+        ->where('member_restaurants.restaurant_id',Auth::user()->restaurant_id)
             ->pluck('token')
             ->toArray();
         $tokens = $member_noti;

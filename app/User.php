@@ -3,6 +3,7 @@
 namespace App;
 use \App\Customer as CustomerEloquent;
 use \App\CouponsStatus as CouponsStatusEloquent;
+use \App\Member_restaurant as Member_restaurantsEloquent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -35,5 +36,8 @@ class User extends Authenticatable
     }
     public function CouponsStatus(){
         return $this->hasMany(CouponsStatusEloquent::class);
+    }
+    public function member_restaurants(){
+        return $this->hasMany(Member_restaurantsEloquent::class);
     }
 }
