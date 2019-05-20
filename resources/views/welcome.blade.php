@@ -37,7 +37,7 @@
                             <div class="form-group row">
                                 <label for="password" class="col-md-3" style="text-align:right;line-height:35px;"><font color='#000000' face="微軟正黑體" size="4"><b>{{ __('密碼　') }}</b></font></label>
                                 <div class="col-md-9">
-                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="請輸入信箱">
+                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="請輸入密碼">
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('password') }}</strong>
