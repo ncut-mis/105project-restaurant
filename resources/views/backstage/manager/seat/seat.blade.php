@@ -10,29 +10,37 @@
             width: 1075px;
             margin: 0 auto;
             /*margin-top: 10px;*/
-            border: 1px solid #000;
+            /*border: 1px solid #000;*/
             padding: 2px;
         }
 
         #capitals {
-            width: 1069px;
+            width: 200px;
             float: left;
             border: 1px solid #000;
             background-color: #E2EBED;
-            padding: 3px;
-            height: 280px;
+            margin-top: 350px;
+            padding: 50px;
+            height: 200px;
+            text-align: center;
+            font-family:微軟正黑體;
         }
 
         #countries {
-            width: 1150px;
+            width: 850px;
             float: left;
-            margin: 2px;
-            height: 280px;
+            margin-left:10px ;
+            height: 550px;
+            padding: 5px;
+            border: 1px solid #000;
+            background-size: 100%;
+            background-position: center;
+            background-repeat:no-repeat;
         }
 
         .dragableBox{
-            width: 98px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             border: 1px solid #000;
             background-color: #FFFF33;
             margin-bottom: 5px;
@@ -42,6 +50,7 @@
             font-weight: bold;
             text-align: center;
             position: absolute;
+
         }
         .dragableBox:hover {
             cursor: pointer;
@@ -55,10 +64,10 @@
         }
 
         .dragableBoxRight {
-            width: 98px;
-            height: 38px;
-            border: 1px solid #000;
-            background-color: #FFFF33;
+            width: 40px;
+            height: 40px;
+            /*border: 1px solid #000;*/
+            /*background-color: #FFFF33;*/
             margin-bottom: 5px;
             margin-right: 5px;
             float: left;
@@ -68,11 +77,11 @@
         }
 
         div.dragableBoxRight {
-            height: 42px;
-            width: 102px;
+            height: 40px;
+            width: 40px;
 
             padding: 1px;
-            background-color: #E2EBED;
+            /*background-color: #E2EBED;*/
         }
 
         .dropBox {
@@ -110,36 +119,44 @@
         </div>
     </div>
 
+
+
+
     <div id="mainContainer">
+        <div id="capitals">
+            <p style="font-size:20px"><b>桌位拖曳</b></p>
+
+            <div id="dropContent">
+
+                @for($i=1;$i<217;$i++)
+
+                    <div class="dragableBox green" id="box{{$i}}">{{217-$i}}</div>
+
+                @endfor
+            </div>
+
+        </div>
 
 
 
+        <div id="countries" style="background-image: url(/img/table_example1.png)">
 
-
-        <div id="countries">
-
-            <div id="box101" class="dragableBoxRight"></div>
-            <div id="box102" class="dragableBoxRight"></div>
-            <div id="box103" class="dragableBoxRight"></div>
-            <div id="box104" class="dragableBoxRight"></div>
-            <div id="box105" class="dragableBoxRight"></div>
-            <div id="box106" class="dragableBoxRight"></div>
-            <div id="box107" class="dragableBoxRight"></div>
-            <div id="box108" class="dragableBoxRight"></div>
-            <div id="box109" class="dragableBoxRight"></div>
-            @for($i=10;$i<51;$i++)
-                <div id="box1{{$i}}" class="dragableBoxRight"></div>
+            <div id="bob101" class="dragableBoxRight"></div>
+            <div id="bob102" class="dragableBoxRight"></div>
+            <div id="bob103" class="dragableBoxRight"></div>
+            <div id="bob104" class="dragableBoxRight"></div>
+            <div id="bob105" class="dragableBoxRight"></div>
+            <div id="bob106" class="dragableBoxRight"></div>
+            <div id="bob107" class="dragableBoxRight"></div>
+            <div id="bob108" class="dragableBoxRight"></div>
+            <div id="bob109" class="dragableBoxRight"></div>
+            @for($i=110;$i<317;$i++)
+                <div id="bob{{$i}}" class="dragableBoxRight"></div>
             @endfor
 
         </div>
-        <div id="capitals">
-            <p><b>剩餘桌位</b></p>
-            <div id="dropContent">
-                @for($i=1;$i<51;$i++)
-                    <div class="dragableBox green" id="box{{$i}}">桌位 {{$i}}</div>
-                @endfor
-            </div>
-        </div>
+
+
         <div class="clear"></div>
         <div class="konaBody"></div>
     </div>

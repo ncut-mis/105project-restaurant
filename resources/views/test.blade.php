@@ -68,17 +68,18 @@
     $o=0;
     $j=1;
 @endphp
-@for($i=1;$i<51;$i++)
-    @php
-        $o++
-    @endphp
-    @if($o == 11)
-        @php
-            $o=1;
-            $j++;
-        @endphp
-    @endif
-    dragDropObj.addTarget('box1{{$i}}', 'dropItems');
+@for($i=201;$i<217;$i++)
+    {{--@php--}}
+        {{--$o++--}}
+    {{--@endphp--}}
+    {{--@if($o == 11)--}}
+        {{--@php--}}
+            {{--$o=1;--}}
+            {{--$j++;--}}
+        {{--@endphp--}}
+    {{--@endif--}}
+    dragDropObj.addSource('box{{$i}}', true);
+    {{--dragDropObj.addTarget('bob{{$i}}', 'dropItems');--}}
     <br>
 @endfor
 
