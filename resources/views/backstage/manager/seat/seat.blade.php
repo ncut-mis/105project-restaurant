@@ -34,7 +34,7 @@
             padding: 5px;
             border: 1px solid #000;
             background-size: 100%;
-            background-position: center;
+            background-position: top;
             background-repeat:no-repeat;
         }
 

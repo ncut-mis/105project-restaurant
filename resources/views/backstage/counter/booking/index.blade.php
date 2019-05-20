@@ -24,8 +24,11 @@
             max-width: 1500px;
             border-radius: 5px;
             background-color: #fff;
-            padding: 20px 30px;
+            padding: 13px 17px;
             box-shadow: 0px 0px 17px -4px #000;
+            background-position: top;
+            background-size: 100%;
+            background-repeat:no-repeat;
         }
 
         ol {
@@ -43,15 +46,15 @@
 
         .seat {
             display: flex;
-            flex: 0 0 9.09%;
-            height: 60px;
+            flex: 0 0 5.26%;
+            height: 65px;
             padding: 5px;
             position: relative;
         }
 
-        .seat:nth-child(5) {
-            margin-right: 9.09%;
-        }
+        /*.seat:nth-child(5) {*/
+            /*margin-right: 9.09%;*/
+        /*}*/
 
         .seat input[type="checkbox"] {
             position: absolute;
@@ -197,17 +200,17 @@
     </div>
 
 
-    <div class="theatre">
+    <div class="theatre" style="background-image: url(/img/table_example1.png); ">
         <ol class="cabin">
-            @for($i=1;$i<=10;$i++)
+            @for($i=1;$i<=12;$i++)
                 <li class="row row--{{$i}}">
                     <ol class="seats" type="A">
-                        @for($k=1;$k<=10;$k++)
+                        @for($k=1;$k<=18;$k++)
                             <li class="seat">
                                 @foreach($tables as $table)
                                     @if($table->row == $i && $table->col == $k)
                                         @if($table->status == "空閒中")
-                                            <label style="background-color: #337ab7" for="{{$i}}-{{$k}}">{{$i}}-{{$k}}
+                                            <label style="background-color: #77e475" for="{{$i}}-{{$k}}">{{$i}}-{{$k}}
                                                 <p>{{ $table->status }}</label>
                                         @else
                                             <label for="{{$i}}-{{$k}}">{{$i}}-{{$k}}<p>{{ $table->status }}</label>
