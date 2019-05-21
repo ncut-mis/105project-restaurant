@@ -59,7 +59,7 @@ class TableController extends Controller
             }
             //---------------------------------------------------------------------------------
 
-            $data = ['tables' => $tables, 'people' => $people, 'ver' => $verification];
+
 
             $customer = Customer::create([
                 'restaurant_id' => $restaurant->id,
@@ -89,6 +89,8 @@ class TableController extends Controller
                 $status->status = '點餐中';
                 $status->save();
             }
+
+            $data = ['tables' => $tables, 'people' => $people, 'ver' => $verification ,'cus' => $insertedId];
 
             return view('backstage.counter.booking.CustomerCheck', $data);
         }

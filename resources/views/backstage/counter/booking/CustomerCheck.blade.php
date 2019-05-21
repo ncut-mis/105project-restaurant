@@ -208,7 +208,11 @@
 
     <div class="row">
         <div class="col-lg-12 justify-content-center" style="text-align:center">
-            {!! QrCode::size(500)->generate('http://localhost:8000/555'); !!}
+            @php
+                $v1="https://105project-order.azurewebsites.net/customer/".$cus."/verify/".$ver
+            @endphp
+
+            {!! QrCode::size(500)->generate($v1); !!}
             <p>請掃描->開始點餐流程</p>
         </div>
     </div>
