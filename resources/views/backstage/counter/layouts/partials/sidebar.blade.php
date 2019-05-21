@@ -57,7 +57,7 @@
                 <a href="{{ route('counter.booking.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-edit"></i>  新增訂位_Booking</font></a>
             </li>
             <li>
-                <a href=""><font color="#ffffff" face="微軟正黑體"><i class="fa fa-check-square-o"></i>  確認餐點_Check</font></a>
+                <a href="{{ route('counter.checking.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-check-square-o"></i>  確認餐點_Check</font></a>
             </li>
         </ul>
     </div>

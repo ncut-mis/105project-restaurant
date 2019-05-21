@@ -106,6 +106,9 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('/counter/history/index', ['as' => 'counter.history.index' , 'uses' => 'CounterController@HistoryIndex']);
     Route::get('/counter/dining/index', ['as' => 'counter.dining.index' , 'uses' => 'CounterController@DiningIndex']);
     Route::get('/counter/booking/index', ['as' => 'counter.booking.index' , 'uses' => 'CounterController@BookingIndex']);
+    Route::get('/counter/checking/index', ['as' => 'counter.checking.index' , 'uses' => 'CounterController@CheckingIndex']);
+    Route::get('/counter/checking/{id}/item', ['as' => 'counter.checking.item' , 'uses' => 'CounterController@CheckingItem']);
+    Route::patch('/counter/checking/{id}/item/{item_id}', ['as' => 'counter.checking.kitchen' , 'uses' => 'CounterController@CheckingKitchen']);//發送餐點至廚房、給通知
 
     /*櫃台booking細部*/
     Route::get('/restaurant/seat/update', ['as' => 'restaurant.seat.update' , 'uses' => 'TableController@update']);
