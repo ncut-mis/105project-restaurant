@@ -13,7 +13,14 @@ use App\Order as OrderEloquent;
 use App\Detail as DetailEloquent;
 use App\Meal as MealEloquent;
 use App\MealType as MealTypeEloquent;
+use App\Order;
+use App\Item;
 use Illuminate\Http\Request;
+use App\Restaurant;
+use LaravelFCM\Message\OptionsBuilder;
+use LaravelFCM\Message\PayloadDataBuilder;
+use LaravelFCM\Message\PayloadNotificationBuilder;
+use FCM;
 
 class CounterController extends Controller
 {
@@ -46,6 +53,7 @@ class CounterController extends Controller
         $data=['tables'=>$tables];
         return view('backstage.counter.booking.index',$data);
     }
+
     public function CheckIndex()
     {
         $tables = TableEloquent::where(['restaurant_id' => Auth::user()->restaurant_id, 'status' => '確認中'])->get();

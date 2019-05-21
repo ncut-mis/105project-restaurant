@@ -103,6 +103,9 @@ class ItemController extends Controller
     }
     public function noti(Request $request, Item $item,$id,$item_id)
     {
+        $item = Item::find($item_id);
+        $item->status=$request->status;
+        $item->save();
         $abc = ['ss'=>$id];
 
         $name = Item::join('meals','items.meal_id','=','meals.id')
@@ -130,13 +133,10 @@ class ItemController extends Controller
         $data = $dataBuilder->build();
 
         $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
-            ->pluck('token')
-            ->toArray();
-        $tokens = $restaurant;
+            ->value('token');
+        $token = $restaurant;
 
-        sleep(1);
-
-        $downstreamResponse = FCM::sendTo($tokens, $option, $notification, $data);
+        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
 
         $downstreamResponse->numberSuccess();
         $downstreamResponse->numberFailure();
