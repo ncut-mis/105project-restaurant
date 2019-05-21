@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Category;
+use App\DiningTable;
+use App\Item;
+use App\Order;
 use Auth;
 use App\Customer as CustomerEloquent;
 use App\Table as TableEloquent;
@@ -41,6 +45,22 @@ class CounterController extends Controller
         $tables=TableEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
         $data=['tables'=>$tables];
         return view('backstage.counter.booking.index',$data);
+    }
+    public function CheckIndex()
+    {
+        $tables = TableEloquent::where(['restaurant_id' => Auth::user()->restaurant_id, 'status' => '確認中'])->get();
+
+        $numbers = DiningTable::all();
+
+        $orders = Order::all();
+
+        $items = Item::all();
+
+        $categories = Category::all();
+
+        $data=['tables'=>$tables,'numbers'=>$numbers,'orders'=>$orders,'items'=>$items ,'categories' => $categories];
+
+        return view('backstage.counter.check.index',$data);
     }
     /**
      * Show the form for creating a new resource.

@@ -106,6 +106,8 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('/counter/history/index', ['as' => 'counter.history.index' , 'uses' => 'CounterController@HistoryIndex']);
     Route::get('/counter/dining/index', ['as' => 'counter.dining.index' , 'uses' => 'CounterController@DiningIndex']);
     Route::get('/counter/booking/index', ['as' => 'counter.booking.index' , 'uses' => 'CounterController@BookingIndex']);
+    Route::get('/counter/check/index', ['as' => 'counter.check.index' , 'uses' => 'CounterController@CheckIndex']);
+
 
     /*櫃台booking細部*/
     Route::get('/restaurant/seat/update', ['as' => 'restaurant.seat.update' , 'uses' => 'TableController@update']);
