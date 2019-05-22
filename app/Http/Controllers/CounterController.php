@@ -5,6 +5,7 @@ use App\Category;
 use App\DiningTable;
 use App\Item;
 use App\Order;
+use App\User;
 use Auth;
 use App\Customer as CustomerEloquent;
 use App\Table as TableEloquent;
@@ -19,6 +20,7 @@ use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
+use DB;
 
 class CounterController extends Controller
 {
@@ -56,15 +58,19 @@ class CounterController extends Controller
     {
         $tables = TableEloquent::where(['restaurant_id' => Auth::user()->restaurant_id, 'status' => '確認中'])->get();
 
-        $numbers = DiningTable::all();
+        $numbers =DB::table('dining_tables')->orderBy('id', 'desc')->get();
 
-        $orders = Order::all();
+        $orders =DB::table('orders')->orderBy('id', 'desc')->get();
 
         $items = Item::all();
 
+        $customers = CustomerEloquent::all();
+
         $categories = Category::all();
 
-        $data=['tables'=>$tables,'numbers'=>$numbers,'orders'=>$orders,'items'=>$items ,'categories' => $categories];
+        $users = User::all();
+
+        $data=['tables'=>$tables,'numbers'=>$numbers,'orders'=>$orders,'items'=>$items ,'categories' => $categories ,'customers' => $customers ,'users' =>$users];
 
         return view('backstage.counter.check.index',$data);
     }
