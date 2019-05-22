@@ -3,6 +3,7 @@
 namespace App;
 use \App\Restaurant as RestaurantEloquent;
 use \App\Detail as DetailEloquent;
+use \App\Item as ItemEloquent;
 use \App\MealKeyword as MealKeywordEloquent;
 use \App\MealType as MealTypeEloquent;
 use Illuminate\Database\Eloquent\Model;
@@ -23,5 +24,8 @@ class Meal extends Model
     }
     public function MealType(){
         return $this->hasone(MealTypeEloquent::class);
+    }
+    public function item(){
+        return $this->hasOne(ItemEloquent::class);
     }
 }

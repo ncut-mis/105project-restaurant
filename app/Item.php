@@ -14,6 +14,6 @@ class Item extends Model
         return $this->belongsTo(OrderEloquent::class);
     }
     public function meal(){
-        return $this->hasOne(MealEloquent::class);
+        return $this->belongsTo(MealEloquent::class);
     }
 }
