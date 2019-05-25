@@ -72,7 +72,6 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
     }
 
     /**
@@ -84,5 +83,12 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+    public function update2(Request $request,$id)
+    {
+        $order = Order::find($id);
+        $order->status =$request->status;
+        $order->save();
+        return redirect()->route('backstage.chef.order.index');
     }
 }
