@@ -140,52 +140,21 @@ class CounterController extends Controller
     {
         //
     }
-    public function test()
-    {
-        $order = Order::select('id')
-            ->where('status','=','未用餐')
-            ->where('orders.restaurant_id',Auth::user()->restaurant_id)->get();
-        $data = ['order'=>$order];
-        return view('backstage.chef.test',$data);
-    }
-    public function test2($id)
+    public function plm(Request $request,$id)
     {
         $order = Table::join('dining_tables','tables.id','=','dining_tables.table_id')
-            ->join('orders','orders.id','=','dining_tables.order_id')
             ->where('dining_tables.order_id',$id)
-            ->select('tables.id','tables.status','dining_tables.order_id','tables.number')
-            ->get();
-
-        $item = Order::join('items','items.order_id','=','orders.id')
-            ->join('meals','items.meal_id','=','meals.id')
-            ->where('items.order_id',$id)
-            ->get();
-
-        $abc = Order::where('id',$id)
-            ->select('id')->get();
-
-        $data = ['order'=>$order,'item'=>$item,'abc'=>$abc];
-        return view('backstage.chef.test2',$data);
-    }
-    public function noti(Request $request,$id)
-    {
+            ->pluck('dining_tables.table_id');
+        $i = count($order);
+        for($a=0;$a<$i;$a++)
+        {
+            Table::where('restaurant_id',Auth::user()->restaurant_id)
+                ->where('id',$order[$a])
+                ->update(['status'=>'出餐中']);
+        }
         $table = Order::find($id);
         $table->status=$request->status;
         $table->save();
-        return redirect()->route('testing');
-    }
-    public function popo($id)
-    {
-    $order = Table::join('dining_tables','tables.id','=','dining_tables.table_id')
-        ->where('dining_tables.order_id',$id)
-        ->pluck('dining_tables.table_id');
-    $i = count($order);
-    for($a=0;$a<$i;$a++)
-    {
-        Table::where('restaurant_id',Auth::user()->restaurant_id)
-            ->where('id',$order[$a])
-            ->update(['status'=>'出餐中']);
-    }
-    return redirect()->route('testing2',$id);
+        return redirect()->route('counter.check.index');
     }
 }

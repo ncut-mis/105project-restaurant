@@ -144,25 +144,17 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
                     <div class="modal-footer">
-
-                        {{--------------------}}
-                        @foreach($tables as $table)
-                            @foreach($numbers as $number)
-                                @if($table->id == $number->table_id)
-                                    @if($number->order_id == $an)
-                                        {{--{{$table->number}}  這是要修改狀態的table.id--}}
-                                    @endif
-                                @endif
-                            @endforeach
-                        @endforeach
-
-
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">確認</button>
-                        {{------------------------------}}
-
-                        
+                        <form action="{{route('counter.plm',$an)}}" method="POST">
+                            <br>
+                            {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
+                            <input type="hidden" name="status" value="出餐中">
+                            <button type="submit">
+                                送出至廚房
+                            </button>
+                        </form>
+                    </div>
                     </div>
                 </div>
             </div>

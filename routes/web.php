@@ -109,15 +109,9 @@ Route::group(['prefix' => 'backstage'], function() {
 
     Route::get('/counter/check/index', ['as' => 'counter.check.index' , 'uses' => 'CounterController@CheckIndex']);
 
-
-
-
-
-    Route::get('checktest', ['as' => 'testing' , 'uses' => 'CounterController@test']);
-    Route::get('checktest/{id}', ['as' => 'testing2' , 'uses' => 'CounterController@test2']);
-    Route::patch('/test/{id}/', ['as' => 'counter.check.patch' , 'uses' => 'CounterController@noti']);//改order狀態(未用餐->等餐中)
-    Route::patch('/popotest/{id}', ['as' => 'counter.patch' , 'uses' => 'CounterController@popo']);//一次改table狀態(確認中->出餐中)
-
+    //一起更新table狀態(確認中->出餐中)&&更新order狀態(未用餐->出餐中)
+    Route::patch('/test2/{id}/', ['as' => 'counter.plm' , 'uses' => 'CounterController@plm']);
+    //
     /*櫃台booking細部*/
     Route::get('/restaurant/seat/update', ['as' => 'restaurant.seat.update' , 'uses' => 'TableController@update']);
     Route::get('/restaurant/{restaurant}/table', ['as' => 'restaurant.table.index' , 'uses' => 'TableController@index']);
