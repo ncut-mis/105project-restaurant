@@ -29,12 +29,12 @@
                                 <td>{{$it->name}}</td>
                                 <td>{{$it->quantity}}</td>
                                 <td>
-                                    @if($it->status==0)
+                                    @if($it->status==1)
                                     <form action="/backstage/rcveod/{{$it->order_id}}/{{$it->id}}" method="POST" role="form">
                                         {{ csrf_field() }}
                                         {{ method_field('PATCH') }}
 
-                                            <input name="status" type="hidden" class="form-control" placeholder="請輸入狀態" value="1" required>
+                                            <input name="status" type="hidden" class="form-control" placeholder="請輸入狀態" value="2" required>
                                             <button type="submit" class="btn btn-success">尚未完成餐點</button>
                                         @else
                                             已完成餐點
