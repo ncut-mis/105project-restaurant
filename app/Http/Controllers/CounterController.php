@@ -155,6 +155,35 @@ class CounterController extends Controller
         $table = Order::find($id);
         $table->status=$request->status;
         $table->save();
+
+        $optionBuilder = new OptionsBuilder();
+        $optionBuilder->setTimeToLive(60*20);
+
+        $notificationBuilder = new PayloadNotificationBuilder('該煮飯囉');
+        $notificationBuilder->setBody('做事做事')
+            ->setSound('default');
+
+        $dataBuilder = new PayloadDataBuilder();
+        $dataBuilder->addData(['a_data' => 'my_data']);
+
+        $option = $optionBuilder->build();
+        $notification = $notificationBuilder->build();
+        $data = $dataBuilder->build();
+
+        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
+            ->value('token2');
+
+        $token = $restaurant;
+
+        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+
+        $downstreamResponse->numberSuccess();
+        $downstreamResponse->numberFailure();
+        $downstreamResponse->tokensToDelete();
+        $downstreamResponse->tokensToModify();
+        $downstreamResponse->tokensToRetry();
+
+
         return redirect()->route('counter.check.index');
     }
 }

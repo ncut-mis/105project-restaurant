@@ -20,7 +20,6 @@
                             <th width="50" style="text-align: center">餐點名稱</th>
                             <th width="50" style="text-align: center">數量</th>
                             <th width="50" style="text-align: center">更改狀態</th>
-                            <th width="50" style="text-align: center">發送通知</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -30,36 +29,25 @@
                                 <td>{{$it->name}}</td>
                                 <td>{{$it->quantity}}</td>
                                 <td>
-                                    @if($it->status==1)
+                                    @if($it->status==0)
                                     <form action="/backstage/rcveod/{{$it->order_id}}/{{$it->id}}" method="POST" role="form">
                                         {{ csrf_field() }}
                                         {{ method_field('PATCH') }}
 
-                                            <input name="status" type="hidden" class="form-control" placeholder="請輸入狀態" value="2" required>
+                                            <input name="status" type="hidden" class="form-control" placeholder="請輸入狀態" value="1" required>
                                             <button type="submit" class="btn btn-success">尚未完成餐點</button>
-                                        @elseif($it->status==0)
-                                            等候廚房確認中......
                                         @else
                                             已完成餐點
                                         @endif
-                                    </form>
-                                </td>
-                                <td>
-                                    <form method="POST" action="{{ route('backstage.chef.detail.noti',[$it->order_id,$it->id]) }}">
-                                        {{ csrf_field() }}
-                                        {{ method_field('get') }}
-                                        <input name="status" type="hidden" class="form-control" placeholder="請輸入狀態" value="2" required>
-                                        <div>
-                                            <button type="submit" class="btn btn-primary col-md-11 ">
-                                                發送
-                                            </button>
-                                        </div>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <button>
+                        <a href="{{route('backstage.chef.order.index')}}">回上一頁</a>
+                    </button>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>

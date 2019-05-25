@@ -15,7 +15,8 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $order = Order::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        $order = Order::where('restaurant_id', Auth::user()->restaurant_id)
+            ->where('status','出餐中')->get();
         return view('backstage.chef.od.index', ['order' => $order]);
     }
 

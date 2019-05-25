@@ -91,9 +91,6 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'ItemController@index']);
     Route::patch('rcveod/{id}/{item_id}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'ItemController@update']);
 
-    /*主廚-出餐完成通知*/
-    Route::get('rcveod/{id}/{item_id}/noti' , ['as' => 'backstage.chef.detail.noti' , 'uses' => 'ItemController@noti']);
-
     /*firebase測試*/
     Route::get('firejava',['as'=>'backstage.chef.fire3','uses'=>'KitchenController@fire']);//firebase搭配javascript-fetch指令
     Route::get('firelara',['as'=>'backstage.chef.noti','uses'=>'KitchenController@noti']);//firebase搭配laravel-fcm套件的按鈕
