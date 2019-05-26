@@ -13,8 +13,8 @@ class Order extends Model
         'restaurant_id',
         'customer_id',
         'number',
-        'time',
-        'status',
+        'StartTime',
+        'EndTime',
         'total',
         'PayType'
     ];
