@@ -5,6 +5,7 @@ use App\Category;
 use App\DiningTable;
 use App\Item;
 use App\Order;
+use App\Table;
 use App\User;
 use Auth;
 use App\Customer as CustomerEloquent;
@@ -45,7 +46,17 @@ class CounterController extends Controller
     }
     public function DiningIndex()
     {
-        return view('backstage.counter.dining.index');
+        $orders = Order::where(['EndTime' => null,'restaurant_id' => Auth::user()->restaurant_id])->get();
+        $customers = CustomerEloquent::all();
+        $users = User::all();
+        $numbers =DiningTable::all();
+        $tables = Table::all();
+        $categories = Category::all();
+        $items = Item::all();
+        $data=['orders'=>$orders,'customers'=>$customers,'users'=>$users,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
+
+        return view('backstage.counter.dining.index',$data);
+
     }
     public function BookingIndex()
     {

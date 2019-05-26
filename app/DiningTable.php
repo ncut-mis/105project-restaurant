@@ -17,6 +17,7 @@ class DiningTable extends Model
         return $this->belongsTo(OrderEloquent::class);
     }
     public function table(){
-        return $this->hasOne(TableEloquent::class);
+        return $this->hasMany(TableEloquent::class);
     }
+
 }
