@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        
+
                     <div class="modal-footer">
 
                         <form action="{{route('counter.plm',$an)}}" method="POST">
