@@ -11,17 +11,16 @@
     <!-- /.row -->
     <font color="#000000" face="微軟正黑體" style="text-align: center">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-2"></div>
+            <div class="col-lg-8">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             {{--<th width="50" style="text-align: center">編號</th>--}}
-                            <th width="50" style="text-align: center">點單編號</th>
-                            <th width="50" style="text-align: center">顧客編號</th>
-                            <th width="50" style="text-align: center">桌子編號</th>
-                            <th width="100" style="text-align: center">點單成立時間</th>
-                            <th width="50" style="text-align: center">進入明細</th>
+                            <th width="100" style="text-align: center">點單編號</th>
+                            <th width="100" style="text-align: center">全都做完囉！</th>
+                            <th width="100" style="text-align: center">進入明細</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -29,15 +28,24 @@
                             <tr>
                                 {{--<td>{{$sf->id}}</td>--}}
                                 <td>{{$od->id}}</td>
-                                <td>{{$od->customer_id}}</td>
-                                <td>{{$od->table_id}}</td>
-                                <td>{{$od->time}}</td>
+                                <td>
+                                    <form method="POST" action="{{ route('backstage.chef.order.update',$od->id) }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('PATCH') }}
+                                        <div>
+                                            <input name="status" type="hidden" value="用餐中">
+                                            <button type="submit" class="btn btn-primary col-md-12 " >
+                                                這張order全都做完囉！
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
                                 <td>
                                     <form method="POST" action="{{ route('backstage.chef.detail.index',$od->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('get') }}
                                         <div>
-                                            <button type="submit" class="btn btn-primary col-md-11 ">
+                                            <button type="submit" class="btn btn-primary col-md-12 ">
                                                 進入明細
                                             </button>
                                         </div>
@@ -68,6 +76,8 @@
                     <p>&nbsp;</p>
                 </div>
             </div>
+            <div class="col-md-2"></div>
+
         </div>
     </font>
     <!-- /.row -->

@@ -88,11 +88,9 @@ Route::group(['prefix' => 'backstage'], function() {
 
     /*主廚-出餐管理*/
     Route::get('rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
+    Route::patch('rcveod/{id}' , ['as' => 'backstage.chef.order.update' , 'uses' => 'OrderController@update2']);
     Route::get('rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'ItemController@index']);
     Route::patch('rcveod/{id}/{item_id}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'ItemController@update']);
-
-    /*主廚-出餐完成通知*/
-    Route::get('rcveod/{id}/{item_id}/noti' , ['as' => 'backstage.chef.detail.noti' , 'uses' => 'ItemController@noti']);
 
     /*firebase測試*/
     Route::get('firejava',['as'=>'backstage.chef.fire3','uses'=>'KitchenController@fire']);//firebase搭配javascript-fetch指令
@@ -109,7 +107,9 @@ Route::group(['prefix' => 'backstage'], function() {
 
     Route::get('/counter/check/index', ['as' => 'counter.check.index' , 'uses' => 'CounterController@CheckIndex']);
 
-
+    //一起更新table狀態(確認中->出餐中)&&更新order狀態(未用餐->出餐中)
+    Route::patch('/test2/{id}/', ['as' => 'counter.plm' , 'uses' => 'CounterController@plm']);
+    //
     /*櫃台booking細部*/
     Route::get('/restaurant/seat/update', ['as' => 'restaurant.seat.update' , 'uses' => 'TableController@update']);
     Route::get('/restaurant/{restaurant}/table', ['as' => 'restaurant.table.index' , 'uses' => 'TableController@index']);

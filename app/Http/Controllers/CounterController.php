@@ -150,4 +150,50 @@ class CounterController extends Controller
     {
         //
     }
+    public function plm(Request $request,$id)
+    {
+        $order = Table::join('dining_tables','tables.id','=','dining_tables.table_id')
+            ->where('dining_tables.order_id',$id)
+            ->pluck('dining_tables.table_id');
+        $i = count($order);
+        for($a=0;$a<$i;$a++)
+        {
+            Table::where('restaurant_id',Auth::user()->restaurant_id)
+                ->where('id',$order[$a])
+                ->update(['status'=>'出餐中']);
+        }
+        $table = Order::find($id);
+        $table->status=$request->status;
+        $table->save();
+
+        $optionBuilder = new OptionsBuilder();
+        $optionBuilder->setTimeToLive(60*20);
+
+        $notificationBuilder = new PayloadNotificationBuilder('該煮飯囉');
+        $notificationBuilder->setBody('做事做事')
+            ->setSound('default');
+
+        $dataBuilder = new PayloadDataBuilder();
+        $dataBuilder->addData(['a_data' => 'my_data']);
+
+        $option = $optionBuilder->build();
+        $notification = $notificationBuilder->build();
+        $data = $dataBuilder->build();
+
+        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
+            ->value('token2');
+
+        $token = $restaurant;
+
+        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+
+        $downstreamResponse->numberSuccess();
+        $downstreamResponse->numberFailure();
+        $downstreamResponse->tokensToDelete();
+        $downstreamResponse->tokensToModify();
+        $downstreamResponse->tokensToRetry();
+
+
+        return redirect()->route('counter.check.index');
+    }
 }

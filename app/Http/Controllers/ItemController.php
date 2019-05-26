@@ -101,48 +101,4 @@ class ItemController extends Controller
     {
         //
     }
-    public function noti(Request $request, Item $item,$id,$item_id)
-    {
-        $item = Item::find($item_id);
-        $item->status=$request->status;
-        $item->save();
-        $abc = ['ss'=>$id];
-
-        $name = Item::join('meals','items.meal_id','=','meals.id')
-            ->where('order_id',$id)
-            ->where('items.id',$item_id)
-            ->value('name');
-
-        $number = Item::where('id',$item_id)->value('quantity');
-
-        $title = $name.'   完成囉！';
-        $body = '數量：  '.$number.'  份';
-
-        $optionBuilder = new OptionsBuilder();
-        $optionBuilder->setTimeToLive(60*20);
-
-        $notificationBuilder = new PayloadNotificationBuilder($title);
-        $notificationBuilder->setBody($body)
-            ->setSound('default');
-
-        $dataBuilder = new PayloadDataBuilder();
-        $dataBuilder->addData(['a_data' => 'my_data']);
-
-        $option = $optionBuilder->build();
-        $notification = $notificationBuilder->build();
-        $data = $dataBuilder->build();
-
-        $restaurant = Restaurant::where('id',Auth::user()->restaurant_id)
-            ->value('token');
-        $token = $restaurant;
-
-        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
-
-        $downstreamResponse->numberSuccess();
-        $downstreamResponse->numberFailure();
-        $downstreamResponse->tokensToDelete();
-        $downstreamResponse->tokensToModify();
-        $downstreamResponse->tokensToRetry();
-        return redirect()->route('backstage.chef.detail.index',$abc);
-    }
 }
