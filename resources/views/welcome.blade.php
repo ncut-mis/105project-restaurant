@@ -59,11 +59,11 @@
 
     <script>
         function myFunction() {
-            var x = confirm("確定要登入?");
+            var x = alert("確定要登入?");
             if (x)
-                return true;
-            else
                 alert("無此帳號或已被停權！若有任何問題，請與您的管理員聯絡！!");
+            else
+                return true;
         }
     </script>
 @endsection
