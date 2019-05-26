@@ -173,7 +173,7 @@
                                     @foreach($items as $item)
                                         @if($item->order_id == $order->id)
                                             @if($category->id == $item->meal->category_id)
-                                                @if($item->status == 0)
+                                                @if($item->status == 1)
                                                     <span style="color:WHITE; background-color:#FF0000">->製作中</span>
                                                 @else
                                                     ->已上菜
