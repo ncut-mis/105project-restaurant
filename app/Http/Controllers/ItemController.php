@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Order;
+use App\Table;
 use Auth;
 use App\Item;
 use Illuminate\Http\Request;
