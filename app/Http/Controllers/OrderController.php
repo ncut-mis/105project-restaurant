@@ -5,7 +5,7 @@ use Auth;
 use App\Order;
 use App\Table;
 use Illuminate\Http\Request;
-
+date_default_timezone_set("Asia/Taipei");
 class OrderController extends Controller
 {
     /**

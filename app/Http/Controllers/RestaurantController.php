@@ -7,7 +7,7 @@ use App\Staff;
 use App\Restaurant;
 use Illuminate\Http\Request;
 use \Carbon\Carbon as Carbon;
-
+date_default_timezone_set("Asia/Taipei");
 class RestaurantController extends Controller
 {
     public function index()

@@ -22,7 +22,7 @@ use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 use DB;
-
+date_default_timezone_set("Asia/Taipei");
 class CounterController extends Controller
 {
     /**

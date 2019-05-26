@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\MealKeyword;
 use Illuminate\Http\Request;
-
+date_default_timezone_set("Asia/Taipei");
 class MealKeywordController extends Controller
 {
     /**

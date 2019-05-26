@@ -11,7 +11,7 @@ use App\Order;
 use App\DiningTable;
 use App\Table as TableEloquent;
 use App\Restaurant;
-
+date_default_timezone_set("Asia/Taipei");
 
 
 class MemberCheckController extends Controller

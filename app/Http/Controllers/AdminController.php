@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use Illuminate\Http\Request;
+date_default_timezone_set("Asia/Taipei");
 
 class AdminController extends Controller
 {
