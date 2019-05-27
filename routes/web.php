@@ -64,7 +64,7 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('/table'           , 'TableController@index_2')->name('backstage.manager.table.index');
     Route::get('/table/create'    , 'TableController@create')->name('backstage.manager.table.create');
     Route::get('/table/{id}/edit' , 'TableController@edit')->name('backstage.manager.table.edit');
-    Route::patch('/table/{id}'    , 'TableController@update')->name('backstage.manager.table.update');
+    Route::patch('/table/{id}'    , 'TableController@update_1')->name('backstage.manager.table.update');//
     Route::post('/table'          , 'TableController@store')->name('backstage.manager.table.store');
     Route::delete('/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
 
