@@ -235,7 +235,7 @@
     <form class="col-md-12" role="form" id="CheckTable"
           action="{{ route('restaurant.table.check',Auth::user()->restaurant_id) }}">
         {{ csrf_field() }}
-        <div class="theatre" style="background-image: url(/img/table_example1.png); ">
+        <div class="theatre" style="background-image: url(/img/1.png); ">
             <ol class="cabin">
                 @for($i=1;$i<=12;$i++)
                     <li class="row row--{{$i}}">
@@ -249,19 +249,19 @@
                                                     <input type="checkbox" checked id="{{$table->number}}" name="check[]" onClick="return checkDate({{$num}})"
                                                            value="{{$table->number}}">
                                                     {{--checked="checked"--}}
-                                                    <label for="{{$table->number}}">{{$i}}-{{$k}}<p>{{ $table->status }}
+                                                    <label for="{{$table->number}}">{{$table->number}}<p>{{ $table->status }}
                                                     </label>
                                                     @php($f++)
                                                 @else
                                                     <input type="checkbox" id="{{$table->number}}" name="check[]" onClick="return checkDate({{$num}})"
                                                            value="{{$table->number}}">
                                                     {{--checked="checked"--}}
-                                                    <label for="{{$table->number}}">{{$i}}-{{$k}}<p>{{ $table->status }}
+                                                    <label for="{{$table->number}}">{{$table->number}}<p>{{ $table->status }}
                                                     </label>
                                                 @endif
                                             @else
                                                 <input type="checkbox" disabled id="{{$table->number}}"/>
-                                                <label for="{{$table->number}}">{{$i}}-{{$k}}<p>{{ $table->status }}
+                                                <label for="{{$table->number}}">{{$table->number}}<p>{{ $table->status }}
                                                 </label>
                                             @endif
                                             @break
@@ -279,9 +279,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <button type="submit" onclick="kill();" id="submit" style="text-decoration:none; float: right;"
-                    class="btn btn-primary">下一步
-            </button>
+            <button type="submit" onclick="kill();" id="submit" style="text-decoration:none; float: right;" class="btn btn-primary">下一步</button>
         </div>
     </div>
 @endsection

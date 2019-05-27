@@ -12,7 +12,7 @@ use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
-use App\Restaurant;
+use Carbon\Carbon as Carbon;
 date_default_timezone_set("Asia/Taipei");
 class CouponController extends Controller
 {
@@ -29,9 +29,16 @@ class CouponController extends Controller
 
     public function store(Request $request)
     {
+        $file = $request->file('photo');
+        $destinationPath = 'img/coupon';
+        $image=$file->getClientOriginalExtension();
+        $file_name=(Carbon::now()->timestamp).'.'.$image;
+        $file->move($destinationPath, $file_name);
+
         Coupon::create([
             'restaurant_id' => Auth::user()->restaurant_id,
             'title' => $request['title'],
+            'photo'=> $file_name,
             'content' => $request['content'],
             'discount' => $request['discount'],
             'lowestprice' => $request['lowestprice'],

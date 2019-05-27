@@ -11,6 +11,7 @@ use App\Order;
 use App\DiningTable;
 use App\Table as TableEloquent;
 use Illuminate\Http\Request;
+use \Carbon\Carbon as Carbon;
 use Illuminate\Support\Facades\DB;
 date_default_timezone_set("Asia/Taipei");
 
@@ -136,7 +137,18 @@ class TableController extends Controller
 
     public function store(Request $request)
     {
-        //
+//        $restaurants=Restaurant::find($id);
+//        $file = $request->file('table_pic');
+//        $destinationPath = 'img/';
+//        $image=$file->getClientOriginalExtension();
+//        $file_name=(Carbon::now()->timestamp).'.'.$image;
+//        $file->move($destinationPath, $file_name);
+//
+//        Restaurant::create([
+//            'restaurant_id' => Auth::user()->restaurant_id,
+//            'table_pic' => $file_name,
+//        ]);
+//        return redirect()->route('backstage.manager.table.index');
     }
 
     public function show(Table $table)
@@ -147,6 +159,21 @@ class TableController extends Controller
     public function edit(Table $table)
     {
 
+    }
+
+    public function update_1(Request $request, $id)
+    {
+        $restaurants=Restaurant::find($id);
+        $file = $request->file('table_pic');
+        $destinationPath = 'img/';
+        $image=$file->getClientOriginalExtension();
+        $file_name=(Carbon::now()->timestamp).'.'.$image;
+        $file->move($destinationPath, $file_name);
+
+        $restaurants->update([
+            'table_pic' => $file_name,
+        ]);
+        return redirect()->route('backstage.manager.table.index');
     }
 
     public function update()

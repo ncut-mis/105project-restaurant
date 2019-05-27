@@ -36,15 +36,14 @@
             <table class="table table-bordered table-hover" style="border:3px #9BA2AB solid;">
                 <thead style="border:2px #9BA2AB solid;">
                     <tr style="background-color: lightgrey;">
-                        <th width="80" style="text-align: center">優惠券名稱</th>
-                        <th width="120" style="text-align: center">內容</th>
-                        <th width="100" style="text-align: center">折扣金額</th>
-                        <th width="100" style="text-align: center">最低消費<br>金額</th>
-                        <th width="180" style="text-align: center">開始時間</th>
-                        <th width="180" style="text-align: center">結束時間</th>
+                        <th width="100" style="text-align: center">優惠券名稱</th>
+                        <th width="150" style="text-align: center">內容</th>
+                        <th width="150" style="text-align: center">圖片</th>
+                        <th width="85" style="text-align: center">折扣金額</th>
+                        <th width="85" style="text-align: center">最低消費<br>金額</th>
+                        <th width="150" style="text-align: center">開始時間</th>
+                        <th width="150" style="text-align: center">結束時間</th>
                         <th width="100" style="text-align: center">發送優惠券</th>
-{{--                        <th width="100" style="text-align: center">發放狀態</th>--}}
-                        <th width="100" style="text-align: center">已兌換<br>數量</th>
                         <th width="80" style="text-align: center">修改</th>
                         <th width="80" style="text-align: center">刪除</th>
                     </tr>
@@ -54,6 +53,7 @@
                     <tr>
                         <td>{{$coupon->title}}</td>
                         <td>{{$coupon->content}}</td>
+                        <td><img src="{{url('img/coupon/'. $coupon->photo)}}" width=50%></td>
                         <td>{{$coupon->discount}}</td>
                         <td>{{$coupon->lowestprice}}</td>
                         <td>{{$coupon->StartTime}}</td>
@@ -70,15 +70,6 @@
                                 </button>
                             @endif
                         </td>
-{{--                        <td>--}}
-{{--                            <form action="/backstage/manager/coupon/{{$coupon->id}}" method="POST">--}}
-{{--                                <a href ="/backstage/manager/coupon/{{$coupon->id}}/noti" class="btn btn-primary " type="submit" role="button"><i class="fa fa-paper-plane"></i>{{($coupon->status)?'已發送':'發送'}}</a>--}}
-{{--                                {{ csrf_field() }}--}}
-{{--                            </form>--}}
-{{--                            <button class="btn btn-primary"><a href="{{ route('backstage.manager.coupon.noti',$coupon->id) }}" style="text-decoration:none;color:white"> 發送</a></button>--}}
-{{--                        </td>--}}
-
-                        <td>{{$coupon->count}}張</td>
                         <td>
                             @if($coupon->status==1)
                                 <button class="btn btn-info" disabled><i class="fa fa-edit"></i> 修改</button>
