@@ -107,6 +107,15 @@ Route::group(['prefix' => 'backstage'], function() {
 
     Route::get('/counter/check/index', ['as' => 'counter.check.index' , 'uses' => 'CounterController@CheckIndex']);
 
+
+
+    Route::get('/counter/dining/test', ['as' => 'counter.test' , 'uses' => 'CounterController@test']);
+
+
+    //結帳按鈕(前往結帳畫面&結帳)
+    Route::get('/counter/checkout/{id}/edit', ['as' => 'counter.checkout' , 'uses' => 'CounterController@checkout']);
+    Route::patch('/counter/checkout/{id}/', ['as' => 'counter.checkouting' , 'uses' => 'CounterController@checkouting']);
+
     //一起更新table狀態(確認中->出餐中)&&更新order狀態(未用餐->出餐中)
     Route::patch('/test2/{id}/', ['as' => 'counter.plm' , 'uses' => 'CounterController@plm']);
     //

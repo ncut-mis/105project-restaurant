@@ -22,6 +22,8 @@ use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 use DB;
+use Mockery\Matcher\Not;
+
 date_default_timezone_set("Asia/Taipei");
 class CounterController extends Controller
 {
@@ -40,7 +42,7 @@ class CounterController extends Controller
 
     public function HistoryIndex()
     {
-        $orders = Order::where(['restaurant_id' => Auth::user()->restaurant_id])->whereNotNull('EndTime')->get();
+        $orders = Order::where(['status'=>'已結帳','restaurant_id' => Auth::user()->restaurant_id])->get();
         $customers = CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
         $users = User::all();
         $numbers =DiningTable::all();
@@ -53,15 +55,20 @@ class CounterController extends Controller
     }
     public function DiningIndex()
     {
-        $orders = Order::where(['EndTime' => null,'restaurant_id' => Auth::user()->restaurant_id])->get();
-        $customers = CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
-        $users = User::all();
-        $numbers =DiningTable::all();
-        $tables = Table::all();
-        $categories = Category::all();
-        $items = Item::all();
-        $data=['orders'=>$orders,'customers'=>$customers,'users'=>$users,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
-
+        $orders = Order::where(['status'=>'用餐中' xor '製作中','restaurant_id' => Auth::user()->restaurant_id])
+            ->whereNotIn('status',['已結帳'])
+            ->select('id')
+            ->get();
+        $numbers =DiningTable::select('order_id','table_id')->get();
+        $tables = Table::select('id','number')
+            ->where('restaurant_id',Auth::user()->restaurant_id)->get();
+        $categories = Category::select('name','id')->get();
+        $items = Item::join('meals','items.meal_id','=','meals.id')
+            ->join('categories','categories.id','=','meals.category_id')
+            ->select('items.order_id','items.quantity','meals.price',
+                'items.status','categories.id','meals.category_id','meals.name')
+            ->get();
+        $data=['orders'=>$orders,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
         return view('backstage.counter.dining.index',$data);
 
     }
@@ -202,5 +209,59 @@ class CounterController extends Controller
 
 
         return redirect()->route('counter.check.index');
+    }
+
+    public function test()
+    {
+//        $abc = Order::join('customers','customers.id','=','orders.customer_id')
+//            ->join('dining_tables','dining_tables.order_id','=','orders.id')
+//            ->join('tables','tables.id','=','dining_tables.table_id')
+//            ->where('orders.restaurant_id',Auth::user()->restaurant_id)
+//            ->select('orders.id', 'tables.number')
+//            ->get();
+//
+//        $bbc = Item::join('orders','orders.id','=','items.order_id')
+//        ->where('orders.restaurant_id',Auth::user()->restaurant_id);
+//
+//        $data = ['abc'=>$abc,'bbc'=>$bbc];
+
+        $orders = Order::where(['EndTime' => null,'restaurant_id' => Auth::user()->restaurant_id])
+            ->select('id')
+            ->get();
+        $numbers =DiningTable::select('order_id','table_id')->get();
+        $tables = Table::select('id','number')
+        ->where('restaurant_id',Auth::user()->restaurant_id)->get();
+        $categories = Category::select('name','id')->get();
+        $items = Item::join('meals','items.meal_id','=','meals.id')
+            ->join('categories','categories.id','=','meals.category_id')
+            ->select('items.order_id','items.quantity','meals.price',
+                'items.status','categories.id','meals.category_id','meals.name')
+            ->get();
+        $data=['orders'=>$orders,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
+
+        return view('backstage.chef.counter',$data);
+    }
+    public function checkout($id)
+    {
+        $order =Order::join('items','items.order_id','=','orders.id')
+        ->join('meals','meals.id','=','items.meal_id')
+            ->where('orders.id',$id)
+        ->get();
+        $total=Order::where('id',$id)
+            ->select('id','total')->get();
+        $data = ['order' => $order,'total'=>$total];
+//        $check->status=$request->status;
+//        $check->save();
+        return view('backstage.counter.checkout.index',$data);
+    }
+    public function checkouting(Request $request,$id)
+    {
+        $order = Order::find($id);
+        $order->status=$request->status;
+        $order->total=$request->total;
+        $order->save();
+//        $check->status=$request->status;
+//        $check->save();
+        return redirect()->route('counter.dining.index');
     }
 }

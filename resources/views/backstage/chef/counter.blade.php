@@ -50,11 +50,9 @@
                     </button>
                 </td>
                 <td style="text-align: center">
-                <a href="{{ route('counter.checkout',$order->id) }}" class="btn btn-info" style="text-decoration:none;">
-                    <i class="fa fa-edit">結帳</i>
-                </a></td>
-
-
+                    <button type="button" class="btn btn-primary">
+                        結帳
+                    </button>
                 </td>
             </tr>
         @endforeach
@@ -141,7 +139,6 @@
 
                     </div>
                     <div class="modal-footer">
-
                         <button type="button" class="btn btn-primary" data-dismiss="modal">確認</button>
                     </div>
                 </div>
