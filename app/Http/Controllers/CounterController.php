@@ -22,7 +22,7 @@ use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 use DB;
-
+date_default_timezone_set("Asia/Taipei");
 class CounterController extends Controller
 {
     /**
@@ -40,13 +40,30 @@ class CounterController extends Controller
 
     public function HistoryIndex()
     {
-        $customers=CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
-        $data=['customers'=>$customers];
+        $orders = Order::where(['restaurant_id' => Auth::user()->restaurant_id])->whereNotNull('EndTime')->get();
+        $customers = CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        $users = User::all();
+        $numbers =DiningTable::all();
+        $tables = Table::all();
+        $categories = Category::all();
+        $items = Item::all();
+        $data=['orders'=>$orders,'customers'=>$customers,'users'=>$users,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
+
         return view('backstage.counter.history.index',$data);
     }
     public function DiningIndex()
     {
-        return view('backstage.counter.dining.index');
+        $orders = Order::where(['EndTime' => null,'restaurant_id' => Auth::user()->restaurant_id])->get();
+        $customers = CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        $users = User::all();
+        $numbers =DiningTable::all();
+        $tables = Table::all();
+        $categories = Category::all();
+        $items = Item::all();
+        $data=['orders'=>$orders,'customers'=>$customers,'users'=>$users,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
+
+        return view('backstage.counter.dining.index',$data);
+
     }
     public function BookingIndex()
     {

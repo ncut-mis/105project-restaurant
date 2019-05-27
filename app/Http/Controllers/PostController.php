@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Post;
 use Illuminate\Http\Request;
-
+date_default_timezone_set("Asia/Taipei");
 class PostController extends Controller
 {
     public function index()

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
-
+date_default_timezone_set("Asia/Taipei");
 class CustomerController extends Controller
 {
     /**

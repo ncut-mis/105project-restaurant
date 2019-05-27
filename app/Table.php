@@ -3,11 +3,12 @@
 namespace App;
 
 use \App\Restaurant as RestaurantEloquent;
-use \App\DiningTable as OrderTableEloquent;
+use \App\DiningTable as DiningTableEloquent;
 use Illuminate\Database\Eloquent\Model;
 
 class Table extends Model
 {
+    protected $table = 'tables';
     protected $fillable = [
         'restaurant_id',
         'table',
@@ -19,7 +20,8 @@ class Table extends Model
     public function restaurant(){
         return $this->belongsTo(RestaurantEloquent::class);
     }
-    public function OrderTable(){
-        return $this->belongsTo(OrderTableEloquent::class);
+    public function DiningTable(){
+        return $this->belongsTo(DiningTableEloquent::class);
     }
+
 }

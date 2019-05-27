@@ -13,6 +13,7 @@ use App\Table as TableEloquent;
 use Illuminate\Http\Request;
 use \Carbon\Carbon as Carbon;
 use Illuminate\Support\Facades\DB;
+date_default_timezone_set("Asia/Taipei");
 
 class TableController extends Controller
 {
@@ -68,11 +69,12 @@ class TableController extends Controller
             ]);
             $insertedId = $customer->id;
 
+            $tempDate = date("Y-m-d H:i:s");
             $order = Order::create([
                 'number' => $request['people'],
                 'restaurant_id' => $restaurant->id,
                 'customer_id' => $insertedId,
-
+                'StartTime' =>$tempDate,
             ]);
             $orderId = $order->id;
 

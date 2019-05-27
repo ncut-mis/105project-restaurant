@@ -8,7 +8,7 @@ use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use Auth;
 use FCM;
-
+date_default_timezone_set("Asia/Taipei");
 class KitchenController extends Controller
 {
     /**

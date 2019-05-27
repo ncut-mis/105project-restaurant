@@ -1,735 +1,219 @@
 @extends('backstage.counter.layouts.master')
 @section('content')
-<!-- Page Heading -->
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            <font color="#000000" face="微軟正黑體">用餐中_Dining</font>
-        </h1>
-    </div>
-</div>
-<table class="table table-bordered table-hover">
-
-    <tbody>
-    <tr>
-        <td bgcolor="gray" width="90px" style="text-align: center">
-            <h5><font face="微軟正黑體" color="white">顧客編號</font></h5>
-        </td>
-        <td bgcolor="gray" width="90px" style="text-align: center">
-            <h5><font face="微軟正黑體" color="white">會員</font></h5>
-        </td>
-        <td bgcolor="gray" width="90px" style="text-align: center">
-            <h5><font face="微軟正黑體" color="white">入座時間</font></h5>
-        </td>
-        <td bgcolor="gray" width="90px" style="text-align: center">
-            <h5><font face="微軟正黑體" color="white">人數</font></h5>
-        </td>
-        <td bgcolor="gray" width="90px" style="text-align: center">
-            <h5><font face="微軟正黑體" color="white">桌號</font></h5>
-        </td>
-        <td bgcolor="gray" width="60px" style="text-align: center">
-            <h5><font face="微軟正黑體" color="white">餐點狀態</font></h5>
-        </td>
-        <td bgcolor="gray" width="90px" style="text-align: center">
-            <h5><font face="微軟正黑體" color="white">結帳</font></h5>
-        </td>
-    </tr>
-    <tbody>
-    <tr>
-        <td style="text-align: center">95</td>
-        <td style="text-align: center">李千那</td>
-        <td style="text-align: center">12:30</td>
-        <td style="text-align: center">4人</td>
-        <td style="text-align: center">第2桌</td>
-        <td style="text-align: center">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                詳細餐點狀態
-            </button>
-        </td>
-        <td style="text-align: center">
-            <button type="button" class="btn btn-primary">
-                結帳
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <td style="text-align: center">50</td>
-        <td style="text-align: center">柯文哲</td>
-        <td style="text-align: center">12:30</td>
-        <td style="text-align: center">2人</td>
-        <td style="text-align: center">第6桌</td>
-        <td style="text-align: center">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2">
-                詳細餐點狀態
-            </button>
-        </td>
-        <td style="text-align: center">
-            <button type="button" class="btn btn-primary">
-                結帳
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <td style="text-align: center">32</td>
-        <td style="text-align: center">王世堅</td>
-        <td style="text-align: center">12:00</td>
-        <td style="text-align: center">3人</td>
-        <td style="text-align: center">第8桌</td>
-        <td style="text-align: center">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter3">
-                詳細餐點狀態
-            </button>
-        </td>
-        <td style="text-align: center">
-            <button type="button" class="btn btn-primary">
-                結帳
-            </button>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 ><font face="微軟正黑體"><b>餐點狀態(會員_李千那)</b></font></h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        主餐
-                    </div>
-                    <div class="col-md-4">
-                        香煎鴨胸佐櫻桃紅酒醬
-                        <br>
-                        蒜香奶油肩胛菲力
-                        <br>
-                        海陸雙拼(雞腿+魚排)
-                    </div>
-                    <div class="col-md-1">
-                        x2
-                        <br>
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        720
-                        <br>
-                        360
-                        <br>
-                        360
-                    </div>
-                    <div class="col-md-2">
-                        ->已上菜
-                        <br>
-                        ->已上菜
-                        <br>
-                        ->已上菜
-                    </div>
-
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        開胃品
-                    </div>
-                    <div class="col-md-4">
-                        優格鮮蝦時蔬
-                    </div>
-                    <div class="col-md-1">
-                        x4
-                    </div>
-                    <div class="col-md-1">
-                        200
-                    </div>
-                    <div class="col-md-2">
-                        ->已上菜
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        沙拉
-                    </div>
-                    <div class="col-md-4">
-                        燻鴨蘿美生菜
-                        <br>
-                        時令水果
-                        <br>
-                        洋芋沙拉
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                        <br>
-                        x2
-                    </div>
-                    <div class="col-md-1">
-                        80
-                        <br>
-                        80
-                        <br>
-                        160
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        前菜
-                    </div>
-                    <div class="col-md-4">
-                        焗烤蘑菇+方塊麵包
-                    </div>
-                    <div class="col-md-1">
-                        x4
-                    </div>
-                    <div class="col-md-1">
-                        240
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        湯品
-                    </div>
-                    <div class="col-md-4">
-                        義式海鮮清湯
-                        <br>
-                        法式花菜濃湯
-                        <br>
-                        杏鮑菇南瓜濃湯
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x2
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        80
-                        <br>
-                        160
-                        <br>
-                        80
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        甜點
-                    </div>
-                    <div class="col-md-4">
-                        黑糖布蕾
-                        <br>
-                        覆盆子奶酪
-                        <br>
-                        巧克力袋冰淇淋
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                        <br>
-                        x2
-                    </div>
-                    <div class="col-md-1">
-                        60
-                        <br>
-                        60
-                        <br>
-                        120
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        飲料
-                    </div>
-                    <div class="col-md-4">
-                        荔香彩蝶(孕婦不宜)
-                        <br>
-                        繽紛水果茶
-                        <br>
-                        布蕾香紅
-                        <br>
-                        紅絲絨奶茶(熱)
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                        <br>
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        60
-                        <br>
-                        60
-                        <br>
-                        60
-                        <br>
-                        60
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">確認</button>
-            </div>
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                <font color="#000000" face="微軟正黑體">用餐中_Dining</font>
+            </h1>
         </div>
     </div>
-</div>
-<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 ><font face="微軟正黑體"><b>餐點狀態(會員_柯文哲)</b></font></h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-1">
+    <table class="table table-bordered table-hover">
+
+        <tbody>
+        <tr>
+            <td bgcolor="gray" width="90px" style="text-align: center">
+                <h5><font face="微軟正黑體" color="white">顧客編號</font></h5>
+            </td>
+            <td bgcolor="gray" width="90px" style="text-align: center">
+                <h5><font face="微軟正黑體" color="white">會員</font></h5>
+            </td>
+            <td bgcolor="gray" width="90px" style="text-align: center">
+                <h5><font face="微軟正黑體" color="white">入座時間</font></h5>
+            </td>
+            <td bgcolor="gray" width="90px" style="text-align: center">
+                <h5><font face="微軟正黑體" color="white">人數</font></h5>
+            </td>
+            <td bgcolor="gray" width="90px" style="text-align: center">
+                <h5><font face="微軟正黑體" color="white">桌號</font></h5>
+            </td>
+            <td bgcolor="gray" width="60px" style="text-align: center">
+                <h5><font face="微軟正黑體" color="white">餐點狀態</font></h5>
+            </td>
+            <td bgcolor="gray" width="90px" style="text-align: center">
+                <h5><font face="微軟正黑體" color="white">結帳</font></h5>
+            </td>
+        </tr>
+        <tbody>
+        @foreach($orders as $order)
+
+            <tr>
+                <td style="text-align: center">
+                    @foreach($customers as $customer)
+                        @if($customer->id == $order->customer_id)
+                            {{$customer->id}}
+                        @endif
+                    @endforeach
+                </td>
+                <td style="text-align: center">
+                    @php($g=0)
+                    @foreach($customers as $customer)
+                        @if($customer->id == $order->customer_id)
+                            @foreach($users as $user)
+                                @if($customer->member_id == $user->id )
+                                    {{$user->name}}
+                                    @php($g++)
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
+                    @if($g==0)
+                        非會員
+                    @endif
+                </td>
+                <td style="text-align: center">{{$order->StartTime}}</td>
+                <td style="text-align: center">{{$order->number}}人</td>
+                <td style="text-align: center">
+                    @php($d=0)
+                    @foreach($numbers as $number)
+                        @if($number->order_id == $order->id)
+                            @foreach($tables as $table)
+                                @if($table->id == $number->table_id)
+                                    第{{$table->number}}桌
+                                    @php($d++)
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
+                    @if($d==0)
+                        尚未安排座位
+                    @endif
+                </td>
+                <td style="text-align: center">
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#exampleModalCenter{{$order->id}}">
+                        詳細餐點狀態
+                    </button>
+                </td>
+                <td style="text-align: center">
+                    <button type="button" class="btn btn-primary">
+                        結帳
+                    </button>
+                </td>
+            </tr>
+        @endforeach
+
+        </tbody>
+    </table>
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    @foreach($orders as $order)
+        <div class="modal fade" id="exampleModalCenter{{$order->id}}" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        @php($g=0)
+                        @foreach($customers as $customer)
+                            @if($customer->id == $order->customer_id)
+                                @foreach($users as $user)
+                                    @if($customer->member_id == $user->id )
+                                        <h3><font face="微軟正黑體"><b>餐點狀態(會員_{{$user->name}})</b></font></h3>
+                                        @php($g++)
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+                        @if($g==0)
+                            <h3><font face="微軟正黑體"><b>餐點狀態(非會員)</b></font></h3>
+                        @endif
                     </div>
-                    <div class="col-md-2">
-                        主餐
+                    <div class="modal-body">
+                        @foreach($categories as $category)
+                            <div class="row" style="padding-top:10px">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-2">
+                                    @php($f=0)
+                                    @foreach($items as $item)
+                                        @if($item->order_id == $order->id)
+                                            @if($category->id == $item->meal->category_id)
+                                                @php($f++)
+                                            @endif
+                                        @endif
+                                    @endforeach
+
+                                    @if($f!=0)
+                                        {{$category->name}}
+                                    @endif
+                                </div>
+                                <div class="col-md-4">
+                                    @foreach($items as $item)
+                                        @if($item->order_id == $order->id)
+                                            @if($category->id == $item->meal->category_id)
+                                                {{$item->meal->name}}
+                                                <br>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="col-md-1">
+                                    @foreach($items as $item)
+                                        @if($item->order_id == $order->id)
+                                            @if($category->id == $item->meal->category_id)
+                                                x{{$item->quantity}}
+                                                <br>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="col-md-1">
+                                    @foreach($items as $item)
+                                        @if($item->order_id == $order->id)
+                                            @if($category->id == $item->meal->category_id)
+                                                {{$item->quantity*$item->meal->price}}
+                                                <br>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="col-md-2">
+                                    @foreach($items as $item)
+                                        @if($item->order_id == $order->id)
+                                            @if($category->id == $item->meal->category_id)
+                                                @if($item->status == 1)
+                                                    <span style="color:WHITE; background-color:#FF0000">->製作中</span>
+                                                @else
+                                                    ->已上菜
+                                                @endif
+                                                <br>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+
                     </div>
-                    <div class="col-md-4">
-                        香煎鴨胸佐櫻桃紅酒醬
-                        <br>
-                        蒜香奶油肩胛菲力
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        360
-                        <br>
-                        360
-                    </div>
-                    <div class="col-md-2">
-                        ->已上菜
-                        <br>
-                        ->已上菜
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">確認</button>
                     </div>
                 </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        開胃品
-                    </div>
-                    <div class="col-md-4">
-                        優格鮮蝦時蔬
-                    </div>
-                    <div class="col-md-1">
-                        x2
-                    </div>
-                    <div class="col-md-1">
-                        100
-                    </div>
-                    <div class="col-md-2">
-                        ->已上菜
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        沙拉
-                    </div>
-                    <div class="col-md-4">
-                        燻鴨蘿美生菜
-                        <br>
-                        時令水果
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        80
-                        <br>
-                        80
-                    </div>
-                    <div class="col-md-2">
-                        ->已上菜
-                        <br>
-                        ->已上菜
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        前菜
-                    </div>
-                    <div class="col-md-4">
-                        焗烤蘑菇+方塊麵包
-                    </div>
-                    <div class="col-md-1">
-                        x2
-                    </div>
-                    <div class="col-md-1">
-                        120
-                    </div>
-                    <div class="col-md-2">
-                        ->已上菜
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        湯品
-                    </div>
-                    <div class="col-md-4">
-                        義式海鮮清湯
-                        <br>
-                        杏鮑菇南瓜濃湯
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        80
-                        <br>
-                        80
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        甜點
-                    </div>
-                    <div class="col-md-4">
-                        黑糖布蕾
-                        <br>
-                        巧克力袋冰淇淋
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        60
-                        <br>
-                        60
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        飲料
-                    </div>
-                    <div class="col-md-4">
-                        荔香彩蝶(孕婦不宜)
-                        <br>
-                        繽紛水果茶
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        60
-                        <br>
-                        60
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">確認</button>
             </div>
         </div>
-    </div>
-</div>
-<div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 ><font face="微軟正黑體"><b>餐點內容(會員_王世堅)</b></font></h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        主餐
-                    </div>
-                    <div class="col-md-4">
-                        香煎鴨胸佐櫻桃紅酒醬
-                        <br>
-                        蒜香奶油肩胛菲力
-                        <br>
-                        海陸雙拼(雞腿+魚排)
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        360
-                        <br>
-                        360
-                        <br>
-                        360
-                    </div>
-                    <div class="col-md-2">
-                        ->已上菜
-                        <br>
-                        ->已上菜
-                        <br>
-                        ->已上菜
-                    </div>
+    @endforeach
 
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        開胃品
-                    </div>
-                    <div class="col-md-4">
-                        優格鮮蝦時蔬
-                    </div>
-                    <div class="col-md-1">
-                        x3
-                    </div>
-                    <div class="col-md-2">
-                        150
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        沙拉
-                    </div>
-                    <div class="col-md-4">
-                        燻鴨蘿美生菜
-                        <br>
-                        時令水果
-                        <br>
-                        洋芋沙拉
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        80
-                        <br>
-                        80
-                        <br>
-                        80
-                    </div>
-                    <div class="col-md-2">
-                        ->已上菜
-                        <br>
-                        ->已上菜
-                        <br>
-                        ->已上菜
-                    </div>
-
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        前菜
-                    </div>
-                    <div class="col-md-4">
-                        焗烤蘑菇+方塊麵包
-                    </div>
-                    <div class="col-md-1">
-                        x3
-                    </div>
-                    <div class="col-md-2">
-                        180
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        湯品
-                    </div>
-                    <div class="col-md-4">
-                        義式海鮮清湯
-                        <br>
-                        法式花菜濃湯
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x2
-                    </div>
-                    <div class="col-md-1">
-                        80
-                        <br>
-                        160
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        甜點
-                    </div>
-                    <div class="col-md-4">
-                        巧克力袋冰淇淋
-                    </div>
-                    <div class="col-md-1">
-                        x3
-                    </div>
-                    <div class="col-md-2">
-                        180
-                    </div>
-                </div>
-                <div class="row" style="padding-top:10px">
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2">
-                        飲料
-                    </div>
-                    <div class="col-md-4">
-                        繽紛水果茶
-                        <br>
-                        布蕾香紅
-                        <br>
-                        紅絲絨奶茶(熱)
-                    </div>
-                    <div class="col-md-1">
-                        x1
-                        <br>
-                        x1
-                        <br>
-                        x1
-                    </div>
-                    <div class="col-md-1">
-                        60
-                        <br>
-                        60
-                        <br>
-                        60
-                    </div>
-                    <div class="col-md-2">
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                        <br>
-                        <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">確認</button>
-            </div>
-        </div>
+    <div class="row">
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
     </div>
-</div>
-<div class="row">
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-</div>
 @endsection

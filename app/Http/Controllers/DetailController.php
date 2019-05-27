@@ -6,7 +6,7 @@ use App\Detail;
 use App\Meal;
 use App\Order;
 use Illuminate\Http\Request;
-
+date_default_timezone_set("Asia/Taipei");
 class DetailController extends Controller
 {
     /**

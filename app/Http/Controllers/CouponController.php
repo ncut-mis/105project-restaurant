@@ -13,7 +13,7 @@ use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 use App\Restaurant;
-
+date_default_timezone_set("Asia/Taipei");
 class CouponController extends Controller
 {
     public function index()

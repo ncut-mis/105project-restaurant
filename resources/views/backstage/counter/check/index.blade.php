@@ -144,17 +144,21 @@
                                 </div>
                             </div>
                         @endforeach
+
                     <div class="modal-footer">
+
                         <form action="{{route('counter.plm',$an)}}" method="POST">
                             <br>
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
                             <input type="hidden" name="status" value="出餐中">
-                            <button type="submit">
+                            <button type="submit" class="btn btn-primary">
                                 送出至廚房
                             </button>
                         </form>
+
                     </div>
+
                     </div>
                 </div>
             </div>
