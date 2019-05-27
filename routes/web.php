@@ -26,7 +26,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 /*餐廳後台*/
 Route::group(['prefix' => 'backstage'], function() {
-    Route::get('/home'                   , 'StaffController@login2')->name('backstage.manager.index');
+    Route::get('/manager/home'                   , 'StaffController@login2')->name('backstage.manager.index');
 
     /*基本資料*/
     Route::get('/information'           , 'RestaurantController@index')->name('backstage.manager.information.index');
