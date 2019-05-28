@@ -14,6 +14,7 @@ class Coupon extends Model
     protected $fillable = [
         'id',
         'restaurant_id',
+        'photo',
         'title',
         'content',
         'discount',

@@ -13,7 +13,7 @@
 <!-- /.row -->
 
 <div class="row">
-    <form action="/backstage/coupon/{{$coupons->id}}" method="POST" role="form">
+    <form action="/backstage/coupon/{{$coupons->id}}" method="POST" role="form" enctype ="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
         <div class="col-md-12">
@@ -63,10 +63,11 @@
                                 <input class="form-control" name="EndTime" value="{{$coupons->EndTime}}" placeholder="請輸入結束時間" required>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{--圖片--}}
+                        <div class="form-group row{{ $errors->has('photo') ? ' has-error' : '' }}">
                             <label for="photo" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('上傳圖片') }}</font></label>
                             <div class="col-md-8">
-                                <input type="file"  class="form-control" name="photo" id="photo">
+                                <input type="file" class="form-control" accept ="image/*" name="photo">
                             </div>
                         </div>
                         {{--更新--}}

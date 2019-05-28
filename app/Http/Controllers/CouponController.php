@@ -63,7 +63,22 @@ class CouponController extends Controller
     public function update(Request $request,$id)
     {
         $coupon=Coupon::find($id);
-        $coupon->update($request->all());
+        $file = $request->file('photo');
+        $destinationPath = 'img/coupon';
+        $image=$file->getClientOriginalExtension();
+        $file_name=(Carbon::now()->timestamp).'.'.$image;
+        $file->move($destinationPath, $file_name);
+
+        $coupon->update([
+            'restaurant_id' => Auth::user()->restaurant_id,
+            'title' => $request['title'],
+            'photo'=> $file_name,
+            'content' => $request['content'],
+            'discount' => $request['discount'],
+            'lowestprice' => $request['lowestprice'],
+            'StartTime' => $request['StartTime'],
+            'EndTime' => $request['EndTime'],
+        ]);
         return redirect()->route('backstage.manager.coupon.index')->with('success','修改成功 !');
     }
 

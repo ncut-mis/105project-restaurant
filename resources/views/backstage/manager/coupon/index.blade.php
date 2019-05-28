@@ -38,11 +38,11 @@
                     <tr style="background-color: lightgrey;">
                         <th width="100" style="text-align: center">優惠券名稱</th>
                         <th width="150" style="text-align: center">內容</th>
-                        <th width="150" style="text-align: center">圖片</th>
+                        <th width="100" style="text-align: center">圖片</th>
                         <th width="85" style="text-align: center">折扣金額</th>
                         <th width="85" style="text-align: center">最低消費<br>金額</th>
-                        <th width="150" style="text-align: center">開始時間</th>
-                        <th width="150" style="text-align: center">結束時間</th>
+                        <th width="110" style="text-align: center">開始時間</th>
+                        <th width="110" style="text-align: center">結束時間</th>
                         <th width="100" style="text-align: center">發送優惠券</th>
                         <th width="80" style="text-align: center">修改</th>
                         <th width="80" style="text-align: center">刪除</th>
@@ -53,7 +53,7 @@
                     <tr>
                         <td>{{$coupon->title}}</td>
                         <td>{{$coupon->content}}</td>
-                        <td><img src="{{url('img/coupon/'. $coupon->photo)}}" width=50%></td>
+                        <td><img src="{{url('img/coupon/'. $coupon->photo)}}" width=100%></td>
                         <td>{{$coupon->discount}}</td>
                         <td>{{$coupon->lowestprice}}</td>
                         <td>{{$coupon->StartTime}}</td>
