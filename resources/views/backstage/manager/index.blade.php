@@ -10,7 +10,7 @@
 </div>
 <!-- /.row -->
 
-<div class="row" style="background-color: #d6e9f9">
+<div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8" style="text-align: center">
         @foreach($restaurants as $res)

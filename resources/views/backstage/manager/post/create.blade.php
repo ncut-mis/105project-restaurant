@@ -25,11 +25,18 @@
 
     <!-- /.row -->
     <div class="row justify-content-center">
-        <form action="{{ route('backstage.manager.post.index') }}" method="POST" role="form">{{ csrf_field() }}
+        <form action="{{ route('backstage.manager.post.index') }}" method="POST" role="form" enctype ="multipart/form-data">{{ csrf_field() }}
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
+                        {{--圖片--}}
+                        <div class="form-group row{{ $errors->has('pic') ? ' has-error' : '' }}">
+                            <label for="logo" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('圖片') }}</font></label>
+                            <div class="col-md-8">
+                                <input type="file" name="pic" class="form-control" accept ="image/*">
+                            </div>
+                        </div>
                         {{--標題--}}
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('標題') }}</font></label>
@@ -48,7 +55,7 @@
                         <div class="form-group row">
                             <label for="DateTime" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('張貼日期') }}</font></label>
                             <div class="col-md-8">
-                                <input id="DateTime" type="date" class="form-control" name="DateTime" required>
+                                <input id="DateTime" type="datetime-local" class="form-control" name="DateTime" required>
                             </div>
                         </div>
                         <div class="form-group row">

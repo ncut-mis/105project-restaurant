@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Post;
 use Illuminate\Http\Request;
+use Carbon\Carbon as Carbon;
 date_default_timezone_set("Asia/Taipei");
 class PostController extends Controller
 {
@@ -21,8 +22,15 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $file = $request->file('pic');
+        $destinationPath = 'img/post';
+        $image=$file->getClientOriginalExtension();
+        $file_name=(Carbon::now()->timestamp).'.'.$image;
+        $file->move($destinationPath, $file_name);
+
         Post::create([
             'restaurant_id' => Auth::user()->restaurant_id,
+            'pic'=>$file_name,
             'title' => $request['title'],
             'content' => $request['content'],
             'DateTime' => $request['DateTime'],
@@ -40,7 +48,19 @@ class PostController extends Controller
     public function update(Request $request,$id)
     {
         $post=Post::find($id);
-        $post->update($request->all());
+        $file = $request->file('pic');
+        $destinationPath = 'img/post';
+        $image=$file->getClientOriginalExtension();
+        $file_name=(Carbon::now()->timestamp).'.'.$image;
+        $file->move($destinationPath, $file_name);
+
+        $post->update([
+            'restaurant_id' => Auth::user()->restaurant_id,
+            'pic'=>$file_name,
+            'title' => $request['title'],
+            'content' => $request['content'],
+            'DateTime' => $request['DateTime'],
+        ]);
         return redirect()->route('backstage.manager.post.index')->with('success','修改成功 !');
     }
 

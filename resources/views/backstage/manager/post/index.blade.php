@@ -36,9 +36,10 @@
             <table class="table table-bordered table-hover" style="border:3px #9BA2AB solid;">
                 <thead style="border:2px #9BA2AB solid;">
                     <tr style="background-color: lightgrey;">
-                        <th width="80" style="text-align: center">標題</th>
-                        <th width="250" style="text-align: center">內容</th>
-                        <th width="80" style="text-align: center">張貼日期</th>
+                        <th width="80" style="text-align: center">圖片</th>
+                        <th width="100" style="text-align: center">標題</th>
+                        <th width="200" style="text-align: center">內容</th>
+                        <th width="95" style="text-align: center">張貼日期</th>
                         <th width="50" style="text-align: center">修改</th>
                         <th width="50" style="text-align: center">刪除</th>
                     </tr>
@@ -46,6 +47,7 @@
                 <tbody style="border:3px #9BA2AB solid;">
                 @foreach($posts as $post)
                     <tr>
+                        <td><img src="{{url('img/post/'. $post->pic)}}" width=90%></td>
                         <td>{{$post->title}}</td>
                         <td>{{$post->content}}</td>
                         <td>{{$post->DateTime}}</td>
