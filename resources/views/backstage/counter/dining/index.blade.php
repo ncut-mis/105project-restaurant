@@ -86,9 +86,15 @@
                     </button>
                 </td>
                 <td style="text-align: center">
-                    <button type="button" class="btn btn-primary">
-                        結帳
-                    </button>
+                    <form action="{{ route('customer.checkout.index') }}">
+                        {{ csrf_field() }}
+
+                        <input class="form-control col-md-6 hidden" type="text" name="order"  value="{{$order->id}}">
+
+                        <button type="submit" class="btn btn-primary">
+                            結帳
+                        </button>
+                    </form>
                 </td>
             </tr>
         @endforeach
