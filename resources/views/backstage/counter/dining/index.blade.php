@@ -55,7 +55,7 @@
                     <i class="fa fa-edit">結帳</i>
                 </a></td>
 
-                
+
                 </td>
             </tr>
         @endforeach

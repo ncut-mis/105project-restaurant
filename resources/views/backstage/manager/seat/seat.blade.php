@@ -132,10 +132,9 @@
                 <div id="dropContent">
 
                     @for($i=1;$i<217;$i++)
-
+                        <input class="form-control col-md-6 hidden" type="text" id={{$i}} name="box[]">
                         <div class="dragableBox green" id="box{{$i}}">
                             {{217-$i}}
-                            <input class="form-control col-md-6 hidden" type="text" id={{$i}} name="box[]" value="">
                         </div>
 
                     @endfor
