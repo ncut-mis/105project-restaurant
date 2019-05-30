@@ -710,14 +710,22 @@ DHTMLgoodies_dragDrop.prototype = {
 // Custom drop action for the country boxes
 function dropItems(idOfDraggedItem, targetId, x, y) {
     var targetObj = document.getElementById(targetId);	// Creating reference to target obj
+
     var subDivs = targetObj.getElementsByTagName('DIV');	// Number of subdivs
     if (subDivs.length > 0 && targetId != 'capitals') return;	// Sub divs exists on target, i.e. element already dragged on it. => return from function without doing anything
     var sourceObj = document.getElementById(idOfDraggedItem);	// Creating reference to source, i.e. dragged object
-    var numericIdTarget = targetId.replace(/[^0-9]/gi, '') / 1;	// Find numeric id of target
+    var numericIdTarget = targetId.replace(/[^0-9]/gi, '') / 1;// Find numeric id of target
+
     var numericIdSource = idOfDraggedItem.replace(/[^0-9]/gi, '') / 1;	// Find numeric id of source
-    if (numericIdTarget - numericIdSource == 100) {	// In the html above, there's a difference in 100 between the id of the country and it's capital(example:
+    var dog=(numericIdSource).toString();
+    var fish=(numericIdTarget).toString();
+
+    if (numericIdTarget - numericIdSource!=null) {	// In the html above, there's a difference in 100 between the id of the country and it's capital(example:
         // Oslo have id "box1" and Norway have id "box101", i.e. 1 + 100.
-        sourceObj.style.backgroundColor = '';	// Set green background color for dragged object
+        // targetObj.style.backgroundColor='#00FF00';
+        document.getElementById(dog).value= fish;
+
+        // Set green background color for dragged object
     } else {
         sourceObj.style.backgroundColor = '';	// Reset back to default white background color
     }
@@ -725,6 +733,7 @@ function dropItems(idOfDraggedItem, targetId, x, y) {
         targetObj = targetObj.getElementsByTagName('DIV')[0];
     }
     targetObj.appendChild(sourceObj);	// Append
+    // document.write(numericIdSource);
 }
 
 

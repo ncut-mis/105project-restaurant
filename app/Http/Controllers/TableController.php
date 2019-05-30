@@ -16,6 +16,15 @@ date_default_timezone_set("Asia/Taipei");
 
 class TableController extends Controller
 {
+
+    public function test(Request $request)
+    {
+        $boxes = $request['box'];
+        $data = ['boxes' => $boxes];
+
+        return view('backstage.manager.seat.test',$data);
+    }
+
     public function MemberCheck(Request $request, Restaurant $restaurant)
     {
         $people = $request['people'];
