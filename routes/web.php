@@ -73,6 +73,13 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('token/{id}/edit',['as'=>'backstage.manager.token.edit','uses'=>'RestaurantController@tokenedit']);
     Route::patch('token/{id}',['as'=>'backstage.manager.token.update','uses'=>'RestaurantController@tokenupdate']);
 
+
+    Route::get('/table/test' , 'TableController@test')->name('table.test');
+
+
+
+
+
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 
     /*主廚-家*/
@@ -128,6 +135,8 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::patch('/restaurant/{restaurant}/customer/check',['as'=>'restaurant.customer.check','uses'=>'TableController@CustomerCheck']);
     Route::get('/restaurant/{restaurant}/member/check/store',['as'=>'restaurant.member.store','uses'=>'MemberCheckController@store']);
 
+    /*櫃台結帳*/
+    Route::get('/customer/checkout/index',['as'=>'customer.checkout.index','uses'=>'CheckOutController@index']);
 });
 
 

@@ -50,6 +50,7 @@
                     </button>
                 </td>
                 <td style="text-align: center">
+
                 <a href="{{ route('counter.checkout',$order->id) }}" class="btn btn-info" style="text-decoration:none;">
                     <i class="fa fa-edit">結帳</i>
                 </a></td>

@@ -23,22 +23,22 @@
             padding: 50px;
             height: 200px;
             text-align: center;
-            font-family: 微軟正黑體;
+            font-family:微軟正黑體;
         }
 
         #countries {
             width: 850px;
             float: left;
-            margin-left: 10px;
+            margin-left:10px ;
             height: 550px;
             padding: 5px;
             border: 1px solid #000;
             background-size: 100%;
             background-position: top;
-            background-repeat: no-repeat;
+            background-repeat:no-repeat;
         }
 
-        .dragableBox {
+        .dragableBox{
             width: 40px;
             height: 40px;
             border: 1px solid #000;
@@ -52,16 +52,13 @@
             position: absolute;
 
         }
-
         .dragableBox:hover {
             cursor: pointer;
         }
-
         .dragableBox.green {
             background: #7fc77e;
             color: #537a52;
         }
-
         .dragableBox.green:hover {
             background: #77e475;
         }
@@ -122,55 +119,14 @@
         </div>
     </div>
 
-    <form action="{{ route('table.test') }}">
-        {{ csrf_field() }}
-
-        <div id="mainContainer">
-            <div id="capitals">
-                <p style="font-size:20px"><b>桌位拖曳</b></p>
-
-                <div id="dropContent">
-
-                    @for($i=1;$i<217;$i++)
-                        <input class="form-control col-md-6 hidden" type="text" id={{$i}} name="box[]">
-                        <div class="dragableBox green" id="box{{$i}}">
-                            {{217-$i}}
-                        </div>
-
-                    @endfor
-                </div>
-
-            </div>
-
-            <div id="countries" style="background-image: url(/img/table_example1.png)">
-
-                <div id="bob101" class="dragableBoxRight"></div>
-                <div id="bob102" class="dragableBoxRight"></div>
-                <div id="bob103" class="dragableBoxRight"></div>
-                <div id="bob104" class="dragableBoxRight"></div>
-                <div id="bob105" class="dragableBoxRight"></div>
-                <div id="bob106" class="dragableBoxRight"></div>
-                <div id="bob107" class="dragableBoxRight"></div>
-                <div id="bob108" class="dragableBoxRight"></div>
-                <div id="bob109" class="dragableBoxRight"></div>
-                @for($i=110;$i<317;$i++)
-                    <div id="bob{{$i}}" class="dragableBoxRight"></div>
-                @endfor
-
-            </div>
+    @php($n=216)
+    @foreach($boxes as $box)
+        第{{$n--}}桌，放在第幾號格子...{{$box}}
+        <br>
+    @endforeach
 
 
-            <div class="clear"></div>
-            <div class="konaBody"></div>
-        </div>
 
-        <div id="debug"></div>
 
-        <button type="submit" id="submit" style="text-decoration:none; float: right;"
-                class="btn btn-primary">確認
-        </button>
-    </form>
-
-    <script src="{{ asset('js/seat.js') }}"></script>
 
 @endsection
