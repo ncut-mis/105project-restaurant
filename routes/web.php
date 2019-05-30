@@ -99,6 +99,9 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'ItemController@index']);
     Route::patch('rcveod/{id}/{item_id}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'ItemController@update']);
 
+    /*主廚通知維護*/
+    Route::get('chef/noti' , ['as' => 'backstage.chef.notify' , 'uses' => 'KitchenController@notify']);
+    Route::patch('chef/noti/{id}' , ['as' => 'backstage.chef.notify.update' , 'uses' => 'KitchenController@notify_update']);
     /*firebase測試*/
     Route::get('firejava',['as'=>'backstage.chef.fire3','uses'=>'KitchenController@fire']);//firebase搭配javascript-fetch指令
     Route::get('firelara',['as'=>'backstage.chef.noti','uses'=>'KitchenController@noti']);//firebase搭配laravel-fcm套件的按鈕
@@ -114,6 +117,10 @@ Route::group(['prefix' => 'backstage'], function() {
 
     Route::get('/counter/check/index', ['as' => 'counter.check.index' , 'uses' => 'CounterController@CheckIndex']);
 
+
+    /*櫃台通知維護*/
+    Route::get('counter/noti' , ['as' => 'counter.notify' , 'uses' => 'CounterController@notify']);
+    Route::patch('counter/noti/{id}' , ['as' => 'counter.notify.update' , 'uses' => 'CounterController@notify_update']);
 
 
     Route::get('/counter/dining/test', ['as' => 'counter.test' , 'uses' => 'CounterController@test']);

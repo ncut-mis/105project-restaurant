@@ -264,4 +264,20 @@ class CounterController extends Controller
 //        $check->save();
         return redirect()->route('counter.dining.index');
     }
+
+    public function notify()
+    {
+        $token = Restaurant::where('id',Auth::user()->restaurant_id)
+            ->get();
+        $data = ['token'=>$token];
+        return view('backstage.counter.token.index',$data);
+    }
+    public function notify_update(Request $request,$id)
+    {
+        $token = Restaurant::find($id);
+        $token->token=$request->token;
+        $token->save();
+
+        return redirect()->route('counter.notify');
+    }
 }

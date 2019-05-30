@@ -59,6 +59,9 @@
             <li>
                 <a href="{{ route('counter.check.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-check-square-o"></i>  確認餐點_Check</font></a>
             </li>
+            <li>
+                <a href="{{ route('counter.notify') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-check-square-o"></i>  通知維護管理_Notification</font></a>
+            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->
