@@ -25,7 +25,7 @@
 
     <!-- /.row -->
     <div class="row justify-content-center">
-        <form action="{{ route('backstage.manager.coupon.index') }}" method="POST" role="form">{{ csrf_field() }}
+        <form action="{{ route('backstage.manager.coupon.index') }}" method="POST" role="form" enctype ="multipart/form-data">{{ csrf_field() }}
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="card">
@@ -73,10 +73,12 @@
                             </div>
                         </div>
                         {{--Logo圖片檔--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label>上傳圖片</label>--}}
-                            {{--<input type="file"  class="form-control" name="picture" id="picture"  >--}}
-                        {{--</div>--}}
+                        <div class="form-group row{{ $errors->has('photo') ? ' has-error' : '' }}">
+                            <label for="pic" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('上傳圖片') }}</font></label>
+                            <div class="col-md-8">
+                                <input type="file" name="photo" class="form-control" accept ="image/*">
+                            </div>
+                        </div>
                         {{--確認--}}
                         <div class="form-group row">
                             <div class="col-md-3"></div>

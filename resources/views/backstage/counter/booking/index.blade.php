@@ -200,7 +200,7 @@
     </div>
 
 
-    <div class="theatre" style="background-image: url(/img/table_example1.png); ">
+    <div class="theatre" style="background-image: url(/img/1.png); ">
         <ol class="cabin">
             @for($i=1;$i<=12;$i++)
                 <li class="row row--{{$i}}">
@@ -210,10 +210,10 @@
                                 @foreach($tables as $table)
                                     @if($table->row == $i && $table->col == $k)
                                         @if($table->status == "空閒中")
-                                            <label style="background-color: #77e475" for="{{$i}}-{{$k}}">{{$i}}-{{$k}}
+                                            <label style="background-color: #77e475" for="{{$i}}-{{$k}}">{{$table->number}}
                                                 <p>{{ $table->status }}</label>
                                         @else
-                                            <label for="{{$i}}-{{$k}}">{{$i}}-{{$k}}<p>{{ $table->status }}</label>
+                                            <label for="{{$i}}-{{$k}}">{{$table->number}}<p>{{ $table->status }}</label>
                                         @endif
                                         @break
                                     @endif

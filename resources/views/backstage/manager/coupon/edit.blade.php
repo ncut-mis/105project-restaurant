@@ -63,6 +63,12 @@
                                 <input class="form-control" name="EndTime" value="{{$coupons->EndTime}}" placeholder="請輸入結束時間" required>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="photo" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('上傳圖片') }}</font></label>
+                            <div class="col-md-8">
+                                <input type="file"  class="form-control" name="photo" id="photo">
+                            </div>
+                        </div>
                         {{--更新--}}
                         <div class="form-group row">
                             <div class="col-md-3"></div>

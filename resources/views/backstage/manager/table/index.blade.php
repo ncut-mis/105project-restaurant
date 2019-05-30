@@ -121,6 +121,41 @@
 
 
     <div id="mainContainer">
+        <div class="row" style="margin-bottom: 20px; text-align:right">
+            <div class="col-lg-12">
+                <div class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-plus-circle"></i> 上傳餐廳圖</font>
+            </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form action="/backstage/table/{{Auth::user()->restaurant_id}}" method="POST" role="form" enctype ="multipart/form-data">
+                                {{ csrf_field() }}
+                                {{ method_field('PATCH') }}
+                                <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel" style="text-align: center"><font face="微軟正黑體">上傳餐廳室內圖</font></h4>
+                            </div>
+
+                                <div class="col-md-12" style="text-align:justify;text-justify: distribute;margin-top: 20px">
+                                    <div class="form-group row{{ $errors->has('photo') ? ' has-error' : '' }}">
+                                    <label for="table_pic" class="col-md-4" style="text-align:right;line-height:30px;"><font color="#000000" face="微軟正黑體" size="5">{{ __('室內圖') }}</font></label>
+                                    <div class="col-md-8">
+                                        <input type="file" name="table_pic" class="form-control" accept ="image/*">
+                                    </div>
+                                    </div>
+                                </div>
+
+                            <div class="modal-footer">
+                                <div class="col-md-12" style="text-align: center;margin-top: 20px">
+                                    <button type="submit" class="btn btn-primary">
+                                        <font face="微軟正黑體">{{ __('送出') }}</font>
+                                    </button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
         <div id="capitals">
             <p style="font-size:20px"><b>桌位拖曳</b></p>
 
@@ -134,10 +169,10 @@
             </div>
 
         </div>
+            <br>
 
 
-
-        <div id="countries" style="background-image: url(/img/table_example1.png)">
+        <div id="countries" style="background-image: url(/img/1.png)">
 
             <div id="bob101" class="dragableBoxRight"></div>
             <div id="bob102" class="dragableBoxRight"></div>
