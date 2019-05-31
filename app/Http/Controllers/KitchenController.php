@@ -122,4 +122,19 @@ class KitchenController extends Controller
         $downstreamResponse->tokensToRetry();
         return redirect()->route('backstage.chef.meal.index');
     }
+    public function notify()
+    {
+        $token = Restaurant::where('id',Auth::user()->restaurant_id)
+        ->get();
+        $data = ['token'=>$token];
+        return view('backstage.chef.noti.noti',$data);
+    }
+    public function notify_update(Request $request,$id)
+    {
+        $token = Restaurant::find($id);
+        $token->token2=$request->token2;
+        $token->save();
+
+        return redirect()->route('backstage.chef.order.index');
+    }
 }

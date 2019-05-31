@@ -260,8 +260,33 @@ class CounterController extends Controller
         $order->status=$request->status;
         $order->total=$request->total;
         $order->save();
-//        $check->status=$request->status;
-//        $check->save();
+
+        $table = Table::join('dining_tables','tables.id','=','dining_tables.table_id')
+            ->where('dining_tables.order_id',$id)
+            ->pluck('dining_tables.table_id');
+        $i = count($table);
+        for($a=0;$a<$i;$a++)
+        {
+            Table::where('restaurant_id',Auth::user()->restaurant_id)
+                ->where('id',$table[$a])
+                ->update(['status'=>'空閒中']);
+        }
         return redirect()->route('counter.dining.index');
+    }
+
+    public function notify()
+    {
+        $token = Restaurant::where('id',Auth::user()->restaurant_id)
+            ->get();
+        $data = ['token'=>$token];
+        return view('backstage.counter.token.index',$data);
+    }
+    public function notify_update(Request $request,$id)
+    {
+        $token = Restaurant::find($id);
+        $token->token=$request->token;
+        $token->save();
+
+        return redirect()->route('counter.notify');
     }
 }

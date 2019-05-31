@@ -53,6 +53,9 @@
             <li>
                 <a href="{{ route('backstage.chef.meal.index') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　餐點管理</font></a>
             </li>
+            <li>
+                <a href="{{ route('backstage.chef.notify') }}"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-users"></i>　通知維護</font></a>
+            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->
