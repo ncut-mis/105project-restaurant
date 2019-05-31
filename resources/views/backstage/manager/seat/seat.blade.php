@@ -139,10 +139,9 @@
 
                     @endfor
                 </div>
-
             </div>
 
-            <div id="countries" style="background-image: url(/img/table_example1.png)">
+            <div id="countries" style="background-image: url(/img/1.png)">
 
                 <div id="bob101" class="dragableBoxRight"></div>
                 <div id="bob102" class="dragableBoxRight"></div>
