@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Order;
+use App\Item;
 use App\Table;
 use Illuminate\Http\Request;
 date_default_timezone_set("Asia/Taipei");
@@ -16,9 +17,11 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $order = Order::where('restaurant_id', Auth::user()->restaurant_id)
-            ->where('status','出餐中')->get();
-        return view('backstage.chef.od.index', ['order' => $order]);
+        $item =Item::join('meals','meals.id','=','items.meal_id')
+            ->where('items.status',2)
+            ->select('items.id','meals.name','items.status')
+            ->get();
+        return view('backstage.chef.od.index', ['items' => $item]);
     }
 
     /**
@@ -87,22 +90,9 @@ class OrderController extends Controller
     }
     public function update2(Request $request,$id)
     {
-        $order = Order::find($id);
+        $order = Item::find($id);
         $order->status =$request->status;
         $order->save();
-
-        $table=Table::join('dining_tables','dining_tables.table_id','=','tables.id')
-            ->where('dining_tables.order_id',$id)
-            ->pluck('dining_tables.table_id');
-
-        $i = count($table);
-        for($a=0;$a<$i;$a++)
-        {
-            Table::where('restaurant_id',Auth::user()->restaurant_id)
-                ->where('id',$table[$a])
-                ->update(['status'=>'用餐中']);
-        }
-
         return redirect()->route('backstage.chef.order.index');
     }
 }

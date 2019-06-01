@@ -96,8 +96,6 @@ Route::group(['prefix' => 'backstage'], function() {
     /*主廚-出餐管理*/
     Route::get('rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
     Route::patch('rcveod/{id}' , ['as' => 'backstage.chef.order.update' , 'uses' => 'OrderController@update2']);
-    Route::get('rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'ItemController@index']);
-    Route::patch('rcveod/{id}/{item_id}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'ItemController@update']);
 
     /*主廚通知維護*/
     Route::get('chef/noti' , ['as' => 'backstage.chef.notify' , 'uses' => 'KitchenController@notify']);

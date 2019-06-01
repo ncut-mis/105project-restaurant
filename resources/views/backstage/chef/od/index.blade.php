@@ -18,35 +18,23 @@
                         <thead>
                         <tr>
                             {{--<th width="50" style="text-align: center">編號</th>--}}
-                            <th width="100" style="text-align: center">點單編號</th>
+                            <th width="100" style="text-align: center">餐點名稱</th>
                             <th width="100" style="text-align: center">全都做完囉！</th>
-                            <th width="100" style="text-align: center">進入明細</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($order as $od)
+                        @foreach($items as $od)
                             <tr>
                                 {{--<td>{{$sf->id}}</td>--}}
-                                <td>{{$od->id}}</td>
+                                <td>{{$od->name}}</td>
                                 <td>
                                     <form method="POST" action="{{ route('backstage.chef.order.update',$od->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('PATCH') }}
                                         <div>
-                                            <input name="status" type="hidden" value="用餐中">
+                                            <input name="status" type="hidden" value="3">
                                             <button type="submit" class="btn btn-primary col-md-12 " >
-                                                這張order全都做完囉！
-                                            </button>
-                                        </div>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form method="POST" action="{{ route('backstage.chef.detail.index',$od->id) }}">
-                                        {{ csrf_field() }}
-                                        {{ method_field('get') }}
-                                        <div>
-                                            <button type="submit" class="btn btn-primary col-md-12 ">
-                                                進入明細
+                                                這道餐點做好囉！
                                             </button>
                                         </div>
                                     </form>
