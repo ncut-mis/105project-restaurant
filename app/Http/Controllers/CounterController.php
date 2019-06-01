@@ -191,6 +191,14 @@ class CounterController extends Controller
         $table->status=$request->status;
         $table->save();
 
+        $item = Item::where('order_id',$id);
+        $l = count($item);
+        for($p=0;$p<$l;$p++)
+        {
+            Item::where('order_id',$id)
+                ->update(['status'=>2]);
+        }
+
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
 
