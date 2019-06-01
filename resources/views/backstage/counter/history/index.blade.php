@@ -82,7 +82,7 @@
                             <div class="row" style="padding-top:10px;">
                                 @foreach($items as $it)
                                     @if($it->order_id==$order->id)
-                                        @php($popo=count($it->name))
+                                        @php($popo=count([$it->name]))
                                         <div class="col-md-3"></div>
                                         <div class="col-md-4">
                                             {{$it->name}}
