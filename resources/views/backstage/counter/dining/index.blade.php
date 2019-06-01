@@ -19,6 +19,9 @@
                 <h5><font face="微軟正黑體" color="white">桌號</font></h5>
             </td>
             <td bgcolor="gray" width="60px" style="text-align: center">
+                <h5><font face="微軟正黑體" color="white">櫃台確認出餐完畢</font></h5>
+            </td>
+            <td bgcolor="gray" width="60px" style="text-align: center">
                 <h5><font face="微軟正黑體" color="white">餐點狀態</font></h5>
             </td>
             <td bgcolor="gray" width="90px" style="text-align: center">
@@ -42,6 +45,14 @@
                             @endforeach
                         @endif
                     @endforeach
+                </td>
+                <td style="text-align: center">
+                    <form action="{{route('counter.check-kitchen',$order->id)}}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
+                        <input type="hidden" value="用餐中">
+                        <button type="submit" class="btn btn-success">更新</button>
+                    </form>
                 </td>
                 <td style="text-align: center">
                     <button type="button" class="btn btn-primary" data-toggle="modal"

@@ -93,6 +93,15 @@ class OrderController extends Controller
         $order = Item::find($id);
         $order->status =$request->status;
         $order->save();
+
         return redirect()->route('backstage.chef.order.index');
+    }
+    public function eating(Request $request,$id)
+    {
+        $order = Order::find($id);
+        $order->status =$request->status;
+        $order->save();
+
+        return redirect()->route('counter.dining.index');
     }
 }

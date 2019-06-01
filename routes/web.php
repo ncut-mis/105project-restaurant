@@ -124,6 +124,8 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('/counter/dining/test', ['as' => 'counter.test' , 'uses' => 'CounterController@test']);
 
 
+    //櫃台確認廚房出完餐後，點擊更新order狀態
+    Route::patch('/counter/dining/index/{id}', ['as' => 'counter.check-kitchen' , 'uses' => 'OrderController@eating']);
     //結帳按鈕(前往結帳畫面&結帳)
     Route::get('/counter/checkout/{id}/edit', ['as' => 'counter.checkout' , 'uses' => 'CounterController@checkout']);
     Route::patch('/counter/checkout/{id}/', ['as' => 'counter.checkouting' , 'uses' => 'CounterController@checkouting']);
