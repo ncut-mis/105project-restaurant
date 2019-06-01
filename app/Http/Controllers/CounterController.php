@@ -67,9 +67,9 @@ class CounterController extends Controller
     }
     public function DiningIndex()
     {
-        $orders = Order::where(['status'=>'用餐中' xor '製作中','restaurant_id' => Auth::user()->restaurant_id])
+        $orders = Order::where(['status'=>'用餐中' xor '出餐中','restaurant_id' => Auth::user()->restaurant_id])
             ->whereNotIn('status',['已結帳'])
-            ->select('id')
+            ->select('id','status')
             ->get();
         $numbers =DiningTable::select('order_id','table_id')->get();
         $tables = Table::select('id','number')
