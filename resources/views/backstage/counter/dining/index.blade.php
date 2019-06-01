@@ -47,12 +47,16 @@
                     @endforeach
                 </td>
                 <td style="text-align: center">
+                    @if($order->status=="出餐中")
                     <form action="{{route('counter.check-kitchen',$order->id)}}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <input name="status" type="hidden" value="用餐中">
                         <button type="submit" class="btn btn-success">更新</button>
                     </form>
+                        @else
+                        已全部完成
+                        @endif
                 </td>
                 <td style="text-align: center">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
