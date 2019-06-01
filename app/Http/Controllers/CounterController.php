@@ -16,6 +16,7 @@ use App\Order as OrderEloquent;
 use App\Detail as DetailEloquent;
 use App\Meal as MealEloquent;
 use App\MealType as MealTypeEloquent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Restaurant;
 use LaravelFCM\Message\OptionsBuilder;
@@ -278,6 +279,7 @@ class CounterController extends Controller
         $order = Order::find($id);
         $order->status=$request->status;
         $order->total=$request->total;
+        $order->EndTime=(Carbon::now()->timestamp);
         $order->save();
 
         $table = Table::join('dining_tables','tables.id','=','dining_tables.table_id')
