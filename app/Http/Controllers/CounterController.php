@@ -279,7 +279,7 @@ class CounterController extends Controller
         $order = Order::find($id);
         $order->status=$request->status;
         $order->total=$request->total;
-        $order->EndTime=(Carbon::now()->timestamp);
+        $order->EndTime=(Carbon::now()->toDateTimeString());
         $order->save();
 
         $table = Table::join('dining_tables','tables.id','=','dining_tables.table_id')
