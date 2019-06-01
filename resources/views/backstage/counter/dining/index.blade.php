@@ -50,7 +50,7 @@
                     <form action="{{route('counter.check-kitchen',$order->id)}}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
-                        <input type="hidden" value="用餐中">
+                        <input name="status" type="hidden" value="用餐中">
                         <button type="submit" class="btn btn-success">更新</button>
                     </form>
                 </td>
