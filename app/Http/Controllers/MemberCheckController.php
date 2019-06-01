@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Member;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -49,7 +50,7 @@ class MemberCheckController extends Controller
         $people = $request['people'];
         $tables = $request['table'];
         $dog = $request['ver'];
-
+        $ver = Member::where('verification_code',$dog)->value('id');
         //        --------------------------------------------------------------------------
         //驗證碼新增
         $random = 30;
@@ -77,7 +78,7 @@ class MemberCheckController extends Controller
         $customer = Customer::create([
             'restaurant_id' => $restaurant->id,
             'verification_code' => $verification,
-            'member_id' => $dog
+            'member_id' => $ver
         ]);
         $insertedId = $customer->id;
 
