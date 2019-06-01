@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\DiningTable;
 use App\Item;
+use App\Meal;
 use App\Order;
 use App\Table;
 use App\User;
@@ -42,14 +43,24 @@ class CounterController extends Controller
 
     public function HistoryIndex()
     {
-        $orders = Order::where(['status'=>'已結帳','restaurant_id' => Auth::user()->restaurant_id])->get();
-        $customers = CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
-        $users = User::all();
-        $numbers =DiningTable::all();
-        $tables = Table::all();
-        $categories = Category::all();
-        $items = Item::all();
-        $data=['orders'=>$orders,'customers'=>$customers,'users'=>$users,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
+        $order = Order::where('orders.restaurant_id',Auth::user()->restaurant_id)
+            ->select('orders.id','orders.number','orders.StartTime','orders.total')
+            ->whereNotNull('orders.EndTime')
+            ->get();
+        $item = Item::join('meals','meals.id','=','items.meal_id')
+            ->select('meals.name','meals.price','items.quantity','items.order_id')
+            ->get();
+        $data = ['orders'=>$order,'items'=>$item];
+
+
+//        $orders = Order::where(['status'=>'已結帳','restaurant_id' => Auth::user()->restaurant_id])->get();
+//        $customers = CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
+//        $users = User::all();
+//        $numbers =DiningTable::all();
+//        $tables = Table::all();
+//        $categories = Category::all();
+//        $items = Item::all();
+//        $data=['orders'=>$orders,'customers'=>$customers,'users'=>$users,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
 
         return view('backstage.counter.history.index',$data);
     }
