@@ -191,7 +191,7 @@ class CounterController extends Controller
         $table->status=$request->status;
         $table->save();
 
-        $item = Item::where('order_id',$id);
+        $item = Item::where('order_id',$id)->get();
         $l = count($item);
         for($p=0;$p<$l;$p++)
         {
