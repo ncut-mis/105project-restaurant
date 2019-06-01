@@ -127,7 +127,7 @@
                                     @foreach($items as $item)
                                         @if($item->order_id == $order->id)
                                             @if($category->id == $item->category_id)
-                                                @if($item->status == 2 or 1)
+                                                @if($item->status == 2)
                                                     <span style="color:WHITE; background-color:#FF0000">->製作中</span>
                                                 {{--@elseif($item->status == 1)--}}
                                                     {{--<span style="color:WHITE; background-color:#FF0000">->製作中</span>--}}
