@@ -96,8 +96,6 @@ Route::group(['prefix' => 'backstage'], function() {
     /*主廚-出餐管理*/
     Route::get('rcveod' , ['as' => 'backstage.chef.order.index' , 'uses' => 'OrderController@index']);
     Route::patch('rcveod/{id}' , ['as' => 'backstage.chef.order.update' , 'uses' => 'OrderController@update2']);
-    Route::get('rcveod/{id}' , ['as' => 'backstage.chef.detail.index' , 'uses' => 'ItemController@index']);
-    Route::patch('rcveod/{id}/{item_id}' , ['as' => 'backstage.chef.detail.update' , 'uses' => 'ItemController@update']);
 
     /*主廚通知維護*/
     Route::get('chef/noti' , ['as' => 'backstage.chef.notify' , 'uses' => 'KitchenController@notify']);
@@ -126,6 +124,8 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::get('/counter/dining/test', ['as' => 'counter.test' , 'uses' => 'CounterController@test']);
 
 
+    //櫃台確認廚房出完餐後，點擊更新order狀態
+    Route::patch('/counter/dining/index/{id}', ['as' => 'counter.check-kitchen' , 'uses' => 'OrderController@eating']);
     //結帳按鈕(前往結帳畫面&結帳)
     Route::get('/counter/checkout/{id}/edit', ['as' => 'counter.checkout' , 'uses' => 'CounterController@checkout']);
     Route::patch('/counter/checkout/{id}/', ['as' => 'counter.checkouting' , 'uses' => 'CounterController@checkouting']);

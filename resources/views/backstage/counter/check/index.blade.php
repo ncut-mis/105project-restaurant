@@ -61,29 +61,9 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-
-                        @foreach($customers as $customer)
-                            @foreach($orders as $order)
-                                @if($order->id == $an)
-                                    @if($customer->id == $order->customer_id)
-                                        @if($customer->member_id == null)
-                                            <h3><font face="微軟正黑體"><b>餐點狀態(非會員_編號-{{$customer->id}})</b></font></h3>
-                                        @else
-                                            @foreach($users as $user)
-                                                @if($user->id == $customer->member_id)
-                                                    <h3><font face="微軟正黑體"><b>餐點狀態(會員_{{$user->name}})</b></font></h3>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    @endif
-                                @endif
-                            @endforeach
-                        @endforeach
-
+                        <h3><font face="微軟正黑體"><b>餐點狀態</b></font></h3>
                     </div>
                     <div class="modal-body">
-
-
                         <div class="row " style="padding-top:10px">
                             <div class="col-md-6 col-md-offset-2">
                                 @foreach($tables as $table)

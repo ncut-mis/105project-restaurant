@@ -19,6 +19,9 @@
                 <h5><font face="微軟正黑體" color="white">桌號</font></h5>
             </td>
             <td bgcolor="gray" width="60px" style="text-align: center">
+                <h5><font face="微軟正黑體" color="white">櫃台確認出餐完畢</font></h5>
+            </td>
+            <td bgcolor="gray" width="60px" style="text-align: center">
                 <h5><font face="微軟正黑體" color="white">餐點狀態</font></h5>
             </td>
             <td bgcolor="gray" width="90px" style="text-align: center">
@@ -42,6 +45,20 @@
                             @endforeach
                         @endif
                     @endforeach
+                </td>
+                <td style="text-align: center">
+
+                    <form action="{{route('counter.check-kitchen',$order->id)}}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
+                        <input name="status" type="hidden" value="用餐中">
+                        @if($order->status=='出餐中')
+                            <button type="submit" class="btn btn-success">更新</button>
+                        @else
+                            已全部完成
+                        @endif
+                    </form>
+
                 </td>
                 <td style="text-align: center">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -127,9 +144,11 @@
                                     @foreach($items as $item)
                                         @if($item->order_id == $order->id)
                                             @if($category->id == $item->category_id)
-                                                @if($item->status == 1)
+                                                @if($item->status == 2)
                                                     <span style="color:WHITE; background-color:#FF0000">->製作中</span>
-                                                @else
+                                                {{--@elseif($item->status == 1)--}}
+                                                    {{--<span style="color:WHITE; background-color:#FF0000">->製作中</span>--}}
+                                                    @else
                                                     ->已上菜
                                                 @endif
                                                 <br>

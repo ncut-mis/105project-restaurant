@@ -8,29 +8,18 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-
-class User extends Authenticatable
+class Member extends Authenticatable
 {
     use Notifiable;
     protected $table = 'members';
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password','member_id'
+        'name', 'email', 'password','member_id','birthday','phone','address','verification_code','token'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
     protected $hidden = [
         'password', 'remember_token',
     ];
-
     public function customer(){
         return $this->hasMany(CustomerEloquent::class);
     }
@@ -41,3 +30,4 @@ class User extends Authenticatable
         return $this->hasMany(Member_restaurantsEloquent::class);
     }
 }
+
