@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\DiningTable;
 use App\Item;
+use App\Meal;
 use App\Order;
 use App\Table;
 use App\User;
@@ -15,6 +16,7 @@ use App\Order as OrderEloquent;
 use App\Detail as DetailEloquent;
 use App\Meal as MealEloquent;
 use App\MealType as MealTypeEloquent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Restaurant;
 use LaravelFCM\Message\OptionsBuilder;
@@ -42,22 +44,32 @@ class CounterController extends Controller
 
     public function HistoryIndex()
     {
-        $orders = Order::where(['status'=>'已結帳','restaurant_id' => Auth::user()->restaurant_id])->get();
-        $customers = CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
-        $users = User::all();
-        $numbers =DiningTable::all();
-        $tables = Table::all();
-        $categories = Category::all();
-        $items = Item::all();
-        $data=['orders'=>$orders,'customers'=>$customers,'users'=>$users,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
+        $order = Order::where('orders.restaurant_id',Auth::user()->restaurant_id)
+            ->select('orders.id','orders.number','orders.StartTime','orders.total')
+            ->whereNotNull('orders.EndTime')
+            ->get();
+        $item = Item::join('meals','meals.id','=','items.meal_id')
+            ->select('meals.name','meals.price','items.quantity','items.order_id')
+            ->get();
+        $data = ['orders'=>$order,'items'=>$item];
+
+
+//        $orders = Order::where(['status'=>'已結帳','restaurant_id' => Auth::user()->restaurant_id])->get();
+//        $customers = CustomerEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
+//        $users = User::all();
+//        $numbers =DiningTable::all();
+//        $tables = Table::all();
+//        $categories = Category::all();
+//        $items = Item::all();
+//        $data=['orders'=>$orders,'customers'=>$customers,'users'=>$users,'numbers'=>$numbers,'tables'=>$tables,'categories'=>$categories,'items'=>$items];
 
         return view('backstage.counter.history.index',$data);
     }
     public function DiningIndex()
     {
-        $orders = Order::where(['status'=>'用餐中' xor '製作中','restaurant_id' => Auth::user()->restaurant_id])
+        $orders = Order::where(['status'=>'用餐中' xor '出餐中','restaurant_id' => Auth::user()->restaurant_id])
             ->whereNotIn('status',['已結帳'])
-            ->select('id')
+            ->select('id','status')
             ->get();
         $numbers =DiningTable::select('order_id','table_id')->get();
         $tables = Table::select('id','number')
@@ -180,6 +192,14 @@ class CounterController extends Controller
         $table->status=$request->status;
         $table->save();
 
+        $item = Item::where('order_id',$id)->get();
+        $l = count($item);
+        for($p=0;$p<$l;$p++)
+        {
+            Item::where('order_id',$id)
+                ->update(['status'=>2]);
+        }
+
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
 
@@ -259,6 +279,7 @@ class CounterController extends Controller
         $order = Order::find($id);
         $order->status=$request->status;
         $order->total=$request->total;
+        $order->EndTime=(Carbon::now()->toDateTimeString());
         $order->save();
 
         $table = Table::join('dining_tables','tables.id','=','dining_tables.table_id')

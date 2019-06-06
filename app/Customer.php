@@ -13,7 +13,8 @@ class Customer extends Model
     protected $fillable = [
         'restaurant_id',
         'status',
-        'verification_code'
+        'verification_code',
+        'member_id',
     ];
 
     public function user(){
