@@ -159,34 +159,34 @@
                 </div>
             </div>
 
-{{--                <div id="countries" style="background-image: url(/img/1.png)">--}}
-{{--                    <div id="bob101" class="dragableBoxRight"></div>--}}
-{{--                    <div id="bob102" class="dragableBoxRight"></div>--}}
-{{--                    <div id="bob103" class="dragableBoxRight"></div>--}}
-{{--                    <div id="bob104" class="dragableBoxRight"></div>--}}
-{{--                    <div id="bob105" class="dragableBoxRight"></div>--}}
-{{--                    <div id="bob106" class="dragableBoxRight"></div>--}}
-{{--                    <div id="bob107" class="dragableBoxRight"></div>--}}
-{{--                    <div id="bob108" class="dragableBoxRight"></div>--}}
-{{--                    <div id="bob109" class="dragableBoxRight"></div>--}}
-{{--                    @for($i=110;$i<317;$i++)--}}
-{{--                        <div id="bob{{$i}}" class="dragableBoxRight"></div>--}}
-{{--                    @endfor--}}
-{{--                </div>--}}
+                <div id="countries" style="background-image: url(/img/1.png)">
+                    <div id="bob101" class="dragableBoxRight"></div>
+                    <div id="bob102" class="dragableBoxRight"></div>
+                    <div id="bob103" class="dragableBoxRight"></div>
+                    <div id="bob104" class="dragableBoxRight"></div>
+                    <div id="bob105" class="dragableBoxRight"></div>
+                    <div id="bob106" class="dragableBoxRight"></div>
+                    <div id="bob107" class="dragableBoxRight"></div>
+                    <div id="bob108" class="dragableBoxRight"></div>
+                    <div id="bob109" class="dragableBoxRight"></div>
+                    @for($i=110;$i<317;$i++)
+                        <div id="bob{{$i}}" class="dragableBoxRight"></div>
+                    @endfor
+                </div>
 
-{{--                <div class="clear"></div>--}}
-{{--                <div class="konaBody"></div>--}}
+                <div class="clear"></div>
+                <div class="konaBody"></div>
             </div>
-{{--            <div id="debug"></div>--}}
+            <div id="debug"></div>
         </div>
     </div>
 
 {{--    <script src="{{ asset('js/seat.js') }}"></script>--}}
 
-            @php($n=216)
-            @foreach($boxes as $box)
-                第{{$n}}桌，放在第幾號格子...{{$box}}
-                <br>
-            @endforeach
+{{--            @php($n=216)--}}
+{{--            @foreach($boxes as $box)--}}
+{{--                第{{$n}}桌，放在第幾號格子...{{$box}}--}}
+{{--                <br>--}}
+{{--            @endforeach--}}
 
 @endsection
