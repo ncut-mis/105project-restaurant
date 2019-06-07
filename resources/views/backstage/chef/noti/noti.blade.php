@@ -1,5 +1,5 @@
 <head>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -8,7 +8,8 @@
             databaseURL: "https://project-restaurants-ncut.firebaseio.com",
             projectId: "project-restaurants-ncut",
             storageBucket: "project-restaurants-ncut.appspot.com",
-            messagingSenderId: "390650303893"
+            messagingSenderId: "390650303893",
+            appId: "1:390650303893:web:2ea9767ea995ff31"
         };
         firebase.initializeApp(config);
     </script>

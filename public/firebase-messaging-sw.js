@@ -1,15 +1,16 @@
 // Import and configure the Firebase SDK
 // These scripts are made available when the app is served or deployed on Firebase Hosting
 // If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup
-importScripts('https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/5.9.1/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/6.1.1/firebase-messaging.js');
 var config = {
   apiKey: "AIzaSyCTnmGUSXbyvJKbrmIcXtXMze3mecGKF-A",
   authDomain: "project-restaurants-ncut.firebaseapp.com",
   databaseURL: "https://project-restaurants-ncut.firebaseio.com",
   projectId: "project-restaurants-ncut",
   storageBucket: "project-restaurants-ncut.appspot.com",
-  messagingSenderId: "390650303893"
+  messagingSenderId: "390650303893",
+  appId: "1:390650303893:web:2ea9767ea995ff31"
 };
 firebase.initializeApp(config);
 

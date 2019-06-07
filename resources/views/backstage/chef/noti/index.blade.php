@@ -1,5 +1,5 @@
 <head>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -8,7 +8,8 @@
             databaseURL: "https://project-restaurants-ncut.firebaseio.com",
             projectId: "project-restaurants-ncut",
             storageBucket: "project-restaurants-ncut.appspot.com",
-            messagingSenderId: "390650303893"
+            messagingSenderId: "390650303893",
+            appId: "1:390650303893:web:2ea9767ea995ff31"
         };
         firebase.initializeApp(config);
     </script>
@@ -47,7 +48,7 @@
 
     var key = 'AAAAWvSSlZU:APA91bEdu07BlcRY0i-y2av_bPdNmP5e218LTZFotxsiMUxvS9i98gKBDmtTV5Zh19Z6rOM8xw-uHshM9B3lXYQ42y_kbHiZAkFqVfX7TxkWmX_2_r8Mgmbcik6hmjNhJVOfMhlJCKCo';
 
-    var to = '';
+    var to = 'dcgx396_YRE:APA91bETUh2jGiyeZU2Es9QjhcuB3HF2JkxuitLdTy0Ii_JOZzWCpH4opFQYnOjI8MKQNK27OTzbJkvCNAhbb0Z8gccGYLxyAefvJeElsPr8FPlazBl0gPRgRBqGemTFsdYGCIYRrr-5';
 
     var notification = {
         'title':'receive_my title',
