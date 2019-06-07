@@ -123,17 +123,21 @@
     <div id="mainContainer">
         <div class="row" style="margin-bottom: 20px; text-align:right">
             <div class="col-lg-12">
-                <div class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-plus-circle"></i> 上傳餐廳圖</font>
-            </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="col-lg-12">
+                    <div class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-plus-circle"></i> 上傳餐廳圖</font>
+                    </div>
+                    <div class="col-lg-10">
+                        <a href="{{ route('backstage.manager.table.create') }}" class="btn btn-success"><font color="#ffffff" face="微軟正黑體"><i class="fa fa-plus-circle"></i> 排列桌位</font></a>
+                    </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <form action="/backstage/table/{{Auth::user()->restaurant_id}}" method="POST" role="form" enctype ="multipart/form-data">
                                 {{ csrf_field() }}
                                 {{ method_field('PATCH') }}
                                 <div class="modal-header">
-                                <h4 class="modal-title" id="exampleModalLabel" style="text-align: center"><font face="微軟正黑體">上傳餐廳室內圖</font></h4>
-                            </div>
+                                    <h4 class="modal-title" id="exampleModalLabel" style="text-align: center"><font face="微軟正黑體">上傳餐廳室內圖</font></h4>
+                                </div>
 
                                 <div class="col-md-12" style="text-align:justify;text-justify: distribute;margin-top: 20px">
                                     <div class="form-group row{{ $errors->has('photo') ? ' has-error' : '' }}">
@@ -144,59 +148,45 @@
                                     </div>
                                 </div>
 
-                            <div class="modal-footer">
-                                <div class="col-md-12" style="text-align: center;margin-top: 20px">
-                                    <button type="submit" class="btn btn-primary">
-                                        <font face="微軟正黑體">{{ __('送出') }}</font>
-                                    </button>
+                                <div class="modal-footer">
+                                    <div class="col-md-12" style="text-align: center;margin-top: 20px">
+                                        <button type="submit" class="btn btn-primary"><font face="微軟正黑體">{{ __('送出') }}</font></button>
+                                    </div>
                                 </div>
-                            </div>
                             </form>
                         </div>
                     </div>
                 </div>
-        </div>
-        <div id="capitals">
-            <p style="font-size:20px"><b>桌位拖曳</b></p>
-
-            <div id="dropContent">
-
-                @for($i=1;$i<217;$i++)
-
-                    <div class="dragableBox green" id="box{{$i}}">{{217-$i}}</div>
-
-                @endfor
             </div>
 
+                <div id="countries" style="background-image: url(/img/1.png)">
+                    <div id="bob101" class="dragableBoxRight"></div>
+                    <div id="bob102" class="dragableBoxRight"></div>
+                    <div id="bob103" class="dragableBoxRight"></div>
+                    <div id="bob104" class="dragableBoxRight"></div>
+                    <div id="bob105" class="dragableBoxRight"></div>
+                    <div id="bob106" class="dragableBoxRight"></div>
+                    <div id="bob107" class="dragableBoxRight"></div>
+                    <div id="bob108" class="dragableBoxRight"></div>
+                    <div id="bob109" class="dragableBoxRight"></div>
+                    @for($i=110;$i<317;$i++)
+                        <div id="bob{{$i}}" class="dragableBoxRight"></div>
+                    @endfor
+                </div>
+
+                <div class="clear"></div>
+                <div class="konaBody"></div>
+            </div>
+            <div id="debug"></div>
         </div>
-            <br>
-
-
-        <div id="countries" style="background-image: url(/img/1.png)">
-
-            <div id="bob101" class="dragableBoxRight"></div>
-            <div id="bob102" class="dragableBoxRight"></div>
-            <div id="bob103" class="dragableBoxRight"></div>
-            <div id="bob104" class="dragableBoxRight"></div>
-            <div id="bob105" class="dragableBoxRight"></div>
-            <div id="bob106" class="dragableBoxRight"></div>
-            <div id="bob107" class="dragableBoxRight"></div>
-            <div id="bob108" class="dragableBoxRight"></div>
-            <div id="bob109" class="dragableBoxRight"></div>
-            @for($i=110;$i<317;$i++)
-                <div id="bob{{$i}}" class="dragableBoxRight"></div>
-            @endfor
-
-        </div>
-
-
-        <div class="clear"></div>
-        <div class="konaBody"></div>
     </div>
 
-    <div id="debug"></div>
+{{--    <script src="{{ asset('js/seat.js') }}"></script>--}}
 
-
-    <script src="{{ asset('js/seat.js') }}"></script>
+{{--            @php($n=216)--}}
+{{--            @foreach($boxes as $box)--}}
+{{--                第{{$n}}桌，放在第幾號格子...{{$box}}--}}
+{{--                <br>--}}
+{{--            @endforeach--}}
 
 @endsection
