@@ -2,6 +2,21 @@
 <html lang="en">
 
 <head>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCTnmGUSXbyvJKbrmIcXtXMze3mecGKF-A",
+            authDomain: "project-restaurants-ncut.firebaseapp.com",
+            databaseURL: "https://project-restaurants-ncut.firebaseio.com",
+            projectId: "project-restaurants-ncut",
+            storageBucket: "project-restaurants-ncut.appspot.com",
+            messagingSenderId: "390650303893",
+            appId: "1:390650303893:web:2ea9767ea995ff31"
+        };
+        firebase.initializeApp(config);
+    </script>
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,6 +51,17 @@
 </head>
 
 <body>
+<script>
+    const messaging = firebase.messaging();
+    messaging.onMessage(payload => {
+        console.log('onMessage: ', payload);
+        var notifyMsg = payload.notification;
+        var notification = new Notification(notifyMsg.title, {
+            body: notifyMsg.body,
+            icon: notifyMsg.icon
+        });
+    });
+</script>
     <div id="wrapper">
 
         @include('backstage.chef.layouts.partials.sidebar')
