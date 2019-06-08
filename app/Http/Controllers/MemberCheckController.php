@@ -81,12 +81,12 @@ class MemberCheckController extends Controller
             'member_id' => $ver
         ]);
         $insertedId = $customer->id;
-
+        $tempDate = date("Y-m-d H:i:s");
         $order = Order::create([
             'number' => $request['people'],
             'restaurant_id' => $restaurant->id,
             'customer_id' => $insertedId,
-
+            'StartTime' =>$tempDate,
         ]);
         $orderId = $order->id;
 
