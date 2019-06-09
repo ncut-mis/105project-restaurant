@@ -63,7 +63,9 @@ Route::group(['prefix' => 'backstage'], function() {
     /*經理-table*/
     Route::get('/table'           , 'TableController@index_2')->name('backstage.manager.table.index');
     Route::get('/table/create'    , 'TableController@create')->name('backstage.manager.table.create');
-    Route::get('/table/{id}/edit' , 'TableController@edit')->name('backstage.manager.table.edit');
+    Route::get('/table/edit'      , 'TableController@edit')->name('backstage.manager.table.edit');
+    Route::get('/table/store'      , 'TableController@store2')->name('backstage.manager.table.store2');
+
     Route::patch('/table/{id}'    , 'TableController@update_1')->name('backstage.manager.table.update');//
     Route::post('/table'          , 'TableController@store')->name('backstage.manager.table.store');
     Route::delete('/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
@@ -135,12 +137,12 @@ Route::group(['prefix' => 'backstage'], function() {
     //
     /*櫃台booking細部*/
     Route::get('/restaurant/seat/update', ['as' => 'restaurant.seat.update' , 'uses' => 'TableController@update']);
-    Route::get('/restaurant/{restaurant}/table', ['as' => 'restaurant.table.index' , 'uses' => 'TableController@index']);
-    Route::get('/restaurant/{restaurant}/table/check',['as'=>'restaurant.table.check','uses'=>'TableController@check']);
-    Route::get('/restaurant/{restaurant}/people/check',['as'=>'restaurant.people.check','uses'=>'TableController@PeopleCheck']);
-    Route::get('/restaurant/{restaurant}/member/check',['as'=>'restaurant.member.check','uses'=>'TableController@MemberCheck']);
-    Route::patch('/restaurant/{restaurant}/customer/check',['as'=>'restaurant.customer.check','uses'=>'TableController@CustomerCheck']);
-    Route::get('/restaurant/{restaurant}/member/check/store',['as'=>'restaurant.member.store','uses'=>'MemberCheckController@store']);
+    Route::get('/restaurant/{restaurant}/table', ['as' => 'restaurant.table.index' , 'uses' => 'TableController@index']); //2
+    Route::get('/restaurant/{restaurant}/table/check',['as'=>'restaurant.table.check','uses'=>'TableController@check']);//3
+    Route::get('/restaurant/{restaurant}/people/check',['as'=>'restaurant.people.check','uses'=>'TableController@PeopleCheck']);  //1
+    Route::get('/restaurant/{restaurant}/member/check',['as'=>'restaurant.member.check','uses'=>'TableController@MemberCheck']); //4-1
+    Route::patch('/restaurant/{restaurant}/customer/check',['as'=>'restaurant.customer.check','uses'=>'TableController@CustomerCheck']);//4
+    Route::get('/restaurant/{restaurant}/member/check/store',['as'=>'restaurant.member.store','uses'=>'MemberCheckController@store']);//4-2
 
     /*櫃台結帳*/
     Route::get('/customer/checkout/index',['as'=>'customer.checkout.index','uses'=>'CheckOutController@index']);

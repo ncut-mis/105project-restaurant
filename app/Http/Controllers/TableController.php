@@ -13,6 +13,7 @@ use App\Table as TableEloquent;
 use Illuminate\Http\Request;
 use \Carbon\Carbon as Carbon;
 use Illuminate\Support\Facades\DB;
+
 date_default_timezone_set("Asia/Taipei");
 
 class TableController extends Controller
@@ -23,7 +24,7 @@ class TableController extends Controller
         $boxes = $request['box'];
         $data = ['boxes' => $boxes];
 
-        return view('backstage.manager.seat.test',$data);
+        return view('backstage.manager.seat.test', $data);
     }
 
     public function MemberCheck(Request $request, Restaurant $restaurant)
@@ -71,7 +72,6 @@ class TableController extends Controller
             //---------------------------------------------------------------------------------
 
 
-
             $customer = Customer::create([
                 'restaurant_id' => $restaurant->id,
                 'verification_code' => $verification
@@ -83,7 +83,7 @@ class TableController extends Controller
                 'number' => $request['people'],
                 'restaurant_id' => $restaurant->id,
                 'customer_id' => $insertedId,
-                'StartTime' =>$tempDate,
+                'StartTime' => $tempDate,
             ]);
             $orderId = $order->id;
 
@@ -102,7 +102,7 @@ class TableController extends Controller
                 $status->save();
             }
 
-            $data = ['tables' => $tables, 'people' => $people, 'ver' => $verification ,'cus' => $insertedId];
+            $data = ['tables' => $tables, 'people' => $people, 'ver' => $verification, 'cus' => $insertedId];
 
             return view('backstage.counter.booking.CustomerCheck', $data);
         }
@@ -133,15 +133,41 @@ class TableController extends Controller
 
     public function index_2(Restaurant $restaurant, Request $request)
     {
-        $num = $request['num'];
-        $tables = TableEloquent::where('restaurant_id', $restaurant->id)->get();
-        $data = ['tables' => $tables, 'num' => $num];
+        $pic = Restaurant::where('id', Auth::user()->restaurant_id)->firstOrFail();
+        $tables = Table::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        $data = ['tables' => $tables,'pic' => $pic];
         return view('backstage.manager.table.index', $data);
     }
 
     public function create()
     {
         //
+    }
+
+    public function store2(Request $request)
+    {
+        Table::where('restaurant_id', Auth::user()->restaurant_id)->delete();
+
+        $boxes = $request['box'];
+
+        $n = 216;
+
+        for ($i = 1; $i <= 12; $i++) {
+            for ($k = 1; $k <= 18; $k++) {
+                $cat = 82 + $i * 18 + $k;
+                $n = 216;
+                foreach ($boxes as $box) {
+                    if ($cat == $box) {
+                        DB::table('tables')->insert(
+                            array('restaurant_id' => Auth::user()->restaurant_id, 'number' => $n, 'status' => '空閒中', 'row' => $i, 'col' => $k)
+                        );
+                    }
+                    $n--;
+                }
+
+            }
+        }
+        return redirect()->route('backstage.manager.table.index');
     }
 
     public function store(Request $request)
@@ -167,16 +193,18 @@ class TableController extends Controller
 
     public function edit(Table $table)
     {
-
+        $tables = Table::where('restaurant_id', Auth::user()->restaurant_id)->get();
+        $data = ['tables' => $tables];
+        return view('backstage.manager.table.edit', $data);
     }
 
     public function update_1(Request $request, $id)
     {
-        $restaurants=Restaurant::find($id);
+        $restaurants = Restaurant::find($id);
         $file = $request->file('table_pic');
         $destinationPath = 'img/';
-        $image=$file->getClientOriginalExtension();
-        $file_name=(Carbon::now()->timestamp).'.'.$image;
+        $image = $file->getClientOriginalExtension();
+        $file_name = (Carbon::now()->timestamp) . '.' . $image;
         $file->move($destinationPath, $file_name);
 
         $restaurants->update([
