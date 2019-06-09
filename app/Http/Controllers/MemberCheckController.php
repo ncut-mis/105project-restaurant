@@ -12,6 +12,7 @@ use App\Order;
 use App\DiningTable;
 use App\Table as TableEloquent;
 use App\Restaurant;
+use \Carbon\Carbon as Carbon;
 date_default_timezone_set("Asia/Taipei");
 
 
@@ -78,14 +79,17 @@ class MemberCheckController extends Controller
         $customer = Customer::create([
             'restaurant_id' => $restaurant->id,
             'verification_code' => $verification,
-            'member_id' => $ver
+            'member_id' => (int)$ver,
         ]);
         $insertedId = $customer->id;
 
+        $tempDate = date("Y-m-d H:i:s");
         $order = Order::create([
             'number' => $request['people'],
             'restaurant_id' => $restaurant->id,
             'customer_id' => $insertedId,
+            'StartTime' =>$tempDate,
+
 
         ]);
         $orderId = $order->id;
