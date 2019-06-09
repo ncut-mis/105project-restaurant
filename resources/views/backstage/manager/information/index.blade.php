@@ -39,7 +39,7 @@
                         <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　餐廳名稱：') }}</b></font><font color="#000000" face="微軟正黑體" size="4">{{$res->name}}</font></td>
                     </tr>
                     <tr>
-                        <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　ＬＯＧＯ：') }}</b></font><img src="{{url('img/logo/'. $res->logo)}}" width=50%></td>
+                        <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　ＬＯＧＯ：') }}</b></font><img src="{{url('img/logo/'. $res->logo)}}" width=20%></td>
                     </tr>
                     <tr>
                         <td><font color="#000000" face="微軟正黑體" size="5"><b>{{ __('　電　　話：') }}</b></font><font color="#000000" face="微軟正黑體" size="4">{{$res->phone}}</font></td>

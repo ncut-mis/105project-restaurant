@@ -23,13 +23,17 @@
             padding: 50px;
             height: 200px;
             text-align: center;
-            font-family: 微軟正黑體;
+
+            font-family:微軟正黑體;
+
         }
 
         #countries {
             width: 850px;
             float: left;
+
             margin-left: 10px;
+
             height: 550px;
             padding: 5px;
             border: 1px solid #000;
@@ -39,6 +43,7 @@
         }
 
         .dragableBox {
+
             width: 40px;
             height: 40px;
             border: 1px solid #000;
@@ -53,9 +58,11 @@
 
         }
 
+
         .dragableBox:hover {
             cursor: pointer;
         }
+
 
         .dragableBox.green {
             background: #7fc77e;
@@ -174,3 +181,4 @@
 
     <script src="{{ asset('js/seat.js') }}"></script>
 @endsection
+

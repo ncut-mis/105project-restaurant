@@ -90,7 +90,6 @@ class MemberCheckController extends Controller
             'customer_id' => $insertedId,
             'StartTime' =>$tempDate,
 
-
         ]);
         $orderId = $order->id;
 

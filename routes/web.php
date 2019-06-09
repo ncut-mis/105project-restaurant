@@ -63,10 +63,12 @@ Route::group(['prefix' => 'backstage'], function() {
     /*經理-table*/
     Route::get('/table'           , 'TableController@index_2')->name('backstage.manager.table.index');
     Route::get('/table/create'    , 'TableController@create')->name('backstage.manager.table.create');
+
     Route::get('/table/edit'      , 'TableController@edit')->name('backstage.manager.table.edit');
     Route::get('/table/store'      , 'TableController@store2')->name('backstage.manager.table.store2');
 
     Route::patch('/table/{id}'    , 'TableController@update_1')->name('backstage.manager.table.update');//
+
     Route::post('/table'          , 'TableController@store')->name('backstage.manager.table.store');
     Route::delete('/table/{id}'   , 'TableController@destroy')->name('backstage.manager.table.destroy');
 
@@ -76,7 +78,7 @@ Route::group(['prefix' => 'backstage'], function() {
     Route::patch('token/{id}',['as'=>'backstage.manager.token.update','uses'=>'RestaurantController@tokenupdate']);
 
 
-    Route::get('/table/test' , 'TableController@test')->name('table.test');
+    Route::get('/table/test' , 'TableController@test')->name('table.test');//
 
 
 

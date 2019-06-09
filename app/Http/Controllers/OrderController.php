@@ -102,6 +102,17 @@ class OrderController extends Controller
         $order->status =$request->status;
         $order->save();
 
+        $table = Table::join('dining_tables','tables.id','=','dining_tables.table_id')
+            ->where('dining_tables.order_id',$id)
+            ->pluck('dining_tables.table_id');
+        $i = count($table);
+        for($a=0;$a<$i;$a++)
+        {
+            Table::where('restaurant_id',Auth::user()->restaurant_id)
+                ->where('id',$table[$a])
+                ->update(['status'=>'用餐中']);
+        }
+
         return redirect()->route('counter.dining.index');
     }
 }

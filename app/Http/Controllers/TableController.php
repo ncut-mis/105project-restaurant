@@ -133,15 +133,17 @@ class TableController extends Controller
 
     public function index_2(Restaurant $restaurant, Request $request)
     {
+
         $pic = Restaurant::where('id', Auth::user()->restaurant_id)->firstOrFail();
         $tables = Table::where('restaurant_id', Auth::user()->restaurant_id)->get();
         $data = ['tables' => $tables,'pic' => $pic];
+
         return view('backstage.manager.table.index', $data);
     }
 
     public function create()
     {
-        //
+        return view('backstage.manager.table.create');
     }
 
     public function store2(Request $request)
@@ -172,18 +174,15 @@ class TableController extends Controller
 
     public function store(Request $request)
     {
-//        $restaurants=Restaurant::find($id);
-//        $file = $request->file('table_pic');
-//        $destinationPath = 'img/';
-//        $image=$file->getClientOriginalExtension();
-//        $file_name=(Carbon::now()->timestamp).'.'.$image;
-//        $file->move($destinationPath, $file_name);
-//
-//        Restaurant::create([
-//            'restaurant_id' => Auth::user()->restaurant_id,
-//            'table_pic' => $file_name,
-//        ]);
-//        return redirect()->route('backstage.manager.table.index');
+        Table::create([
+            'restaurant_id'=>Auth::user()->restaurant_id,
+            'number'=>$request['number'],
+            'status'=>'空閒中',
+            'row'=>$request['row'],
+            'col'=>$request['col'],
+        ]);
+//        echo $data;
+        return redirect()->route('backstage.manager.table.index');
     }
 
     public function show(Table $table)
@@ -218,8 +217,6 @@ class TableController extends Controller
         $tables = TableEloquent::where('restaurant_id', Auth::user()->restaurant_id)->get();
         $data = ['tables' => $tables];
         return view('backstage.counter.booking.index', $data);
-
-
     }
 
     public function destroy(Table $table)

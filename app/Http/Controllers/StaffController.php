@@ -23,11 +23,10 @@ class StaffController extends Controller
         $position=Auth::user()->position;
         $restaurant_id=Auth::user()->restaurant_id;
         $open=Restaurant::where(['id'=>$restaurant_id])->value('open');
-        $data=Staff::where('restaurant_id', Auth::user()->restaurant_id)->get();
-        $restaurant = Restaurant::find($data);
+        $data=Restaurant::where('id',Auth::user()->restaurant_id)->get();
 //echo $position,$open;
         if($position == "經理" && $open==0)
-            return view('backstage.manager.index', ['restaurants' => $restaurant]);
+            return view('backstage.manager.index',['restaurants'=>$data]);
         else
             if($position == "櫃台" && $open==0)
                 return redirect('backstage/counter/index');

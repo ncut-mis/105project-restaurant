@@ -139,7 +139,6 @@
 
                     @endfor
                 </div>
-
             </div>
 
             <div id="countries" style="background-image: url(/img/1.png)">

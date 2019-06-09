@@ -124,6 +124,7 @@
     </div>
 
 
+
     <div class="row" style="margin-bottom: 20px; text-align:right">
         <div class="col-lg-12">
             <div class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><font color="#ffffff"
@@ -156,13 +157,11 @@
                                 </div>
                             </div>
 
-                            <div class="modal-footer">
-                                <div class="col-md-12" style="text-align: center;margin-top: 20px">
-                                    <button type="submit" class="btn btn-primary">
-                                        <font face="微軟正黑體">{{ __('送出') }}</font>
-                                    </button>
+                                <div class="modal-footer">
+                                    <div class="col-md-12" style="text-align: center;margin-top: 20px">
+                                        <button type="submit" class="btn btn-primary"><font face="微軟正黑體">{{ __('送出') }}</font></button>
+                                    </div>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -216,16 +215,9 @@
             {{--@for($i=101;$i<317;$i++)--}}
             {{--<div id="bob{{$i}}" class="dragableBoxRight"></div>--}}
             {{--@endfor--}}
+
         </div>
-
-
-        <div class="clear"></div>
-        <div class="konaBody"></div>
     </div>
-
-    <div id="debug"></div>
-
-
 
     <script src="{{ asset('js/seat.js') }}"></script>
 @endsection
