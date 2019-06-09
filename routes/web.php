@@ -63,7 +63,7 @@ Route::group(['prefix' => 'backstage'], function() {
     /*經理-table*/
     Route::get('/table'           , 'TableController@index_2')->name('backstage.manager.table.index');
     Route::get('/table/{id}/edit'      , 'TableController@edit')->name('backstage.manager.table.edit');
-    Route::get('/table/store'      , 'TableController@store2')->name('backstage.manager.table.store2');
+    Route::post('/table/store'      , 'TableController@store2')->name('backstage.manager.table.store2');
     Route::patch('/table/{id}/pic'    , 'TableController@update_1')->name('backstage.manager.table.update_1');//
 
     /*經理-餐廳token修改*/

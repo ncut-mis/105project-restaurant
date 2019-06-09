@@ -123,7 +123,7 @@
             </h1>
         </div>
     </div>
-    <form action="{{ route('backstage.manager.table.store2') }}">
+    <form action="{{ route('backstage.manager.table.store2') }}" method="POST" role="form">
         {{ csrf_field() }}
         <div id="mainContainer">
 
