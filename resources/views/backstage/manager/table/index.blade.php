@@ -117,7 +117,7 @@
         <div class="col-lg-12">
             <h1 class="page-header">
                 <font color="#000000" face="微軟正黑體"><i class="fa fa-table"></i> 餐桌管理
-                    <small>餐桌排列{{$pic->table_pic}}</small>
+                    <small>餐桌排列</small>
                 </font>
             </h1>
         </div>
@@ -135,7 +135,7 @@
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <form action="/backstage/table/{{Auth::user()->restaurant_id}}" method="POST" role="form"
+                        <form action="/backstage/table/{{Auth::user()->restaurant_id}}/pic" method="POST" role="form"
                               enctype="multipart/form-data">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
@@ -172,13 +172,9 @@
 
     <div id="mainContainer">
         <div id="capitals">
-            <form action="{{ route('backstage.manager.table.edit') }}">
-                {{ csrf_field() }}
-                <button type="submit"
-                        style="text-decoration:none; width:100px;height:100px;"
-                        class="btn btn-primary">修改
-                </button>
-            </form>
+            <a href="{{ route('backstage.manager.table.edit',Auth::user()->restaurant_id)}}" type="submit" style="text-decoration:none; width:100px;height:100px;padding-top: 35px" class="btn btn-primary"><font color="#ffffff" face="微軟正黑體" size="4"><i class="fa fa-edit"></i> 修改</font></a>
+
+
 
             <div id="dropContent">
                 @for($i=1;$i<217;$i++)

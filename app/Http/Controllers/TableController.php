@@ -185,15 +185,11 @@ class TableController extends Controller
         return redirect()->route('backstage.manager.table.index');
     }
 
-    public function show(Table $table)
+    public function edit(Table $table,$id)
     {
-        //
-    }
-
-    public function edit(Table $table)
-    {
+        $restaurant=Restaurant::find($id);
         $tables = Table::where('restaurant_id', Auth::user()->restaurant_id)->get();
-        $data = ['tables' => $tables];
+        $data = ['restaurants'=>$restaurant,'table' => $tables];
         return view('backstage.manager.table.edit', $data);
     }
 

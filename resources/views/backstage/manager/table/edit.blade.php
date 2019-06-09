@@ -123,10 +123,8 @@
             </h1>
         </div>
     </div>
-    
     <form action="{{ route('backstage.manager.table.store2') }}">
         {{ csrf_field() }}
-
         <div id="mainContainer">
 
             <div id="capitals">
@@ -150,9 +148,7 @@
                 </button>
 
             </div>
-
-            <div id="countries" style="background-image: url(/img/1.png)">
-
+            <div id="countries" style="background-image: url(/img/{{$restaurants->table_pic}});">
                 <div id="bob101" class="dragableBoxRight"></div>
                 <div id="bob102" class="dragableBoxRight"></div>
                 <div id="bob103" class="dragableBoxRight"></div>
@@ -165,7 +161,6 @@
                 @for($i=110;$i<317;$i++)
                     <div id="bob{{$i}}" class="dragableBoxRight"></div>
                 @endfor
-
             </div>
 
 
